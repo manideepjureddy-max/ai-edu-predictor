@@ -1,0 +1,105 @@
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
+
+var links = [
+  { path: '/dashboard', label: 'Dashboard', icon: '🏠' },
+  { path: '/predict', label: 'Predict', icon: '🎯' },
+  { path: '/test', label: 'Test', icon: '📝' },
+  { path: '/roadmap', label: 'Roadmaps', icon: '🗺️' }
+];
+
+export default function Navbar() {
+  var auth = useAuth();
+  var loc = useLocation();
+  var nav = useNavigate();
+  var [scrolled, setScrolled] = useState(false);
+
+  useEffect(function() {
+    function onScroll() { setScrolled(window.scrollY > 20); }
+    window.addEventListener('scroll', onScroll);
+    return function() { window.removeEventListener('scroll', onScroll); };
+  }, []);
+
+  function handleLogout() {
+    auth.logout();
+    nav('/');
+  }
+
+  var navStyle = {
+    position: 'fixed', top: 0, left: 0, right: 0, zIndex: 1000,
+    display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+    padding: '0.75rem 1.5rem',
+    background: scrolled ? 'rgba(10,10,15,0.92)' : 'transparent',
+    backdropFilter: scrolled ? 'blur(20px)' : 'none',
+    borderBottom: scrolled ? '1px solid rgba(255,255,255,0.06)' : 'none',
+    transition: 'all 0.3s ease'
+  };
+
+  return (
+    React.createElement('nav', { style: navStyle },
+      React.createElement(Link, { to: '/dashboard', style: { textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '8px' } },
+        React.createElement('div', {
+          style: {
+            width: 34, height: 34, borderRadius: '10px',
+            background: 'linear-gradient(135deg,#6C63FF,#FF6584)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            fontSize: '18px', fontWeight: 700, color: 'white',
+            fontFamily: 'var(--font1)'
+          }
+        }, 'E'),
+        React.createElement('span', {
+          style: { fontFamily: 'var(--font1)', fontWeight: 700, fontSize: '1.05rem', color: 'var(--text)' }
+        }, 'EduPath ', React.createElement('span', { className: 'gt' }, 'AI'))
+      ),
+
+      React.createElement('div', { style: { display: 'flex', alignItems: 'center', gap: '4px' } },
+        links.map(function(lk) {
+          var active = loc.pathname === lk.path;
+          return React.createElement(Link, {
+            key: lk.path, to: lk.path,
+            style: {
+              display: 'flex', alignItems: 'center', gap: '5px',
+              padding: '0.45rem 0.9rem', borderRadius: '999px',
+              textDecoration: 'none', fontSize: '0.88rem', fontWeight: 500,
+              color: active ? 'white' : 'var(--text2)',
+              background: active ? 'rgba(108,99,255,0.2)' : 'transparent',
+              border: active ? '1px solid rgba(108,99,255,0.35)' : '1px solid transparent',
+              transition: 'all 0.2s'
+            }
+          },
+            React.createElement('span', { style: { fontSize: '14px' } }, lk.icon),
+            lk.label
+          );
+        })
+      ),
+
+      React.createElement('div', { style: { display: 'flex', alignItems: 'center', gap: '10px' } },
+        React.createElement('div', {
+          style: {
+            display: 'flex', alignItems: 'center', gap: '8px',
+            padding: '0.35rem 0.8rem', borderRadius: '999px',
+            background: 'var(--glass)', border: '1px solid var(--border)'
+          }
+        },
+          React.createElement('div', {
+            style: {
+              width: 26, height: 26, borderRadius: '50%',
+              background: 'linear-gradient(135deg,#6C63FF,#FF6584)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              fontSize: '12px', fontWeight: 700, color: 'white'
+            }
+          }, auth.user && auth.user.name ? auth.user.name.charAt(0).toUpperCase() : 'U'),
+          React.createElement('span', {
+            style: { fontSize: '0.82rem', color: 'var(--text2)', maxWidth: '100px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }
+          }, auth.user ? auth.user.name : '')
+        ),
+        React.createElement('button', {
+          onClick: handleLogout,
+          className: 'btn btn-g',
+          style: { padding: '0.45rem 0.85rem', fontSize: '0.82rem' }
+        }, '🚪 Logout')
+      )
+    )
+  );
+}
