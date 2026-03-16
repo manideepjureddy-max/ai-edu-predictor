@@ -646,6 +646,163 @@ const roadmaps = {
     skills: ["Agile/Scrum", "Wireframing", "Data Analytics", "Cross-functional Leadership", "User Research"],
     salaryProgression: { fresher: "₹8-15 LPA (APM)", midLevel: "₹18-35 LPA", senior: "₹40-80 LPA", lead: "₹80+ LPA" },
     demandTrend: "High - Deep tech products need technically-sound PMs."
+  },
+
+  // === Medical Degrees to Careers ===
+
+  "Med_to_Specialist": {
+    career: "Specialist Doctor (MD/MS)",
+    description: "Deep specialization in a specific medical field (Cardiology, Surgery, Pediatrics).",
+    timeToAchieve: "3-5 years after MBBS",
+    roadmap: [
+      { phase: "MBBS Completion", tasks: ["Complete 1-year internship", "Obtain MCI/NMC registration", "Start NEET PG preparation"] },
+      { phase: "Post-Graduation (MD/MS)", tasks: ["Clear NEET PG", "Join 3-year residency program", "Conduct clinical research and thesis", "Gain hands-on surgical/clinical skill"] },
+      { phase: "Senior Residency", tasks: ["Work as a Senior Resident for 1-3 years in a teaching hospital", "Publish research papers"] },
+      { phase: "Super-specialization (Optional)", tasks: ["Apply for DM/MCh (3 years) for fields like Neurology or Urology"] }
+    ],
+    skills: ["Advanced Diagnosis", "Surgical Precision", "Research Methodology", "Clinical Leadership"],
+    salaryProgression: { fresher: "₹8-15 LPA (Resident)", midLevel: "₹20-40 LPA (Specialist)", senior: "₹50-1.5Cr LPA", lead: "₹2Cr+ LPA" },
+    demandTrend: "Extremely High - Significant shortage of specialists in India"
+  },
+  "Dental_to_MDS": {
+    career: "Orthodontist / Oral Surgeon (MDS)",
+    description: "Master of Dental Surgery with specialized practice.",
+    timeToAchieve: "3 years after BDS",
+    roadmap: [
+      { phase: "BDS Completion", tasks: ["Clear DCI registration", "Gain 1-2 years clinical experience (optional)", "NEET MDS prep"] },
+      { phase: "MDS Program", tasks: ["3 years of intensive clinical specialty training", "Manage complex patient cases"] },
+      { phase: "Independent Practice", tasks: ["Set up a specialized clinic", "Collaborate with multi-specialty hospitals"] }
+    ],
+    skills: ["Maxillofacial Surgery", "Orthodontic Realignment", "Patient Rehab"],
+    salaryProgression: { fresher: "₹4-7 LPA", midLevel: "₹12-25 LPA", senior: "₹30-60 LPA", lead: "₹80+ LPA" },
+    demandTrend: "High - Growing demand for cosmetic and specialized dentistry"
+  },
+
+  // === B.Sc to Careers ===
+
+  "BScAg_to_AgriOfficer": {
+    career: "Agriculture Officer / Consultant",
+    description: "Working in government or private sectors to improve farming productivity.",
+    timeToAchieve: "0-2 years after B.Sc Ag",
+    roadmap: [
+      { phase: "Exam Prep", tasks: ["Prepare for IBPS AFO (Agricultural Field Officer) exam", "State PSC Agri-exams"] },
+      { phase: "Private Sector", tasks: ["Join Agri-tech startups", "Work in Fertilizer/Seed companies (e.g. Bayer, Syngenta)"] },
+      { phase: "Higher Edu (Optional)", tasks: ["Pursue M.Sc or MBA in Agribussiness (ABM)"] }
+    ],
+    skills: ["Soil Science", "Pest Mgmt", "Agri-Business Management", "Rural Outreach"],
+    salaryProgression: { fresher: "₹4-7 LPA", midLevel: "₹8-15 LPA", senior: "₹18-35 LPA", lead: "₹40+ LPA" },
+    demandTrend: "Steady - High demand in government and Agri-tech startups"
+  },
+  "Nursing_to_NurseAdmin": {
+    career: "Nurse Administrator / Supervisor",
+    description: "Managing nursing staff and hospital ward operations.",
+    timeToAchieve: "5-8 years after B.Sc Nursing",
+    roadmap: [
+      { phase: "Clinical Experience", tasks: ["Work as a Staff Nurse in multiple departments (ER, ICU, Ward)"] },
+      { phase: "Specialization", tasks: ["Get certifications in Critical Care or Emergency Nursing", "M.Sc Nursing (optional)"] },
+      { phase: "Leadership", tasks: ["Transition to Head Nurse -> Nursing Supervisor -> Nursing Superintendent"] }
+    ],
+    skills: ["Patient Safety", "Staff Management", "Healthcare Policy", "Crisis Mgmt"],
+    salaryProgression: { fresher: "₹3-5 LPA", midLevel: "₹7-12 LPA", senior: "₹15-25 LPA", lead: "₹30+ LPA" },
+    demandTrend: "High - Global demand for nursing leadership"
+  },
+
+  // === Commerce & Management to Careers ===
+
+  "BCom_to_CA": {
+    career: "Chartered Accountant (CA)",
+    description: "Expert in accounting, auditing, and taxation.",
+    timeToAchieve: "4-5 years total",
+    roadmap: [
+      { phase: "Foundation", tasks: ["Clear CA Foundation exam (even during/after 12th)"] },
+      { phase: "Intermediate", tasks: ["Complete 8 subjects of CA Inter", "Articleship orientation"] },
+      { phase: "Articleship", tasks: ["3 years of mandatory training under a practicing CA"] },
+      { phase: "CA Final", tasks: ["Pass the final exam", "Apply for ICAI membership"] }
+    ],
+    skills: ["Auditing", "Direct/Indirect Taxation", "Financial Reporting", "Stategic Mgmt"],
+    salaryProgression: { fresher: "₹8-15 LPA", midLevel: "₹18-30 LPA", senior: "₹35-70 LPA", lead: "₹1Cr+ LPA" },
+    demandTrend: "Extremely High - Essential for every business entity"
+  },
+  "BBA_to_MBA_Manager": {
+    career: "Management Consultant / Manager",
+    description: "Strategic leadership roles in Corporate, Finance, or Marketing.",
+    timeToAchieve: "2-5 years after BBA",
+    roadmap: [
+      { phase: "Work Experience", tasks: ["Join as an Analyst or Trainee", "Learn corporate workflows (1-3 years)"] },
+      { phase: "MBA", tasks: ["Prepare for CAT / GMAT / XAT", "Pursue MBA from top tier B-School (IIMs/ISB)"] },
+      { phase: "Career Transition", tasks: ["Join big firms (MBB - McKinsey, BCG, Bain) as Associate or Consultant"] }
+    ],
+    skills: ["Business Strategy", "Data Analytics", "Public Speaking", "Corporate Finance"],
+    salaryProgression: { fresher: "₹4-7 LPA", midLevel: "₹18-35 LPA (post-MBA)", senior: "₹40-80 LPA", lead: "₹1Cr+ LPA" },
+    demandTrend: "High - Constant need for high-level management talent"
+  },
+  "BCA_to_FullStack": {
+    career: "Full Stack Developer (Web/Mobile)",
+    description: "End-to-end development of software applications.",
+    timeToAchieve: "1-3 years after BCA",
+    roadmap: [
+      { phase: "Skill Up", tasks: ["Master JS (Node.js, React/Vue)", "Learn Backend (Express, Python/Django)"] },
+      { phase: "Portfolio", tasks: ["Build 3+ production-ready apps", "Contribute to open source"] },
+      { phase: "MCA (Optional)", tasks: ["Pursue MCA for better eligibility in MNCs"] }
+    ],
+    skills: ["MERN/MEAN Stack", "DevOps basics", "API Design", "Database Optimization"],
+    salaryProgression: { fresher: "₹3-6 LPA", midLevel: "₹8-18 LPA", senior: "₹20-45 LPA", lead: "₹50+ LPA" },
+    demandTrend: "Very High - Digital economy backbone"
+  },
+
+  // === Law & Professional to Careers ===
+
+  "Law_to_Advocate": {
+    career: "Advocate / Legal Counsel",
+    description: "Representing clients in court and providing legal advice.",
+    timeToAchieve: "1-3 years after LLB",
+    roadmap: [
+      { phase: "AIBE Exam", tasks: ["Clear All India Bar Examination", "Enroll with State Bar Council"] },
+      { phase: "Junior Advocacy", tasks: ["Practice under a Senior Advocate in High Court/Supreme Court (2-5 years)"] },
+      { phase: "Independent Practice", tasks: ["Build your own client base", "Handle independent litigations"] }
+    ],
+    skills: ["Drafting", "Argumentation", "Case Analysis", "Negotiation"],
+    salaryProgression: { fresher: "₹3-6 LPA", midLevel: "₹10-25 LPA", senior: "₹40-1Cr+ (Independent)", lead: "₹5Cr+ (Senior Counsel)" },
+    demandTrend: "Steady - Specialized law fields are growing fast"
+  },
+  "Pharm_to_DrugInspector": {
+    career: "Drug Inspector / Pharma Researcher",
+    description: "Ensuring drug quality and conducting pharmaceutical research.",
+    timeToAchieve: "2-4 years after B.Pharm/M.Pharm",
+    roadmap: [
+      { phase: "M.Pharm (Recommended)", tasks: ["Specialize in Pharmaceutics or Analysis", "GPAT prep"] },
+      { phase: "Govt Sector", tasks: ["Prepare for UPSC/State PSC Drug Inspector exams", "Regulatory Affairs"] },
+      { phase: "R&D", tasks: ["Join R&D departments of Cipla, Sun Pharma, or Novartis"] }
+    ],
+    skills: ["Chemical Analysis", "Pharmacology", "FDA Regulations", "Lab SOPs"],
+    salaryProgression: { fresher: "₹3.5-6 LPA", midLevel: "₹8-15 LPA", senior: "₹18-35 LPA", lead: "₹40+ LPA" },
+    demandTrend: "High - India is the 'Pharmacy of the world'"
+  },
+  "Design_to_ArtDirector": {
+    career: "Art Director / Senior UX Designer",
+    description: "Overseeing visual style and user experience strategies.",
+    timeToAchieve: "6-10 years after B.Des",
+    roadmap: [
+      { phase: "Junior Designer", tasks: ["Gain proficiency in Figma, Sketch, Webflow", "Learn visual hierarchy"] },
+      { phase: "UI/UX Lead", tasks: ["Manage small design teams", "Conduct large scale user research"] },
+      { phase: "Art/Design Director", tasks: ["Lead the design vision for brands or products"] }
+    ],
+    skills: ["Creative Leadership", "Branding", "User Psychology", "Strategy"],
+    salaryProgression: { fresher: "₹5-9 LPA", midLevel: "₹15-30 LPA", senior: "₹35-65 LPA", lead: "₹80+ LPA" },
+    demandTrend: "Very High - Growing importance of design in tech"
+  },
+  "BHM_to_HotelOwner": {
+    career: "Hotel Manager / Hospitality Entrepreneur",
+    description: "Managing luxury hotels or starting your own hospitality venture.",
+    timeToAchieve: "5-10 years",
+    roadmap: [
+      { phase: "Operations", tasks: ["Work in various departments (F&B, Front Office, Housekeeping)"] },
+      { phase: "General Manager", tasks: ["Move up to GM of a 5-star property"] },
+      { phase: "Entrepreneurship", tasks: ["Start a boutique cafe, resort, or luxury homestay chain"] }
+    ],
+    skills: ["Guest Relations", "Operations Management", "Revenue Mgmt", "Leadership"],
+    salaryProgression: { fresher: "₹3-6 LPA", midLevel: "₹10-25 LPA", senior: "₹30-60 LPA", lead: "₹1Cr+ (Profit/Scale)" },
+    demandTrend: "High - Post-pandemic travel boom"
   }
 
 };

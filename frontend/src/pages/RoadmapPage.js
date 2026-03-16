@@ -110,7 +110,10 @@ export default function RoadmapPage() {
     }
     if (cat === '10th') return k.startsWith('10th');
     if (cat === 'inter') return k.startsWith('Inter_to') || k.startsWith('MPC_');
-    if (cat === 'btech') return k.startsWith('BTech_to') || k.startsWith('CSE') || k.startsWith('ECE') || k.startsWith('MECH') || k.startsWith('CE_to') || k.startsWith('MEC_to') || k.startsWith('CEC_to');
+    if (cat === 'btech') {
+      var careerKeys = ['BTech_to', 'Med_to', 'Dental_to', 'BScAg_to', 'Nursing_to', 'BCom_to', 'BBA_to', 'BCA_to', 'Law_to', 'Pharm_to', 'Design_to', 'BHM_to'];
+      return careerKeys.some(function(pk) { return k.startsWith(pk); });
+    }
     
     // Fallback if anything slips through
     return false;
