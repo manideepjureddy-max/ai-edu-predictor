@@ -61,42 +61,235 @@ const roadmaps = {
     ]
   },
 
-  // === Intermediate (Inter) to Degrees ===
+  // === Intermediate (Inter) to Degrees (B.Tech Branches) ===
   
-  "Inter_to_BTech": {
-    stream: "B.Tech",
-    fullName: "Bachelor of Technology",
-    description: "Practical engineering degree prioritizing applied sciences, software, and hardware technology.",
+  "Inter_to_BTech_CSE": {
+    stream: "B.Tech - CSE",
+    fullName: "Bachelor of Technology in Computer Science",
+    description: "The core computing degree for software and systems engineering.",
     duration: "4 years",
-    careerPaths: ["Software Developer", "IT Consultant", "Hardware Engineer", "Data Scientist"],
+    careerPaths: ["Software Developer", "Backend Engineer", "Systems Architect"],
     semesterPlan: [
-      { sem: "Year 1", subjects: ["Engineering Math, Physics, Chemistry", "Basic Programming (C/Python)", "Engineering Graphics"], focus: "Core Sciences & Basics" },
-      { sem: "Year 2", subjects: ["Data Structures", "Core Branch Subjects (e.g. OOPS/Circuits)", "Digital Logic"], focus: "Foundational Engineering" },
-      { sem: "Year 3", subjects: ["Advanced Core Subjects", "Database Management", "Computer Networks", "Mini Projects"], focus: "Specialization & Application" },
-      { sem: "Year 4", subjects: ["Electives (AI, Cloud, IoT)", "Major Project", "Industry Internship"], focus: "Industry Readiness" }
+      { sem: "Year 1", subjects: ["Engineering Math, Physics", "C Programming", "Engineering Graphics"], focus: "Core Sciences & Basics" },
+      { sem: "Year 2", subjects: ["Data Structures in C++", "Object Oriented Programming (Java)", "Digital Logic", "Computer Organization"], focus: "Foundational CS" },
+      { sem: "Year 3", subjects: ["Operating Systems", "Database Management Systems", "Computer Networks", "Theory of Computation"], focus: "Core Computing" },
+      { sem: "Year 4", subjects: ["Cloud Computing", "Compiler Design", "Major Project", "Industry Internship"], focus: "Industry Readiness" }
     ],
-    skills: ["Problem Solving", "Programming (Python, Java, C++)", "Analytical Thinking", "System Design"],
-    certifications: ["AWS Certified Developer", "Google IT Support", "Oracle Certified Professional"],
-    salaryRange: "₹4-30 LPA depending on tier and branch",
-    topCompanies: ["TCS", "Infosys", "Google", "Microsoft", "Amazon", "L&T"]
+    skills: ["DSA (C++/Java)", "Web Development", "SQL/NoSQL", "System Design"],
+    certifications: ["Oracle Java Certified", "AWS Certified Developer"],
+    salaryRange: "₹4-30 LPA",
+    topCompanies: ["TCS", "Infosys", "Google", "Microsoft", "Amazon", "Atlassian"]
   },
-  "Inter_to_BE": {
-    stream: "B.E.",
-    fullName: "Bachelor of Engineering",
-    description: "Theoretical engineering degree with deep focus on engineering fundamentals and science.",
+  "Inter_to_BTech_AI": {
+    stream: "B.Tech - CSE (AI & ML)",
+    fullName: "B.Tech in Artificial Intelligence & Machine Learning",
+    description: "Specialized branch focused on building intelligent systems and handling big data.",
     duration: "4 years",
-    careerPaths: ["Research and Development Engineer", "Design Engineer", "Manufacturing Engineer", "Academic/Professor"],
+    careerPaths: ["AI Engineer", "Machine Learning Researcher", "Data Scientist"],
     semesterPlan: [
-      { sem: "Year 1", subjects: ["Engineering Physics", "Advanced Calculus", "Mechanics", "Basic Electronics"], focus: "Theoretical Foundations" },
-      { sem: "Year 2", subjects: ["Thermodynamics / Circuit Theory", "Fluid Mechanics", "Material Science"], focus: "Core Engineering Concepts" },
-      { sem: "Year 3", subjects: ["Machine Design / Signal Processing", "Control Systems", "Industrial Engineering"], focus: "Analysis and Design" },
-      { sem: "Year 4", subjects: ["Research Electives", "Thesis/Final Project", "Computational Methods"], focus: "Research & Development" }
+      { sem: "Year 1", subjects: ["Engineering Math", "Python Programming for Data Science", "Statistics Basics"], focus: "Math & Programming" },
+      { sem: "Year 2", subjects: ["Advanced Data Structures", "Linear Algebra and Calculus", "Intro to AI", "RDBMS"], focus: "AI Foundations" },
+      { sem: "Year 3", subjects: ["Machine Learning Algorithms", "Deep Learning", "Natural Language Processing (NLP)", "Big Data Analytics"], focus: "Core AI/ML" },
+      { sem: "Year 4", subjects: ["Computer Vision", "Generative AI Labs", "Major AI Capstone Project"], focus: "Advanced AI" }
     ],
-    skills: ["Mathematical Modeling", "Theoretical Analysis", "Research Methodologies", "Complex Problem Solving"],
-    certifications: ["Six Sigma Certification", "CAD/CAM Certification", "PMP"],
-    salaryRange: "₹3.5-20 LPA",
-    topCompanies: ["ISRO", "DRDO", "BHEL", "Tata Motors", "Mahindra", "Siemens"]
+    skills: ["Python", "TensorFlow / PyTorch", "Pandas & NumPy", "Neural Networks"],
+    certifications: ["Google ML Engineer", "AWS Machine Learning Specialty"],
+    salaryRange: "₹6-35 LPA",
+    topCompanies: ["OpenAI", "Google DeepMind", "Microsoft Research", "Amazon ML"]
   },
+  "Inter_to_BTech_DataScience": {
+    stream: "B.Tech - Data Science",
+    fullName: "B.Tech in Data Science",
+    description: "Dedicated curriculum to extract insights from massive, unstructured datasets.",
+    duration: "4 years",
+    careerPaths: ["Data Engineer", "Data Analyst", "Data Scientist", "Business Intelligence"],
+    semesterPlan: [
+      { sem: "Year 1", subjects: ["Math & Statistics", "Python", "Business Communication"], focus: "Basics" },
+      { sem: "Year 2", subjects: ["Data Mining", "Data Warehousing", "Statistical Inference", "SQL Advanced"], focus: "Data Core" },
+      { sem: "Year 3", subjects: ["Big Data (Hadoop/Spark)", "Time Series Analysis", "Data Visualization (Tableau)"], focus: "Analytics" },
+      { sem: "Year 4", subjects: ["Predictive Modeling", "Real-time Analytics", "Internship"], focus: "Application" }
+    ],
+    skills: ["Python / R", "Apache Spark", "Tableau / PowerBI", "Statistical Analysis"],
+    certifications: ["IBM Data Science Professional", "SAS Certified Data Scientist"],
+    salaryRange: "₹5-25 LPA",
+    topCompanies: ["Mu Sigma", "Fractal Analytics", "Accenture", "Deloitte"]
+  },
+  "Inter_to_BTech_CyberSecurity": {
+    stream: "B.Tech - Cyber Security",
+    fullName: "B.Tech in Cyber Security",
+    description: "Protecting systems, networks, and data from digital attacks.",
+    duration: "4 years",
+    careerPaths: ["Ethical Hacker", "Security Analyst", "Cryptographer", "Penetration Tester"],
+    semesterPlan: [
+      { sem: "Year 1", subjects: ["Computer Fundamentals", "C Programming", "Discrete Math"], focus: "Basics" },
+      { sem: "Year 2", subjects: ["Computer Networks", "Operating Systems (Linux heavy)", "Information Security Basics"], focus: "Infrastructure" },
+      { sem: "Year 3", subjects: ["Cryptography", "Network Security Protocols", "Ethical Hacking Labs"], focus: "Core Security" },
+      { sem: "Year 4", subjects: ["Digital Forensics", "Malware Analysis", "Capstone Project"], focus: "Advanced Security" }
+    ],
+    skills: ["Networking", "Linux", "Pen Testing", "Cryptography", "Python Scripting"],
+    certifications: ["CEH (Certified Ethical Hacker)", "CompTIA Security+"],
+    salaryRange: "₹5-28 LPA",
+    topCompanies: ["Cisco", "Palo Alto Networks", "CrowdStrike", "IBM Security"]
+  },
+  "Inter_to_BTech_IT": {
+    stream: "B.Tech - IT",
+    fullName: "Bachelor of Technology in Information Technology",
+    description: "Focuses on the application of computers and telecommunications to handle data.",
+    duration: "4 years",
+    careerPaths: ["IT Consultant", "Systems Administrator", "Cloud Engineer", "Web Developer"],
+    semesterPlan: [
+      { sem: "Year 1", subjects: ["Programming in C", "Engineering Math", "IT Essentials"], focus: "Foundations" },
+      { sem: "Year 2", subjects: ["Web Technologies (HTML/JS/PHP)", "Database Mgmt", "Data Structures"], focus: "Development" },
+      { sem: "Year 3", subjects: ["Cloud Computing", "Software Engineering", "Network Administration"], focus: "Infrastructure" },
+      { sem: "Year 4", subjects: ["Mobile App Development", "E-Commerce", "Industry Internship"], focus: "Specialization" }
+    ],
+    skills: ["Web Dev", "Network Admin", "Cloud Basics", "Database Management"],
+    certifications: ["ITIL Certification", "AWS Cloud Practitioner"],
+    salaryRange: "₹4-20 LPA",
+    topCompanies: ["Wipro", "Cognizant", "Capgemini", "Tech Mahindra"]
+  },
+  "Inter_to_BTech_ECE": {
+    stream: "B.Tech - ECE",
+    fullName: "Electronics & Communication Engineering",
+    description: "Bridging the gap between software programming and hardware design.",
+    duration: "4 years",
+    careerPaths: ["VLSI Engineer", "Telecom Engineer", "IoT Developer", "Embedded Software Engineer"],
+    semesterPlan: [
+      { sem: "Year 1", subjects: ["Basic Electronics", "Engineering Math", "C Programming"], focus: "Foundations" },
+      { sem: "Year 2", subjects: ["Digital Logic Design", "Signals and Systems", "Network Theory"], focus: "Core Electronics" },
+      { sem: "Year 3", subjects: ["Microprocessors & Microcontrollers", "Digital Signal Processing", "Analog Comm"], focus: "Advanced ECE" },
+      { sem: "Year 4", subjects: ["VLSI Design", "Internet of Things (IoT)", "Embedded Systems Lab", "Project"], focus: "Industry Prep" }
+    ],
+    skills: ["Verilog/VHDL", "MATLAB", "Embedded C", "Circuit Design"],
+    certifications: ["Cisco CCNA", "VLSI Certification"],
+    salaryRange: "₹4-22 LPA",
+    topCompanies: ["Qualcomm", "Intel", "Texas Instruments", "Samsung R&D"]
+  },
+  "Inter_to_BTech_EEE": {
+    stream: "B.Tech - EEE",
+    fullName: "Electrical & Electronics Engineering",
+    description: "Focus on heavy electrical systems, power grids, and electronic devices.",
+    duration: "4 years",
+    careerPaths: ["Electrical Engineer", "Power Systems Engineer", "Control Systems Engineer"],
+    semesterPlan: [
+      { sem: "Year 1", subjects: ["Basic Electrical Engg", "Math", "Engineering Mechanics"], focus: "Basics" },
+      { sem: "Year 2", subjects: ["Electrical Machines I", "Electromagnetic Fields", "Circuit Analysis"], focus: "Core Electrical" },
+      { sem: "Year 3", subjects: ["Power Systems", "Control Systems", "Power Electronics"], focus: "System Mgmt" },
+      { sem: "Year 4", subjects: ["Renewable Energy", "Smart Grids", "Final Project"], focus: "Future Tech" }
+    ],
+    skills: ["Circuit Analysis", "Power System Design", "MATLAB/Simulink"],
+    certifications: ["Energy Auditor", "PLC/SCADA Certification"],
+    salaryRange: "₹3-18 LPA",
+    topCompanies: ["Siemens", "BHEL", "ABB", "Schneider Electric", "Tata Power"]
+  },
+  "Inter_to_BTech_MECH": {
+    stream: "B.Tech - MECH",
+    fullName: "Mechanical Engineering",
+    description: "Designing, analyzing, and manufacturing machines and mechanical systems.",
+    duration: "4 years",
+    careerPaths: ["Design Engineer", "Automotive Engineer", "Production Manager"],
+    semesterPlan: [
+      { sem: "Year 1", subjects: ["Engineering Graphics", "Mechanics", "Math"], focus: "Fundamentals" },
+      { sem: "Year 2", subjects: ["Thermodynamics", "Strength of Materials", "Kinematics of Machinery"], focus: "Core Mech" },
+      { sem: "Year 3", subjects: ["Fluid Mechanics", "Heat Transfer", "Machine Design"], focus: "Analysis" },
+      { sem: "Year 4", subjects: ["CAD/CAM", "Robotics", "Automobile Engineering Lab"], focus: "Modern Applications" }
+    ],
+    skills: ["AutoCAD / SolidWorks", "ANSYS", "Thermodynamics", "Manufacturing Processes"],
+    certifications: ["CSWA (SolidWorks)", "AutoCAD Certified Professional"],
+    salaryRange: "₹3-15 LPA",
+    topCompanies: ["Tata Motors", "Mahindra", "L&T", "Bosch", "Boeing India"]
+  },
+  "Inter_to_BTech_Civil": {
+    stream: "B.Tech - Civil",
+    fullName: "Civil Engineering",
+    description: "Design and construction of infrastructure projects.",
+    duration: "4 years",
+    careerPaths: ["Structural Engineer", "Site Engineer", "Urban Planner", "Geotechnical Engineer"],
+    semesterPlan: [
+      { sem: "Year 1", subjects: ["Building Materials", "Engineering Mechanics", "Math"], focus: "Basics" },
+      { sem: "Year 2", subjects: ["Surveying", "Fluid Mechanics", "Strength of Materials"], focus: "Core Civil" },
+      { sem: "Year 3", subjects: ["Structural Analysis", "Reinforced Concrete Design", "Soil Mechanics"], focus: "Design" },
+      { sem: "Year 4", subjects: ["Transportation Engg", "Environmental Engg", "Project Management"], focus: "Infrastructure" }
+    ],
+    skills: ["AutoCAD Civil 3D", "STAAD Pro", "Project Management (Primavera)"],
+    certifications: ["LEED Green Associate", "PMP"],
+    salaryRange: "₹3-15 LPA",
+    topCompanies: ["L&T Construction", "Shapoorji Pallonji", "Tata Projects", "GMR"]
+  },
+  "Inter_to_BTech_Chemical": {
+    stream: "B.Tech - Chemical",
+    fullName: "Chemical Engineering",
+    description: "Transforming raw materials into useful chemical products safely and efficiently.",
+    duration: "4 years",
+    careerPaths: ["Process Engineer", "Petrochemical Engineer", "Quality Plant Manager"],
+    semesterPlan: [
+      { sem: "Year 1", subjects: ["Physical Chemistry", "Math", "Engineering Basics"], focus: "Foundation" },
+      { sem: "Year 2", subjects: ["Material & Energy Balances", "Fluid Flow Operations", "Organic Chem"], focus: "Core Chem Engg" },
+      { sem: "Year 3", subjects: ["Mass Transfer", "Heat Transfer", "Chemical Reaction Engineering"], focus: "Reaction & Transfer" },
+      { sem: "Year 4", subjects: ["Plant Design", "Process Control", "Industrial Safety"], focus: "Plant Operations" }
+    ],
+    skills: ["Process Simulation (ASPEN Plus)", "Thermodynamics", "Plant Safety"],
+    certifications: ["Process Safety Management", "Six Sigma"],
+    salaryRange: "₹4-16 LPA",
+    topCompanies: ["Reliance Industries", "ONGC", "Hindustan Unilever", "Dr. Reddy's"]
+  },
+
+  // === Intermediate (Inter) to B.E. (Bachelor of Engineering) Branches ===
+
+  "Inter_to_BE_Instrumentation": {
+    stream: "B.E. - Instrumentation/Control",
+    fullName: "B.E. in Instrumentation & Control Engineering",
+    description: "Focus on measuring instruments and designing automated control systems.",
+    duration: "4 years",
+    careerPaths: ["Instrumentation Engineer", "Control Systems Engineer", "Automation Engineer"],
+    semesterPlan: [
+      { sem: "Year 1", subjects: ["Engineering Physics", "Calculus", "Basic Electronics"], focus: "Theory Basics" },
+      { sem: "Year 2", subjects: ["Sensors and Transducers", "Linear ICs", "Network Theory"], focus: "Measurement" },
+      { sem: "Year 3", subjects: ["Control Systems", "Industrial Instrumentation", "Microprocessors"], focus: "Control Core" },
+      { sem: "Year 4", subjects: ["Process Control Automation", "PLC & SCADA", "Final Thesis"], focus: "Automation" }
+    ],
+    skills: ["PLC & SCADA", "LabVIEW", "Control Systems Theory", "Sensor Integration"],
+    certifications: ["Certified Automation Professional (CAP)"],
+    salaryRange: "₹4-15 LPA",
+    topCompanies: ["Emerson", "Honeywell", "Rockwell Automation", "Siemens"]
+  },
+  "Inter_to_BE_Production": {
+    stream: "B.E. - Production",
+    fullName: "B.E. in Production & Industrial Engineering",
+    description: "Optimization of manufacturing processes, lean production, and operations management.",
+    duration: "4 years",
+    careerPaths: ["Production Engineer", "Quality Control Manager", "Supply Chain Analyst"],
+    semesterPlan: [
+      { sem: "Year 1", subjects: ["Mechanics", "Math", "Mfg Processes Basics"], focus: "Basics" },
+      { sem: "Year 2", subjects: ["Material Science", "Machining Science", "Casting & Welding"], focus: "Core Mfg" },
+      { sem: "Year 3", subjects: ["Operations Research", "Metrology & Quality", "Industrial Engg"], focus: "Optimization" },
+      { sem: "Year 4", subjects: ["Supply Chain Mgmt", "CIM (Computer Integrated Mfg)", "Plant Training"], focus: "Industry" }
+    ],
+    skills: ["Lean Manufacturing", "Six Sigma", "AutoCAD", "Operations Research"],
+    certifications: ["Six Sigma Green/Black Belt", "Certified Production and Inventory Mgmt (CPIM)"],
+    salaryRange: "₹3.5-14 LPA",
+    topCompanies: ["Maruti Suzuki", "Hero MotoCorp", "ITC", "L&T"]
+  },
+  "Inter_to_BE_Aeronautical": {
+    stream: "B.E. - Aeronautical",
+    fullName: "B.E. in Aeronautical Engineering",
+    description: "Designing, manufacturing, and testing of aircraft and aerospace components.",
+    duration: "4 years",
+    careerPaths: ["Aerospace Engineer", "Aerodynamics Analyst", "Aircraft Design Engineer"],
+    semesterPlan: [
+      { sem: "Year 1", subjects: ["Engineering Math", "Physics", "Engineering Graphics"], focus: "Basics" },
+      { sem: "Year 2", subjects: ["Aerodynamics I", "Aircraft Materials", "Solid Mechanics"], focus: "Core Aero" },
+      { sem: "Year 3", subjects: ["Propulsion", "Flight Mechanics", "Aircraft Structures"], focus: "Flight Dynamics" },
+      { sem: "Year 4", subjects: ["Avionics", "Rocket Propulsion", "Thesis Research"], focus: "Advanced Aerospace" }
+    ],
+    skills: ["Aerodynamics", "CATIA / SolidWorks", "ANSYS Fluent", "CFD"],
+    certifications: ["CATIA Aerospace certification", "CFD Expert"],
+    salaryRange: "₹5-20 LPA",
+    topCompanies: ["ISRO", "DRDO", "HAL", "Airbus India", "Boeing India"]
+  },
+
+  // === Intermediate (Inter) to B.Arch ===
+
   "Inter_to_BArch": {
     stream: "B.Arch",
     fullName: "Bachelor of Architecture",
@@ -114,112 +307,98 @@ const roadmaps = {
     salaryRange: "₹3-15 LPA (varies highly across independent practice)",
     topCompanies: ["Hafeez Contractor", "L&T Construction", "DLF", "Godrej Properties"]
   },
-  "Inter_to_Medical": {
-    stream: "Medical",
-    fullName: "Medical Courses (MBBS / BDS / BAMS / BHMS)",
-    description: "Comprehensive path to becoming a doctor, surgeon, or healthcare professional.",
-    duration: "5.5 years (including 1 year internship)",
-    careerPaths: ["Physician / Surgeon", "Dentist", "Ayurvedic/Homeopathic Doctor", "Medical Researcher"],
+
+  // === Intermediate (Inter) to Medical Streams ===
+
+  "Inter_to_Med_MBBS": {
+    stream: "MBBS",
+    fullName: "Bachelor of Medicine and Bachelor of Surgery",
+    description: "The premier medical degree to become a certified allopathic doctor/physician/surgeon.",
+    duration: "5.5 years (including 1 yr internship)",
+    careerPaths: ["General Physician", "Surgeon (after MS)", "Specialist Doctor (after MD)"],
     semesterPlan: [
-      { sem: "Phase 1 (1st Year)", subjects: ["Anatomy", "Physiology", "Biochemistry"], focus: "Pre-clinical Science" },
-      { sem: "Phase 2 (2nd Year)", subjects: ["Pharmacology", "Pathology", "Microbiology", "Forensic Medicine"], focus: "Para-clinical Science" },
-      { sem: "Phase 3 (3rd-4th Year)", subjects: ["Medicine", "Surgery", "Pediatrics", "Obstetrics & Gynecology (OBG)"], focus: "Clinical Subjects" },
-      { sem: "Phase 4 (Final Year)", subjects: ["Mandatory Rotatory Internship (1 Year)"], focus: "Practical Application" }
+      { sem: "Phase 1 (1 Year)", subjects: ["Human Anatomy", "Physiology", "Biochemistry"], focus: "Pre-clinical" },
+      { sem: "Phase 2 (1.5 Years)", subjects: ["Pathology", "Pharmacology", "Microbiology", "Forensic Med"], focus: "Para-clinical" },
+      { sem: "Phase 3 (2 Years)", subjects: ["General Medicine", "Surgery", "Pediatrics", "OBG", "Ophthalmology", "ENT"], focus: "Clinical Subjects" },
+      { sem: "Phase 4 (1 Year)", subjects: ["Mandatory Rotatory Residential Internship (CRRI)"], focus: "Hospital Duty" }
     ],
-    skills: ["Patient Care", "Diagnosis", "Surgical Procedures", "Clinical Decision Making", "Empathy"],
-    certifications: ["State Medical Council Registration", "BLS/ACLS Certification"],
-    salaryRange: "₹6-25 LPA (fresher to experienced specialist)",
+    skills: ["Clinical Diagnosis", "Patient Care", "Surgical Skills", "Pharmacology Application", "Empathy"],
+    certifications: ["State Medical Council Registration (NMC)", "BLS/ACLS", "NEET PG (for Masters)"],
+    salaryRange: "₹8-20 LPA (Starting), Highly variable post-MD/MS",
     topCompanies: ["Apollo Hospitals", "Fortis", "AIIMS", "Max Healthcare", "Government Hospitals"]
   },
+  "Inter_to_Med_BDS": {
+    stream: "BDS",
+    fullName: "Bachelor of Dental Surgery",
+    description: "Specialized medical degree focusing on dentistry, oral health, and maxillofacial structures.",
+    duration: "5 years (including 1 yr internship)",
+    careerPaths: ["Dentist", "Orthodontist (after MDS)", "Oral & Maxillofacial Surgeon", "Academician"],
+    semesterPlan: [
+      { sem: "Year 1", subjects: ["General Human Anatomy", "General Physiology", "Dental Anatomy/Histology"], focus: "Medical & Dental Basics" },
+      { sem: "Year 2", subjects: ["General Pathology", "Microbiology", "Dental Materials"], focus: "Para-clinical" },
+      { sem: "Year 3", subjects: ["General Medicine", "General Surgery", "Oral Pathology"], focus: "Systemic Clinics" },
+      { sem: "Year 4", subjects: ["Orthodontics", "Oral Surgery", "Prosthodontics", "Periodontology"], focus: "Dental Specialties" },
+      { sem: "Year 5", subjects: ["Internship - Clinical Rotations in all Dental Wards"], focus: "Practical Application" }
+    ],
+    skills: ["Precision Hand Skills", "Oral Diagnosis", "Dental Aesthetics", "Patient Management"],
+    certifications: ["Dental Council of India (DCI) Registration", "Implantology Courses"],
+    salaryRange: "₹3-12 LPA (Independent Clinics can earn much more)",
+    topCompanies: ["Clove Dental", "Apollo White Dental", "Private Practice"]
+  },
+  "Inter_to_Med_BAMS": {
+    stream: "BAMS",
+    fullName: "Bachelor of Ayurvedic Medicine and Surgery",
+    description: "Integrated degree combining modern medicine with traditional Ayurvedic healing systems.",
+    duration: "5.5 years",
+    careerPaths: ["Ayurvedic Doctor", "Medical Officer (AYUSH)", "Panchakarma Specialist", "Researcher"],
+    semesterPlan: [
+      { sem: "Professional 1", subjects: ["Padartha Vigyan", "Ayurved Itihas", "Sanskrit", "Rachana Sharir (Anatomy)"], focus: "Ayurvedic Foundations" },
+      { sem: "Professional 2", subjects: ["Dravyaguna (Pharmacology)", "Rasashastra", "Charak Samhita"], focus: "Herbology & Metals" },
+      { sem: "Professional 3", subjects: ["Agad Tantra (Toxicology)", "Swasthavritta (Preventive Med)", "Prasuti Tantra (OBG)"], focus: "Clinical Principles" },
+      { sem: "Professional 4", subjects: ["Kayachikitsa (Internal Med)", "Shalya Tantra (Surgery)", "Panchakarma"], focus: "Clinical Practice" },
+      { sem: "Year 5.5", subjects: ["Rotatory Internship"], focus: "Hospital Work" }
+    ],
+    skills: ["Nadi Pariksha (Pulse Diagnosis)", "Herbal Medicine Composition", "Panchakarma Therapy"],
+    certifications: ["CCIM Registration", "Yoga/Naturopathy additional certs"],
+    salaryRange: "₹3-10 LPA",
+    topCompanies: ["Patanjali", "Dabur", "Himalaya Wellness", "Government AYUSH Hospitals"]
+  },
+  "Inter_to_Med_BHMS": {
+    stream: "BHMS",
+    fullName: "Bachelor of Homeopathic Medicine and Surgery",
+    description: "Medical degree based on the alternative system of Homeopathy.",
+    duration: "5.5 years",
+    careerPaths: ["Homeopathic Doctor", "Pharmacist (Homeopathy)", "Public Health Officer"],
+    semesterPlan: [
+      { sem: "Year 1", subjects: ["Homeopathic Pharmacy", "Anatomy", "Physiology"], focus: "Basics" },
+      { sem: "Year 2", subjects: ["Pathology", "Forensic Medicine", "Materia Medica Basics"], focus: "Disease & Drugs" },
+      { sem: "Year 3", subjects: ["Surgery Basics", "OBG basics", "Organon of Medicine"], focus: "Clinical Philosophy" },
+      { sem: "Year 4", subjects: ["Practice of Medicine", "Repertory", "Advanced Materia Medica"], focus: "Prescribing" },
+      { sem: "Year 5.5", subjects: ["Clinical Internship"], focus: "Practical Application" }
+    ],
+    skills: ["Materia Medica Knowledge", "Patient Interviewing", "Repertorization"],
+    certifications: ["CCH Registration"],
+    salaryRange: "₹2.5-8 LPA",
+    topCompanies: ["Dr. Batra's", "Bakson's Homeopathy", "Private Practice"]
+  },
+  "Inter_to_Med_PharmD": {
+    stream: "Pharm.D",
+    fullName: "Doctor of Pharmacy",
+    description: "A 6-year doctoral level pharmacy program focusing on clinical pharmacy and patient care.",
+    duration: "6 years",
+    careerPaths: ["Clinical Pharmacist", "Pharmacovigilance Scientist", "Drug Inspector", "Medical Writer"],
+    semesterPlan: [
+      { sem: "Year 1-2", subjects: ["Human Anatomy", "Pharmaceutics", "Pharmacognosy", "Pathophysiology"], focus: "Medical & Drug Basics" },
+      { sem: "Year 3-4", subjects: ["Pharmacology", "Clinical Pharmacy", "Biostatistics", "Hospital Pharmacy"], focus: "Core Pharmacy" },
+      { sem: "Year 5", subjects: ["Clinical Research", "Pharmacoepidemiology", "Clerkship in Wards"], focus: "Clinical Wards" },
+      { sem: "Year 6", subjects: ["Internship / Residency in Hospital"], focus: "Full-time Hospital Practice" }
+    ],
+    skills: ["Prescription Auditing", "Drug Interactions", "Pharmacovigilance", "Patient Counseling"],
+    certifications: ["Pharmacy Council of India (PCI) Registration", "Clinical Research Cert"],
+    salaryRange: "₹3.5-12 LPA",
+    topCompanies: ["Novartis", "Pfizer", "Sun Pharma", "Apollo Hospitals Clinical team"]
+  },
 
-
-  // === B.Tech Streams (Historically Existing Data) ===
-
-  "MPC_to_CSE": {
-    stream: "CSE",
-    fullName: "Computer Science Engineering",
-    description: "Most in-demand technical degree of the decade",
-    duration: "4 years",
-    careerPaths: ["Software Developer", "Full Stack Engineer", "System Architect", "DevOps Engineer"],
-    semesterPlan: [
-      { sem: "Sem 1-2", subjects: ["C Programming", "Mathematics I & II", "Physics/Chemistry", "Engineering Graphics"], focus: "Foundations" },
-      { sem: "Sem 3-4", subjects: ["Data Structures", "OOPS with Java/C++", "Computer Organization", "Discrete Mathematics"], focus: "Core CS" },
-      { sem: "Sem 5-6", subjects: ["Operating Systems", "DBMS", "Computer Networks", "Software Engineering", "Algorithm Design"], focus: "Advanced" },
-      { sem: "Sem 7-8", subjects: ["Cloud Computing", "Machine Learning elective", "Project", "Internship"], focus: "Specialization" }
-    ],
-    skills: ["C/C++/Java/Python", "Data Structures & Algorithms", "Web Development", "Databases", "System Design"],
-    certifications: ["AWS/Azure Cloud", "Google Associate Developer", "Oracle Java", "Cisco CCNA"],
-    salaryRange: "₹4-25 LPA (fresher to senior)",
-    topCompanies: ["TCS", "Infosys", "Wipro", "Amazon", "Microsoft", "Google", "Flipkart"]
-  },
-  "MPC_to_CSE-AI": {
-    stream: "CSE-AI",
-    fullName: "Computer Science Engineering - Artificial Intelligence",
-    description: "Future-focused degree combining CS with AI specialization",
-    duration: "4 years",
-    careerPaths: ["AI Engineer", "ML Engineer", "Data Scientist", "Research Scientist"],
-    semesterPlan: [
-      { sem: "Sem 1-2", subjects: ["Python Programming", "Mathematics I & II", "Statistics", "Data Science Fundamentals"], focus: "AI Foundation" },
-      { sem: "Sem 3-4", subjects: ["Machine Learning", "Data Structures", "Linear Algebra", "Probability Theory"], focus: "ML Core" },
-      { sem: "Sem 5-6", subjects: ["Deep Learning", "NLP", "Computer Vision", "Big Data Analytics"], focus: "Advanced AI" },
-      { sem: "Sem 7-8", subjects: ["Generative AI", "Reinforcement Learning", "AI Ethics", "Capstone Project"], focus: "Industry AI" }
-    ],
-    skills: ["Python", "TensorFlow/PyTorch", "Scikit-learn", "SQL/NoSQL", "Cloud AI services"],
-    certifications: ["Google TensorFlow Developer", "AWS ML Specialty", "IBM Data Science", "Coursera Deep Learning"],
-    salaryRange: "₹6-40 LPA (highest paying branch)",
-    topCompanies: ["Google", "Microsoft AI", "Amazon", "OpenAI", "NVIDIA", "DeepMind", "Indian AI startups"]
-  },
-  "MPC_to_ECE": {
-    stream: "ECE",
-    fullName: "Electronics & Communication Engineering",
-    description: "Bridges electronics hardware with communication systems",
-    duration: "4 years",
-    careerPaths: ["Embedded Systems Engineer", "VLSI Designer", "Telecom Engineer", "IoT Engineer"],
-    semesterPlan: [
-      { sem: "Sem 1-2", subjects: ["Basic Electronics", "Circuit Theory", "Mathematics", "Engineering Physics"], focus: "Electronics Basics" },
-      { sem: "Sem 3-4", subjects: ["Signals & Systems", "Digital Electronics", "Microprocessors", "Communication Theory"], focus: "Core ECE" },
-      { sem: "Sem 5-6", subjects: ["VLSI Design", "Embedded Systems", "Wireless Communication", "Control Systems"], focus: "Advanced ECE" },
-      { sem: "Sem 7-8", subjects: ["5G/IoT", "DSP Advanced", "Project", "Internship at hardware company"], focus: "Specialization" }
-    ],
-    skills: ["C/Assembly", "VHDL/Verilog", "MATLAB", "PCB Design", "Arduino/Raspberry Pi"],
-    certifications: ["VLSI Design cert", "Embedded C certification", "Cisco Telecom", "IoT specialist"],
-    salaryRange: "₹3.5-20 LPA",
-    topCompanies: ["Qualcomm", "Samsung R&D", "Intel", "ISRO", "DRDO", "Bosch", "Texas Instruments"]
-  },
-  "MPC_to_MECH": {
-    stream: "MECH",
-    fullName: "Mechanical Engineering",
-    description: "Evergreen engineering branch combining physics with design",
-    duration: "4 years",
-    careerPaths: ["Mechanical Design Engineer", "Production Engineer", "Automotive Engineer", "HVAC Engineer"],
-    semesterPlan: [
-      { sem: "Sem 1-2", subjects: ["Engineering Mechanics", "Thermodynamics I", "Engineering Drawing", "Material Science"], focus: "Mechanical Basics" },
-      { sem: "Sem 3-4", subjects: ["Fluid Mechanics", "Manufacturing Processes", "Kinematics", "Strength of Materials"], focus: "Core Mechanical" },
-      { sem: "Sem 5-6", subjects: ["Machine Design", "Heat Transfer", "CAD/CAM", "Industrial Engineering"], focus: "Design & Manufacturing" },
-      { sem: "Sem 7-8", subjects: ["Robotics", "Finite Element Analysis", "Project", "Industry Internship"], focus: "Advanced" }
-    ],
-    skills: ["AutoCAD", "SolidWorks/CATIA", "ANSYS", "MATLAB", "Python for engineers"],
-    certifications: ["AutoCAD certified", "SolidWorks CSWA", "Six Sigma", "PMP"],
-    salaryRange: "₹3-18 LPA",
-    topCompanies: ["TATA Motors", "L&T", "Bosch", "Hyundai", "Mahindra", "ISRO", "BHEL"]
-  },
-  "MPC_to_CE": {
-    stream: "CE",
-    fullName: "Civil Engineering",
-    description: "Build the infrastructure that powers India's growth",
-    duration: "4 years",
-    careerPaths: ["Structural Engineer", "Urban Planner", "Construction Manager", "Government Engineer"],
-    semesterPlan: [
-      { sem: "Sem 1-2", subjects: ["Engineering Mechanics", "Building Materials", "Surveying", "Fluid Mechanics I"], focus: "Civil Basics" },
-      { sem: "Sem 3-4", subjects: ["Structural Analysis", "Soil Mechanics", "Highway Engineering", "Environmental Engineering"], focus: "Core Civil" },
-      { sem: "Sem 5-6", subjects: ["RCC Design", "Foundation Engineering", "Water Supply & Sanitation", "Transportation Engineering"], focus: "Design" },
-      { sem: "Sem 7-8", subjects: ["Project Management", "Smart Cities", "Internship in construction/govt", "Final Project"], focus: "Industry" }
-    ],
-    skills: ["AutoCAD Civil", "STAAD Pro", "REVIT", "GIS tools", "MS Project"],
-    certifications: ["AutoCAD Civil 3D", "STAAD Pro certified", "LEED Green Associate", "PMP"],
-    salaryRange: "₹3-15 LPA (private), ₹6-12 LPA (govt)",
-    topCompanies: ["L&T Construction", "AECOM", "NHAI", "NMRCL", "PWD", "Municipal Corporations"]
-  },
 
   // === B.Tech to Engineering Careers ===
 

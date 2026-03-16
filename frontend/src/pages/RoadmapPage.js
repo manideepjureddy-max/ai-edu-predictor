@@ -110,7 +110,7 @@ export default function RoadmapPage() {
     }
     if (cat === '10th') return k.startsWith('10th');
     if (cat === 'inter') return k.startsWith('Inter_to') || k.startsWith('MPC_');
-    if (cat === 'btech') return k.startsWith('BTech_to') || k.startsWith('CSE_to') || k.startsWith('CSE-AI_to');
+    if (cat === 'btech') return k.startsWith('BTech_to') || k.startsWith('CSE') || k.startsWith('ECE') || k.startsWith('MECH') || k.startsWith('CE_to') || k.startsWith('MEC_to') || k.startsWith('CEC_to');
     
     // Fallback if anything slips through
     return false;
