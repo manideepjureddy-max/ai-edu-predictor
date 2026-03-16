@@ -399,6 +399,181 @@ const roadmaps = {
     topCompanies: ["Novartis", "Pfizer", "Sun Pharma", "Apollo Hospitals Clinical team"]
   },
 
+  // === Intermediate (Inter) to B.Sc (Bachelor of Science) Streams ===
+
+  "Inter_to_BSc_Ag": {
+    stream: "B.Sc Agriculture",
+    fullName: "Bachelor of Science in Agriculture",
+    description: "Science and practice of farming, including soil cultivation and crop production.",
+    duration: "4 years",
+    careerPaths: ["Agriculture Officer", "Farm Manager", "Agricultural Scientist"],
+    semesterPlan: [
+      { sem: "Year 1", subjects: ["Agronomy", "Soil Science", "Plant Biochemistry"], focus: "Basics" },
+      { sem: "Year 2", subjects: ["Entomology", "Genetics & Plant Breeding", "Agri-Economics"], focus: "Agri Core" },
+      { sem: "Year 3", subjects: ["Plant Pathology", "Horticulture", "Seed Tech"], focus: "Specialization" },
+      { sem: "Year 4", subjects: ["Rural Agricultural Work Experience (RAWE)", "Agri-Business Projects"], focus: "Field Work" }
+    ],
+    skills: ["Soil Mapping", "Crop Mgmt", "Pest Control"],
+    certifications: ["ICAR Certified", "Agri-Marketing Cert"],
+    salaryRange: "₹3-12 LPA",
+    topCompanies: ["Bayer", "Syngenta", "ITC", "Monsanto", "NABARD"]
+  },
+  "Inter_to_BSc_Nursing": {
+    stream: "B.Sc Nursing",
+    fullName: "Bachelor of Science in Nursing",
+    description: "Professional degree preparing students for a career in healthcare and patient care.",
+    duration: "4 years",
+    careerPaths: ["Staff Nurse", "Nursing Supervisor", "Critical Care Nurse"],
+    semesterPlan: [
+      { sem: "Year 1", subjects: ["Anatomy & Physiology", "Nursing Foundations", "Nutrition"], focus: "Pre-Clinical" },
+      { sem: "Year 2", subjects: ["Pharmacology", "Medical Surgical Nursing", "Pathology"], focus: "Medical Nursing" },
+      { sem: "Year 3", subjects: ["Child Health Nursing", "Mental Health Nursing", "OBG Nursing"], focus: "Specialized Care" },
+      { sem: "Year 4", subjects: ["Community Health Nursing", "Research & Stats", "Internship"], focus: "Practical Application" }
+    ],
+    skills: ["Patient Care", "Injectable Admin", "Emergency Response"],
+    certifications: ["Registered Nurse (RN)", "BLS/ACLS"],
+    salaryRange: "₹2.5-10 LPA",
+    topCompanies: ["Apollo", "Fortis", "Manipal Hospitals", "Govt Health Sector"]
+  },
+  "Inter_to_BSc_Biotech": {
+    stream: "B.Sc Biotechnology",
+    fullName: "Bachelor of Science in Biotechnology",
+    description: "Using biological systems and organisms to develop products and technology.",
+    duration: "3 years",
+    careerPaths: ["Biotech Researcher", "Lab Technician", "Quality Analyst"],
+    semesterPlan: [
+      { sem: "Year 1", subjects: ["Cell Biology", "Molecular Biology", "Genetics"], focus: "Biological Basics" },
+      { sem: "Year 2", subjects: ["Immunology", "Bioprocess Tech", "Genetic Engineering"], focus: "Applied Biotech" },
+      { sem: "Year 3", subjects: ["Environment Biotech", "Bioinformatics", "IPR & Bioethics"], focus: "Industry Prep" }
+    ],
+    skills: ["PCR Tech", "DNA Sequencing", "Microscopy"],
+    certifications: ["Bioinformatics Cert", "GLP (Good Lab Practices)"],
+    salaryRange: "₹3-12 LPA",
+    topCompanies: ["Biocon", "Serum Institute", "Dr. Reddy's", "Bharat Biotech"]
+  },
+
+  // === Intermediate (Inter) to Commerce & Management ===
+
+  "Inter_to_BCom_Comp": {
+    stream: "B.Com (Computers)",
+    fullName: "Bachelor of Commerce in Computer Applications",
+    description: "Combining commerce principles with computer software application skills.",
+    duration: "3 years",
+    careerPaths: ["Accountant", "E-Commerce Analyst", "Data Entry Manager", "Audit Asst"],
+    semesterPlan: [
+      { sem: "Year 1", subjects: ["Financial Accounting", "C Programming", "Business Organization"], focus: "Basics" },
+      { sem: "Year 2", subjects: ["Corporate Accounting", "RDBMS", "Web Tech (HTML/CSS)"], focus: "Core Accounts & Tech" },
+      { sem: "Year 3", subjects: ["Tally with GST", "MIS (Management Info Systems)", "E-Commerce"], focus: "Application" }
+    ],
+    skills: ["Tally Prime", "MS Excel Advanced", "Basic Web Design", "Taxation"],
+    certifications: ["Tally Certified Professional", "Microsoft Office Specialist"],
+    salaryRange: "₹2.5-8 LPA",
+    topCompanies: ["Genpact", "Concentrix", "Banks", "SME Sector"]
+  },
+  "Inter_to_BBA": {
+    stream: "BBA",
+    fullName: "Bachelor of Business Administration",
+    description: "Developing leadership and management skills for corporate environments.",
+    duration: "3 years",
+    careerPaths: ["Marketing Executive", "HR Coordinator", "Operations Analyst"],
+    semesterPlan: [
+      { sem: "Year 1", subjects: ["Principles of Mgmt", "Business Communication", "Financial Accounting"], focus: "Basics" },
+      { sem: "Year 2", subjects: ["Marketing Mgmt", "Human Resource Mgmt", "Business Law"], focus: "Functional Areas" },
+      { sem: "Year 3", subjects: ["Strategic Mgmt", "Electives (Finance/HR/Mktg)", "Project Work"], focus: "Specialization" }
+    ],
+    skills: ["Leadership", "Presentation Skills", "Team Coordination", "Business Analysis"],
+    certifications: ["Digital Marketing Cert", "Six Sigma Yellow Belt"],
+    salaryRange: "₹3-12 LPA",
+    topCompanies: ["Amazon", "Deloitte", "KPMG", "Byju's", "HDFC Bank"]
+  },
+  "Inter_to_BCA": {
+    stream: "BCA",
+    fullName: "Bachelor of Computer Applications",
+    description: "Focused on computer applications and software development for non-engineering students.",
+    duration: "3 years",
+    careerPaths: ["Web Developer", "System Analyst", "Software Tester"],
+    semesterPlan: [
+      { sem: "Year 1", subjects: ["Computer Fundamentals", "Programming in C", "Mathematical Foundations"], focus: "Basics" },
+      { sem: "Year 2", subjects: ["Data Structures in Java", "Computer Networks", "Database Management"], focus: "Core IT" },
+      { sem: "Year 3", subjects: ["Web Tech (React/Node)", "Software Engineering", "Final Project"], focus: "Development" }
+    ],
+    skills: ["Java/Python", "SQL", "Web Technologies", "Testing Basics"],
+    certifications: ["Full Stack Dev Cert", "Google Associate Android Developer"],
+    salaryRange: "₹3-10 LPA",
+    topCompanies: ["TCS", "Accenture", "LTI", "Mindtree", "Capgemini"]
+  },
+
+  // === Intermediate (Inter) to Professional & Arts ===
+
+  "Inter_to_Law_LLB": {
+    stream: "Integrated LLB",
+    fullName: "BA LLB / BBA LLB (5 Years)",
+    description: "Integrated program providing comprehensive legal education with humanities/management.",
+    duration: "5 years",
+    careerPaths: ["Advocate", "Legal Advisor", "Judicial Officer", "Corporate Lawyer"],
+    semesterPlan: [
+      { sem: "Year 1-2", subjects: ["English", "Political Science", "Economics", "Legal Theory"], focus: "Humanities & Law Basics" },
+      { sem: "Year 3", subjects: ["Constitutional Law", "Law of Crimes", "Family Law"], focus: "Core Law" },
+      { sem: "Year 4", subjects: ["Corporate Law", "Intellectual Property Rights", "Tax Law"], focus: "Specialized Law" },
+      { sem: "Year 5", subjects: ["Moot Court", "Professional Ethics", "Internship with Chambers"], focus: "Clinical Practice" }
+    ],
+    skills: ["Legal Research", "Public Speaking", "Drafting", "Critical Thinking"],
+    certifications: ["Bar Council of India (BCI) License", "Cyber Law Cert"],
+    salaryRange: "₹4-25 LPA (Big Law firms pay more)",
+    topCompanies: ["Shardul Amarchand Mangaldas", "AZB & Partners", "Private Practice"]
+  },
+  "Inter_to_BPharm": {
+    stream: "B.Pharm",
+    fullName: "Bachelor of Pharmacy",
+    description: "Study of drug discovery, manufacturing, and clinical pharmacy.",
+    duration: "4 years",
+    careerPaths: ["Pharmacist", "Drug Inspector", "Medical Representative", "R&D Scientist"],
+    semesterPlan: [
+      { sem: "Year 1", subjects: ["Pharmaceutics", "Pharmacognosy", "Inorganic Chem"], focus: "Basics" },
+      { sem: "Year 2", subjects: ["Organic Chem", "Physical Pharmaceutics", "Microbiology"], focus: "Drug Science" },
+      { sem: "Year 3", subjects: ["Pharmacology", "Pharmaceutical Analysis", "Jurisprudence"], focus: "Systems" },
+      { sem: "Year 4", subjects: ["Biopharmaceutics", "Industrial Pharmacy", "Internship"], focus: "Industry" }
+    ],
+    skills: ["Drug Formulation", "HPLC Analysis", "Clinical Research"],
+    certifications: ["Registered Pharmacist", "Quality Control Cert"],
+    salaryRange: "₹3-12 LPA",
+    topCompanies: ["Sun Pharma", "Cipla", "Lupin", "Dr. Reddy's"]
+  },
+  "Inter_to_Design_BDes": {
+    stream: "B.Des",
+    fullName: "Bachelor of Design",
+    description: "Creative degree specializing in Fashion, Product, UI/UX, or Communication design.",
+    duration: "4 years",
+    careerPaths: ["Fashion Designer", "UI/UX Designer", "Product Designer", "Art Director"],
+    semesterPlan: [
+      { sem: "Year 1", subjects: ["Design Fundamentals", "Color Theory", "Visualization"], focus: "Creative Basics" },
+      { sem: "Year 2", subjects: ["Design Tools (Adobe Suite)", "History of Design", "Materials"], focus: "Domain Choice" },
+      { sem: "Year 3", subjects: ["Advanced Domain Studio", "User Research", "Prototyping"], focus: "Execution" },
+      { sem: "Year 4", subjects: ["Graduation Project", "Portfolio Design", "Industry Training"], focus: "Professional" }
+    ],
+    skills: ["Figma / Adobe XD", "Photoshop / Illustrator", "Design Thinking", "Sketching"],
+    certifications: ["Google UX Design", "Adobe Certified Professional"],
+    salaryRange: "₹4-20 LPA",
+    topCompanies: ["Titan", "Myntra", "Microsoft UX", "Google Design", "Ogilvy"]
+  },
+  "Inter_to_BHM": {
+    stream: "BHM",
+    fullName: "Bachelor of Hotel Management",
+    description: "Comprehensive training for hospitality operations, culinary arts, and tourism.",
+    duration: "4 years",
+    careerPaths: ["Hotel Manager", "Executive Chef", "Front Office Mgr", "Event Planner"],
+    semesterPlan: [
+      { sem: "Year 1", subjects: ["Food Production Basics", "Front Office", "Housekeeping"], focus: "Operations" },
+      { sem: "Year 2", subjects: ["Beverage Service", "Nutrition", "Hygiene & Sanitation"], focus: "Core Service" },
+      { sem: "Year 3", subjects: ["Industrial Exposure Training (IET)", "Hotel Accountancy"], focus: "Industry Exposure" },
+      { sem: "Year 4", subjects: ["Facility Planning", "HR in Hospitality", "Menu Design"], focus: "Management" }
+    ],
+    skills: ["Customer Service", "Culinary Skills", "Multi-tasking", "Grooming"],
+    certifications: ["FSSAI Food Safety Cert", "Chef Certifications"],
+    salaryRange: "₹3-15 LPA",
+    topCompanies: ["Taj Hotels", "ITC Hotels", "Marriott", "Oberoi Group", "Hyatt"]
+  },
+
 
   // === B.Tech to Engineering Careers ===
 
