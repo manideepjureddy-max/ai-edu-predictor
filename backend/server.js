@@ -20,7 +20,17 @@ const app = express();
 
 app.use(helmet());
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:3000',
+  origin: function (origin, callback) {
+    const allowed = !origin || 
+                    origin === 'http://localhost:3000' || 
+                    origin === process.env.FRONTEND_URL || 
+                    origin.endsWith('onrender.com');
+    if (allowed) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true,
 }));
 
