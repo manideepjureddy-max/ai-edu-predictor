@@ -3,8 +3,8 @@ import { roadmapAPI } from '../utils/api';
 
 var CATS = [
   { key: '10th', label: '10th → Intermediate', emoji: '📖', color: '#6C63FF' },
-  { key: 'btech_branch', label: 'Intermediate → B.Tech', emoji: '🎒', color: '#FF6584' },
-  { key: 'career', label: 'B.Tech → Career', emoji: '🎓', color: '#43E97B' }
+  { key: 'inter', label: 'Intermediate → Degrees', emoji: '🎒', color: '#FF6584' },
+  { key: 'btech', label: 'B.Tech / Degrees → Career', emoji: '🎓', color: '#43E97B' }
 ];
 
 function RoadmapCard(props) {
@@ -12,7 +12,7 @@ function RoadmapCard(props) {
   var data = props.data;
   var [open, setOpen] = useState(false);
 
-  var color = key.startsWith('10th') ? '#6C63FF' : (key.includes('to_Software') || key.includes('to_AI') || key.includes('to_Data')) ? '#43E97B' : '#FF6584';
+  var color = key.startsWith('10th') ? '#6C63FF' : (key.startsWith('BTech_to') || key.includes('to_Software') || key.includes('to_AI') || key.includes('to_Data')) ? '#43E97B' : '#FF6584';
   var steps = data.steps || data.roadmap || data.semesterPlan || [];
 
   return (
@@ -109,8 +109,11 @@ export default function RoadmapPage() {
       return k.toLowerCase().includes(q) || (d.stream || '').toLowerCase().includes(q) || (d.career || '').toLowerCase().includes(q) || (d.fullName || '').toLowerCase().includes(q);
     }
     if (cat === '10th') return k.startsWith('10th');
-    if (cat === 'btech_branch') return k.includes('MPC_to') || k.includes('BiPC') || k.includes('ECE') || k.includes('MECH') || k.includes('CE_to') || k.includes('MEC_to') || k.includes('CEC_to');
-    return k.includes('_to_') && !k.startsWith('10th') && !k.includes('MPC_to') && !k.includes('BiPC') && !k.includes('ECE') && !k.includes('MECH') && !k.includes('CE_to') && !k.includes('MEC_to') && !k.includes('CEC_to');
+    if (cat === 'inter') return k.startsWith('Inter_to') || k.startsWith('MPC_');
+    if (cat === 'btech') return k.startsWith('BTech_to') || k.startsWith('CSE_to') || k.startsWith('CSE-AI_to');
+    
+    // Fallback if anything slips through
+    return false;
   });
 
   return (

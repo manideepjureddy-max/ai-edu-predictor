@@ -1,4 +1,5 @@
 const roadmaps = {
+  // === 10th to Intermediate Streams ===
   "10th_to_MPC": {
     stream: "MPC",
     fullName: "Mathematics, Physics, Chemistry",
@@ -59,6 +60,80 @@ const roadmaps = {
       { phase: "Career Path", duration: "3-5 years", tasks: ["LLB / Integrated LLB", "Civil Services (IAS/IPS)", "Company Secretary (CS)", "Business Administration"] }
     ]
   },
+
+  // === Intermediate (Inter) to Degrees ===
+  
+  "Inter_to_BTech": {
+    stream: "B.Tech",
+    fullName: "Bachelor of Technology",
+    description: "Practical engineering degree prioritizing applied sciences, software, and hardware technology.",
+    duration: "4 years",
+    careerPaths: ["Software Developer", "IT Consultant", "Hardware Engineer", "Data Scientist"],
+    semesterPlan: [
+      { sem: "Year 1", subjects: ["Engineering Math, Physics, Chemistry", "Basic Programming (C/Python)", "Engineering Graphics"], focus: "Core Sciences & Basics" },
+      { sem: "Year 2", subjects: ["Data Structures", "Core Branch Subjects (e.g. OOPS/Circuits)", "Digital Logic"], focus: "Foundational Engineering" },
+      { sem: "Year 3", subjects: ["Advanced Core Subjects", "Database Management", "Computer Networks", "Mini Projects"], focus: "Specialization & Application" },
+      { sem: "Year 4", subjects: ["Electives (AI, Cloud, IoT)", "Major Project", "Industry Internship"], focus: "Industry Readiness" }
+    ],
+    skills: ["Problem Solving", "Programming (Python, Java, C++)", "Analytical Thinking", "System Design"],
+    certifications: ["AWS Certified Developer", "Google IT Support", "Oracle Certified Professional"],
+    salaryRange: "₹4-30 LPA depending on tier and branch",
+    topCompanies: ["TCS", "Infosys", "Google", "Microsoft", "Amazon", "L&T"]
+  },
+  "Inter_to_BE": {
+    stream: "B.E.",
+    fullName: "Bachelor of Engineering",
+    description: "Theoretical engineering degree with deep focus on engineering fundamentals and science.",
+    duration: "4 years",
+    careerPaths: ["Research and Development Engineer", "Design Engineer", "Manufacturing Engineer", "Academic/Professor"],
+    semesterPlan: [
+      { sem: "Year 1", subjects: ["Engineering Physics", "Advanced Calculus", "Mechanics", "Basic Electronics"], focus: "Theoretical Foundations" },
+      { sem: "Year 2", subjects: ["Thermodynamics / Circuit Theory", "Fluid Mechanics", "Material Science"], focus: "Core Engineering Concepts" },
+      { sem: "Year 3", subjects: ["Machine Design / Signal Processing", "Control Systems", "Industrial Engineering"], focus: "Analysis and Design" },
+      { sem: "Year 4", subjects: ["Research Electives", "Thesis/Final Project", "Computational Methods"], focus: "Research & Development" }
+    ],
+    skills: ["Mathematical Modeling", "Theoretical Analysis", "Research Methodologies", "Complex Problem Solving"],
+    certifications: ["Six Sigma Certification", "CAD/CAM Certification", "PMP"],
+    salaryRange: "₹3.5-20 LPA",
+    topCompanies: ["ISRO", "DRDO", "BHEL", "Tata Motors", "Mahindra", "Siemens"]
+  },
+  "Inter_to_BArch": {
+    stream: "B.Arch",
+    fullName: "Bachelor of Architecture",
+    description: "Creative styling and science of building design, urban planning, and construction.",
+    duration: "5 years",
+    careerPaths: ["Architect", "Urban Planner", "Interior Designer", "Landscape Architect"],
+    semesterPlan: [
+      { sem: "Year 1", subjects: ["Architectural Design I", "Visual Arts", "Building Construction", "History of Architecture"], focus: "Design Basics" },
+      { sem: "Year 2-3", subjects: ["Structural Design", "Climatology", "Building Services (HVAC/Plumbing)", "Computer Aided Design (CAD)"], focus: "Technical Architecture" },
+      { sem: "Year 4", subjects: ["Working Drawings", "Urban Planning", "Practical Training (Internship)"], focus: "Industry Experience" },
+      { sem: "Year 5", subjects: ["Professional Practice", "Thesis Project", "Construction Management"], focus: "Professional Finalization" }
+    ],
+    skills: ["AutoCAD", "SketchUp / Revit", "Spatial Thinking", "Creative Design", "Project Management"],
+    certifications: ["COA Registration", "LEED Green Associate", "Autodesk Revit Certification"],
+    salaryRange: "₹3-15 LPA (varies highly across independent practice)",
+    topCompanies: ["Hafeez Contractor", "L&T Construction", "DLF", "Godrej Properties"]
+  },
+  "Inter_to_Medical": {
+    stream: "Medical",
+    fullName: "Medical Courses (MBBS / BDS / BAMS / BHMS)",
+    description: "Comprehensive path to becoming a doctor, surgeon, or healthcare professional.",
+    duration: "5.5 years (including 1 year internship)",
+    careerPaths: ["Physician / Surgeon", "Dentist", "Ayurvedic/Homeopathic Doctor", "Medical Researcher"],
+    semesterPlan: [
+      { sem: "Phase 1 (1st Year)", subjects: ["Anatomy", "Physiology", "Biochemistry"], focus: "Pre-clinical Science" },
+      { sem: "Phase 2 (2nd Year)", subjects: ["Pharmacology", "Pathology", "Microbiology", "Forensic Medicine"], focus: "Para-clinical Science" },
+      { sem: "Phase 3 (3rd-4th Year)", subjects: ["Medicine", "Surgery", "Pediatrics", "Obstetrics & Gynecology (OBG)"], focus: "Clinical Subjects" },
+      { sem: "Phase 4 (Final Year)", subjects: ["Mandatory Rotatory Internship (1 Year)"], focus: "Practical Application" }
+    ],
+    skills: ["Patient Care", "Diagnosis", "Surgical Procedures", "Clinical Decision Making", "Empathy"],
+    certifications: ["State Medical Council Registration", "BLS/ACLS Certification"],
+    salaryRange: "₹6-25 LPA (fresher to experienced specialist)",
+    topCompanies: ["Apollo Hospitals", "Fortis", "AIIMS", "Max Healthcare", "Government Hospitals"]
+  },
+
+
+  // === B.Tech Streams (Historically Existing Data) ===
 
   "MPC_to_CSE": {
     stream: "CSE",
@@ -146,9 +221,11 @@ const roadmaps = {
     topCompanies: ["L&T Construction", "AECOM", "NHAI", "NMRCL", "PWD", "Municipal Corporations"]
   },
 
-  "CSE_to_SoftwareDeveloper": {
+  // === B.Tech to Engineering Careers ===
+
+  "BTech_to_SoftwareDeveloper": {
     career: "Software Developer",
-    description: "Build applications and software solutions",
+    description: "Build applications, web platforms, and software solutions",
     timeToAchieve: "0-2 years after B.Tech",
     roadmap: [
       { phase: "During B.Tech (Year 1-2)", tasks: ["Master one programming language", "Learn DSA", "Build small projects", "GitHub profile"] },
@@ -160,20 +237,63 @@ const roadmaps = {
     salaryProgression: { fresher: "₹4-8 LPA", midLevel: "₹10-20 LPA", senior: "₹25-50 LPA", lead: "₹50+ LPA" },
     demandTrend: "Very High - 1.5M new jobs by 2026 in India"
   },
-  "CSE-AI_to_AIEngineer": {
-    career: "AI Engineer",
-    description: "Design and deploy AI/ML systems at scale",
-    timeToAchieve: "0-3 years after B.Tech",
+  "BTech_to_DataScientist": {
+    career: "Data Scientist",
+    description: "Extract insights from complex data sets using statistics and ML.",
+    timeToAchieve: "1-3 years after B.Tech",
     roadmap: [
-      { phase: "Foundation (B.Tech Year 1-2)", tasks: ["Python mastery", "Linear Algebra & Statistics", "ML algorithms theory", "Kaggle competitions start"] },
-      { phase: "Build Projects (Year 3-4)", tasks: ["End-to-end ML projects", "Deep Learning models", "MLOps basics", "Research paper reading"] },
-      { phase: "Specialization", tasks: ["LLM fine-tuning", "Computer Vision or NLP track", "Cloud AI deployment", "AI product building"] },
-      { phase: "Career Path", tasks: ["ML Engineer → Senior ML Engineer", "AI Researcher at FAANG", "AI startup founder", "AI Product Manager"] }
+      { phase: "Foundation", tasks: ["Master Python and SQL", "Learn Pandas & NumPy", "Brush up on Statistics & Probability", "Data Visualization tools (Tableau/PowerBI)"] },
+      { phase: "Core Skills", tasks: ["Learn Machine Learning (Scikit-Learn)", "Deep Learning Basics", "Participate in Kaggle", "Read Research Papers"] },
+      { phase: "Projects & Portfolio", tasks: ["End-to-End ML projects", "Deploy models to Cloud (AWS/GCP)", "Write tech blogs detailing your analysis"] },
+      { phase: "Career Path", tasks: ["Data Analyst -> Junior Data Scientist", "Senior Data Scientist", "Lead AI/ML Researcher"] }
     ],
-    skills: ["Python", "TensorFlow/PyTorch", "MLflow/Kubeflow", "AWS SageMaker", "Docker/Kubernetes"],
-    salaryProgression: { fresher: "₹6-12 LPA", midLevel: "₹15-30 LPA", senior: "₹35-70 LPA", lead: "₹70+ LPA" },
-    demandTrend: "Extremely High - AI is the #1 hiring category in India 2024-2026"
+    skills: ["Python", "SQL", "Statistics", "Machine Learning", "Data Visualization Tools"],
+    salaryProgression: { fresher: "₹5-10 LPA", midLevel: "₹12-25 LPA", senior: "₹30-60 LPA", lead: "₹60+ LPA" },
+    demandTrend: "Extremely High - Rapid growth across tech, finance, and biotech sectors"
+  },
+  "BTech_to_CyberSecurity": {
+    career: "Cyber Security Analyst / Engineer",
+    description: "Protect systems, networks, and programs from digital attacks.",
+    timeToAchieve: "1-2 years after B.Tech",
+    roadmap: [
+      { phase: "Fundamentals", tasks: ["Understand Computer Networks", "Learn Linux and CLI tools", "Basic Scripting (Python/Bash)"] },
+      { phase: "Core Security", tasks: ["Network Security Protocols", "Cryptography Basics", "Vulnerability Scanning", "Ethical Hacking (CEH prep)"] },
+      { phase: "Advanced Specilization", tasks: ["Penetration Testing", "Security Operations Center (SOC) techniques", "Incident Response"] },
+      { phase: "Career Progression", tasks: ["Security Analyst", "PenTester", "Security Architect", "CISO (Chief Information Security Officer)"] }
+    ],
+    skills: ["Network Protocols", "Penetration Testing", "Linux OS", "Python/Bash", "Risk Assessment"],
+    salaryProgression: { fresher: "₹4.5-9 LPA", midLevel: "₹10-22 LPA", senior: "₹25-50 LPA", lead: "₹50+ LPA" },
+    demandTrend: "High - Constant and growing need as long as tech exists."
+  },
+  "BTech_to_CloudArchitect": {
+    career: "Cloud Architect / DevOps",
+    description: "Design and manage robust, scalable cloud environments and deployment pipelines.",
+    timeToAchieve: "2-4 years after B.Tech",
+    roadmap: [
+      { phase: "Linux & Networking", tasks: ["Master Linux administration", "Learn Networking fundamentals", "Learn a scripting language"] },
+      { phase: "Cloud Provider Core", tasks: ["Start with AWS, Azure, or GCP", "Understand Compute, Storage, and Database services", "Take an Associate Certification exam"] },
+      { phase: "DevOps & IaC", tasks: ["Learn Docker & Kubernetes", "Master CI/CD pipelines (Jenkins/GitHub Actions)", "Infrastructure as Code (Terraform)"] },
+      { phase: "Architecture", tasks: ["System Design", "Microservices architecture", "Security and Cost optimization"] }
+    ],
+    skills: ["AWS/Azure/GCP", "Docker & Kubernetes", "Terraform", "CI/CD", "Linux"],
+    salaryProgression: { fresher: "₹5-10 LPA (DevOps Jr)", midLevel: "₹15-25 LPA", senior: "₹30-65 LPA", lead: "₹70+ LPA" },
+    demandTrend: "Very High - Migration to cloud is massive"
+  },
+  "BTech_to_ProductManager": {
+    career: "Product Manager",
+    description: "Merge business, tech, and user experience to launch successful products.",
+    timeToAchieve: "2-5 years after B.Tech",
+    roadmap: [
+      { phase: "Foundation", tasks: ["Read PM basics (e.g. 'Cracking the PM Interview')", "Understand Agile/Scrum", "Improve Communication and Empathy skills"] },
+      { phase: "Bridge the Gap", tasks: ["Learn Wireframing (Figma)", "Data Analytics basics (Google Analytics/SQL)", "Write PRDs (Product Requirement Docs)"] },
+      { phase: "Transition", tasks: ["Start as an Associate Product Manager (APM)", "Take on product ownership side-projects", "Consider an MBA (optional, but common)"] },
+      { phase: "Career Steps", tasks: ["APM -> Product Manager -> Senior PM -> Director of Product"] }
+    ],
+    skills: ["Agile/Scrum", "Wireframing", "Data Analytics", "Cross-functional Leadership", "User Research"],
+    salaryProgression: { fresher: "₹8-15 LPA (APM)", midLevel: "₹18-35 LPA", senior: "₹40-80 LPA", lead: "₹80+ LPA" },
+    demandTrend: "High - Deep tech products need technically-sound PMs."
   }
+
 };
 
 module.exports = roadmaps;
