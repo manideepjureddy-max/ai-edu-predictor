@@ -592,6 +592,49 @@ const roadmaps = {
 
   // === B.Tech to Engineering Careers ===
 
+  "BTech_to_MechanicalEngineer": {
+    career: "Mechanical Engineer",
+    description: "Design, build, and maintain mechanical systems and machinery.",
+    timeToAchieve: "0-2 years after B.Tech MECH",
+    roadmap: [
+      { phase: "During B.Tech (Year 1-2)", tasks: ["Master AutoCAD and SolidWorks", "Understand thermodynamics and mechanics of materials", "Join SAE or robotics clubs"] },
+      { phase: "During B.Tech (Year 3-4)", tasks: ["Learn ANSYS for analysis", "Complete a major design project", "Secure an industrial internship"] },
+      { phase: "Early Career (0-2 Yrs)", tasks: ["Join manufacturing or automotive sector", "Get hands-on plant experience", "Consider GATE for PSU roles"] },
+      { phase: "Mid Career", tasks: ["Specialize in HVAC, Robotics, or Automotive design", "Pursue M.Tech if desired", "Lead design projects"] }
+    ],
+    relatedDegrees: ["Inter_to_BTech_MECH"],
+    salaryEntry: "₹3-6 LPA",
+    topCompanies: ["Tata Motors", "Mahindra", "L&T", "Bosch", "Godrej"]
+  },
+  "BTech_to_CivilEngineer": {
+    career: "Civil Engineer",
+    description: "Plan, design, and oversee construction and infrastructure projects.",
+    timeToAchieve: "0-2 years after B.Tech Civil",
+    roadmap: [
+      { phase: "During B.Tech (Year 1-2)", tasks: ["Master AutoCAD Civil 3D", "Strong foundation in structural analysis", "Understand material properties"] },
+      { phase: "During B.Tech (Year 3-4)", tasks: ["Learn STAAD.Pro or ETABS", "Site visit internships", "Complete a structural or environmental project"] },
+      { phase: "Early Career (0-2 Yrs)", tasks: ["Start as Site Engineer or Junior Structural Designer", "Prepare for IES/GATE exams", "Gain field experience"] },
+      { phase: "Mid Career", tasks: ["Become Project Manager or Senior Designer", "Obtain PMP certification", "Handle large infrastructure projects"] }
+    ],
+    relatedDegrees: ["Inter_to_BTech_Civil", "Inter_to_BArch"],
+    salaryEntry: "₹3-7 LPA",
+    topCompanies: ["L&T Construction", "Tata Projects", "Shapoorji Pallonji", "GMR Group"]
+  },
+  "BTech_to_EmbeddedEngineer": {
+    career: "Embedded Systems Engineer",
+    description: "Work at the intersection of hardware and software, programming microcontrollers.",
+    timeToAchieve: "0-2 years after B.Tech ECE",
+    roadmap: [
+      { phase: "During B.Tech (Year 1-2)", tasks: ["Master C/C++ programming", "Understand digital electronics and microprocessors", "Build basic Arduino/Raspberry Pi projects"] },
+      { phase: "During B.Tech (Year 3-4)", tasks: ["Learn RTOS concepts", "Work with ARM Cortex microcontrollers", "Complete IoT or Robotics projects"] },
+      { phase: "Early Career (0-2 Yrs)", tasks: ["Join hardware tech companies", "Work on firmware development", "Debug board-level systems"] },
+      { phase: "Mid Career", tasks: ["Design complex IoT architectures", "Work in automotive or aerospace domains", "Lead embedded software teams"] }
+    ],
+    relatedDegrees: ["Inter_to_BTech_ECE", "Inter_to_BTech_EEE"],
+    salaryEntry: "₹4-10 LPA",
+    topCompanies: ["Intel", "Qualcomm", "Texas Instruments", "Bosch", "Samsung R&D"]
+  },
+
   "BTech_to_SoftwareDeveloper": {
     career: "Software Developer",
     description: "Build applications, web platforms, and software solutions",

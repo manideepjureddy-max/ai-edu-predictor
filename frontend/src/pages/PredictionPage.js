@@ -58,12 +58,23 @@ export default function PredictionPage() {
     function doPredict() {
       if (mode === 'interest') {
         var formatted = qList.map(function(q) {
-          return { questionId: q.id, subject: q.subject, value: answers[q.id] !== undefined ? answers[q.id] : 1 };
+          return {
+            id: q.id,
+            question: q.text,
+            subject: q.subject,
+            answer: q.options[3 - (answers[q.id] !== undefined ? answers[q.id] : 1)], // reverse index for interest 0-3
+            score: answers[q.id] !== undefined ? answers[q.id] : 1
+          };
         });
         return predAPI.fromInterests({ educationLevel: level, domain: domain, answers: formatted });
       } else {
         var fmt = qList.map(function(q) {
-          return { questionId: q.id, selectedOption: answers[q.id] !== undefined ? answers[q.id] : -1 };
+          return {
+            id: q.id,
+            question: q.text,
+            selectedOption: answers[q.id] !== undefined ? answers[q.id] : -1,
+            answerText: answers[q.id] !== undefined ? q.options[answers[q.id]] : 'No answer'
+          };
         });
         return testsAPI.submitTest({ educationLevel: level, domain: domain, answers: fmt, testType: 'aptitude' })
           .then(function(r) {
