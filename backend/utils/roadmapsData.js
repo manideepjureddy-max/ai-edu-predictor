@@ -78,7 +78,8 @@ const roadmaps = {
     skills: ["DSA (C++/Java)", "Web Development", "SQL/NoSQL", "System Design"],
     certifications: ["Oracle Java Certified", "AWS Certified Developer"],
     salaryRange: "₹4-30 LPA",
-    topCompanies: ["TCS", "Infosys", "Google", "Microsoft", "Amazon", "Atlassian"]
+    topCompanies: ["TCS", "Infosys", "Google", "Microsoft", "Amazon", "Atlassian"],
+    relatedCareers: ["BTech_to_SoftwareDeveloper", "BTech_to_CloudArchitect", "BTech_to_ProductManager"]
   },
   "Inter_to_BTech_AI": {
     stream: "B.Tech - CSE (AI & ML)",
@@ -95,7 +96,8 @@ const roadmaps = {
     skills: ["Python", "TensorFlow / PyTorch", "Pandas & NumPy", "Neural Networks"],
     certifications: ["Google ML Engineer", "AWS Machine Learning Specialty"],
     salaryRange: "₹6-35 LPA",
-    topCompanies: ["OpenAI", "Google DeepMind", "Microsoft Research", "Amazon ML"]
+    topCompanies: ["OpenAI", "Google DeepMind", "Microsoft Research", "Amazon ML"],
+    relatedCareers: ["BTech_to_DataScientist"]
   },
   "Inter_to_BTech_DataScience": {
     stream: "B.Tech - Data Science",
@@ -112,7 +114,8 @@ const roadmaps = {
     skills: ["Python / R", "Apache Spark", "Tableau / PowerBI", "Statistical Analysis"],
     certifications: ["IBM Data Science Professional", "SAS Certified Data Scientist"],
     salaryRange: "₹5-25 LPA",
-    topCompanies: ["Mu Sigma", "Fractal Analytics", "Accenture", "Deloitte"]
+    topCompanies: ["Mu Sigma", "Fractal Analytics", "Accenture", "Deloitte"],
+    relatedCareers: ["BTech_to_DataScientist"]
   },
   "Inter_to_BTech_CyberSecurity": {
     stream: "B.Tech - Cyber Security",
@@ -129,7 +132,8 @@ const roadmaps = {
     skills: ["Networking", "Linux", "Pen Testing", "Cryptography", "Python Scripting"],
     certifications: ["CEH (Certified Ethical Hacker)", "CompTIA Security+"],
     salaryRange: "₹5-28 LPA",
-    topCompanies: ["Cisco", "Palo Alto Networks", "CrowdStrike", "IBM Security"]
+    topCompanies: ["Cisco", "Palo Alto Networks", "CrowdStrike", "IBM Security"],
+    relatedCareers: ["BTech_to_CyberSecurity"]
   },
   "Inter_to_BTech_IT": {
     stream: "B.Tech - IT",
@@ -146,7 +150,8 @@ const roadmaps = {
     skills: ["Web Dev", "Network Admin", "Cloud Basics", "Database Management"],
     certifications: ["ITIL Certification", "AWS Cloud Practitioner"],
     salaryRange: "₹4-20 LPA",
-    topCompanies: ["Wipro", "Cognizant", "Capgemini", "Tech Mahindra"]
+    topCompanies: ["Wipro", "Cognizant", "Capgemini", "Tech Mahindra"],
+    relatedCareers: ["BTech_to_SoftwareDeveloper", "BTech_to_CloudArchitect"]
   },
   "Inter_to_BTech_ECE": {
     stream: "B.Tech - ECE",
@@ -325,7 +330,8 @@ const roadmaps = {
     skills: ["Clinical Diagnosis", "Patient Care", "Surgical Skills", "Pharmacology Application", "Empathy"],
     certifications: ["State Medical Council Registration (NMC)", "BLS/ACLS", "NEET PG (for Masters)"],
     salaryRange: "₹8-20 LPA (Starting), Highly variable post-MD/MS",
-    topCompanies: ["Apollo Hospitals", "Fortis", "AIIMS", "Max Healthcare", "Government Hospitals"]
+    topCompanies: ["Apollo Hospitals", "Fortis", "AIIMS", "Max Healthcare", "Government Hospitals"],
+    relatedCareers: ["Med_to_Specialist"]
   },
   "Inter_to_Med_BDS": {
     stream: "BDS",
@@ -343,7 +349,8 @@ const roadmaps = {
     skills: ["Precision Hand Skills", "Oral Diagnosis", "Dental Aesthetics", "Patient Management"],
     certifications: ["Dental Council of India (DCI) Registration", "Implantology Courses"],
     salaryRange: "₹3-12 LPA (Independent Clinics can earn much more)",
-    topCompanies: ["Clove Dental", "Apollo White Dental", "Private Practice"]
+    topCompanies: ["Clove Dental", "Apollo White Dental", "Private Practice"],
+    relatedCareers: ["Dental_to_MDS"]
   },
   "Inter_to_Med_BAMS": {
     stream: "BAMS",
@@ -416,7 +423,8 @@ const roadmaps = {
     skills: ["Soil Mapping", "Crop Mgmt", "Pest Control"],
     certifications: ["ICAR Certified", "Agri-Marketing Cert"],
     salaryRange: "₹3-12 LPA",
-    topCompanies: ["Bayer", "Syngenta", "ITC", "Monsanto", "NABARD"]
+    topCompanies: ["Bayer", "Syngenta", "ITC", "Monsanto", "NABARD"],
+    relatedCareers: ["BScAg_to_AgriOfficer"]
   },
   "Inter_to_BSc_Nursing": {
     stream: "B.Sc Nursing",
@@ -433,7 +441,8 @@ const roadmaps = {
     skills: ["Patient Care", "Injectable Admin", "Emergency Response"],
     certifications: ["Registered Nurse (RN)", "BLS/ACLS"],
     salaryRange: "₹2.5-10 LPA",
-    topCompanies: ["Apollo", "Fortis", "Manipal Hospitals", "Govt Health Sector"]
+    topCompanies: ["Apollo", "Fortis", "Manipal Hospitals", "Govt Health Sector"],
+    relatedCareers: ["Nursing_to_NurseAdmin"]
   },
   "Inter_to_BSc_Biotech": {
     stream: "B.Sc Biotechnology",
@@ -484,7 +493,8 @@ const roadmaps = {
     skills: ["Leadership", "Presentation Skills", "Team Coordination", "Business Analysis"],
     certifications: ["Digital Marketing Cert", "Six Sigma Yellow Belt"],
     salaryRange: "₹3-12 LPA",
-    topCompanies: ["Amazon", "Deloitte", "KPMG", "Byju's", "HDFC Bank"]
+    topCompanies: ["Amazon", "Deloitte", "KPMG", "Byju's", "HDFC Bank"],
+    relatedCareers: ["BBA_to_MBA_Manager"]
   },
   "Inter_to_BCA": {
     stream: "BCA",
@@ -500,7 +510,8 @@ const roadmaps = {
     skills: ["Java/Python", "SQL", "Web Technologies", "Testing Basics"],
     certifications: ["Full Stack Dev Cert", "Google Associate Android Developer"],
     salaryRange: "₹3-10 LPA",
-    topCompanies: ["TCS", "Accenture", "LTI", "Mindtree", "Capgemini"]
+    topCompanies: ["TCS", "Accenture", "LTI", "Mindtree", "Capgemini"],
+    relatedCareers: ["BCA_to_FullStack"]
   },
 
   // === Intermediate (Inter) to Professional & Arts ===
@@ -520,7 +531,8 @@ const roadmaps = {
     skills: ["Legal Research", "Public Speaking", "Drafting", "Critical Thinking"],
     certifications: ["Bar Council of India (BCI) License", "Cyber Law Cert"],
     salaryRange: "₹4-25 LPA (Big Law firms pay more)",
-    topCompanies: ["Shardul Amarchand Mangaldas", "AZB & Partners", "Private Practice"]
+    topCompanies: ["Shardul Amarchand Mangaldas", "AZB & Partners", "Private Practice"],
+    relatedCareers: ["Law_to_Advocate"]
   },
   "Inter_to_BPharm": {
     stream: "B.Pharm",
@@ -537,7 +549,8 @@ const roadmaps = {
     skills: ["Drug Formulation", "HPLC Analysis", "Clinical Research"],
     certifications: ["Registered Pharmacist", "Quality Control Cert"],
     salaryRange: "₹3-12 LPA",
-    topCompanies: ["Sun Pharma", "Cipla", "Lupin", "Dr. Reddy's"]
+    topCompanies: ["Sun Pharma", "Cipla", "Lupin", "Dr. Reddy's"],
+    relatedCareers: ["Pharm_to_DrugInspector"]
   },
   "Inter_to_Design_BDes": {
     stream: "B.Des",
@@ -554,7 +567,8 @@ const roadmaps = {
     skills: ["Figma / Adobe XD", "Photoshop / Illustrator", "Design Thinking", "Sketching"],
     certifications: ["Google UX Design", "Adobe Certified Professional"],
     salaryRange: "₹4-20 LPA",
-    topCompanies: ["Titan", "Myntra", "Microsoft UX", "Google Design", "Ogilvy"]
+    topCompanies: ["Titan", "Myntra", "Microsoft UX", "Google Design", "Ogilvy"],
+    relatedCareers: ["Design_to_ArtDirector"]
   },
   "Inter_to_BHM": {
     stream: "BHM",
@@ -571,7 +585,8 @@ const roadmaps = {
     skills: ["Customer Service", "Culinary Skills", "Multi-tasking", "Grooming"],
     certifications: ["FSSAI Food Safety Cert", "Chef Certifications"],
     salaryRange: "₹3-15 LPA",
-    topCompanies: ["Taj Hotels", "ITC Hotels", "Marriott", "Oberoi Group", "Hyatt"]
+    topCompanies: ["Taj Hotels", "ITC Hotels", "Marriott", "Oberoi Group", "Hyatt"],
+    relatedCareers: ["BHM_to_HotelOwner"]
   },
 
 
@@ -589,7 +604,8 @@ const roadmaps = {
     ],
     skills: ["Java/Python/JavaScript", "React/Node.js", "SQL/MongoDB", "Git", "System Design"],
     salaryProgression: { fresher: "₹4-8 LPA", midLevel: "₹10-20 LPA", senior: "₹25-50 LPA", lead: "₹50+ LPA" },
-    demandTrend: "Very High - 1.5M new jobs by 2026 in India"
+    demandTrend: "Very High - 1.5M new jobs by 2026 in India",
+    relatedDegrees: ["Inter_to_BTech_CSE", "Inter_to_BTech_IT", "Inter_to_BCA"]
   },
   "BTech_to_DataScientist": {
     career: "Data Scientist",
@@ -603,7 +619,8 @@ const roadmaps = {
     ],
     skills: ["Python", "SQL", "Statistics", "Machine Learning", "Data Visualization Tools"],
     salaryProgression: { fresher: "₹5-10 LPA", midLevel: "₹12-25 LPA", senior: "₹30-60 LPA", lead: "₹60+ LPA" },
-    demandTrend: "Extremely High - Rapid growth across tech, finance, and biotech sectors"
+    demandTrend: "Extremely High - Rapid growth across tech, finance, and biotech sectors",
+    relatedDegrees: ["Inter_to_BTech_AI", "Inter_to_BTech_DataScience", "Inter_to_BSc_Biotech"]
   },
   "BTech_to_CyberSecurity": {
     career: "Cyber Security Analyst / Engineer",
@@ -645,7 +662,8 @@ const roadmaps = {
     ],
     skills: ["Agile/Scrum", "Wireframing", "Data Analytics", "Cross-functional Leadership", "User Research"],
     salaryProgression: { fresher: "₹8-15 LPA (APM)", midLevel: "₹18-35 LPA", senior: "₹40-80 LPA", lead: "₹80+ LPA" },
-    demandTrend: "High - Deep tech products need technically-sound PMs."
+    demandTrend: "High - Deep tech products need technically-sound PMs.",
+    relatedDegrees: ["Inter_to_BTech_CSE", "Inter_to_BTech_IT", "Inter_to_BBA"]
   },
 
   // === Medical Degrees to Careers ===

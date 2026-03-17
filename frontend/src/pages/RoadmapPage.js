@@ -10,9 +10,10 @@ var CATS = [
 function RoadmapCard(props) {
   var key = props.mapKey;
   var data = props.data;
+  var onNavigate = props.onNavigate;
   var [open, setOpen] = useState(false);
 
-  var color = key.startsWith('10th') ? '#6C63FF' : (key.startsWith('BTech_to') || key.includes('to_Software') || key.includes('to_AI') || key.includes('to_Data')) ? '#43E97B' : '#FF6584';
+  var color = key.startsWith('10th') ? '#6C63FF' : (key.startsWith('BTech_to') || key.includes('to_Software') || key.includes('to_AI') || key.includes('to_Data') || key.includes('_to_FullStack')) ? '#43E97B' : '#FF6584';
   var steps = data.steps || data.roadmap || data.semesterPlan || [];
 
   return (
@@ -85,6 +86,23 @@ function RoadmapCard(props) {
               );
             })
           )
+        ),
+
+        (data.relatedCareers || data.relatedDegrees) && React.createElement('div', { style: { marginTop: '1.5rem', padding: '1rem', background: 'var(--glass)', borderRadius: 'var(--r2)', border: '1px solid var(--border)' } },
+          React.createElement('div', { style: { fontWeight: 800, fontSize: '0.85rem', color: 'var(--text1)', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' } }, 
+            data.relatedCareers ? '🚀 Next Professional Steps' : '🎓 Recommended Educational Path'
+          ),
+          React.createElement('div', { style: { display: 'flex', flexWrap: 'wrap', gap: '8px' } },
+            (data.relatedCareers || data.relatedDegrees).map(function(linkKey) {
+              var btnColor = data.relatedCareers ? '#43E97B' : '#FF6584';
+              return React.createElement('button', {
+                key: linkKey,
+                onClick: function() { onNavigate(data.relatedCareers ? 'btech' : 'inter', linkKey); },
+                style: { padding: '0.5rem 1rem', borderRadius: '8px', background: btnColor + '15', color: btnColor, border: '1px solid ' + btnColor + '30', fontSize: '0.78rem', fontWeight: 700, cursor: 'pointer', transition: 'all 0.2s' },
+                className: 'h-grow'
+              }, linkKey.split('_to_')[1].replace(/_/g, ' '));
+            })
+          )
         )
       )
     )
@@ -101,10 +119,17 @@ export default function RoadmapPage() {
     roadmapAPI.getAll().then(function(r) { setRoadmaps(r.data.roadmaps || {}); }).catch(function() {}).finally(function() { setLoading(false); });
   }, []);
 
+  function handleNavigate(newCat, searchKey) {
+    setCat(newCat);
+    setSearch(searchKey);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
   var filtered = Object.entries(roadmaps).filter(function(entry) {
     var k = entry[0];
     var d = entry[1];
     if (search) {
+      if (search === k) return true; 
       var q = search.toLowerCase();
       return k.toLowerCase().includes(q) || (d.stream || '').toLowerCase().includes(q) || (d.career || '').toLowerCase().includes(q) || (d.fullName || '').toLowerCase().includes(q);
     }
@@ -114,8 +139,6 @@ export default function RoadmapPage() {
       var careerKeys = ['BTech_to', 'Med_to', 'Dental_to', 'BScAg_to', 'Nursing_to', 'BCom_to', 'BBA_to', 'BCA_to', 'Law_to', 'Pharm_to', 'Design_to', 'BHM_to'];
       return careerKeys.some(function(pk) { return k.startsWith(pk); });
     }
-    
-    // Fallback if anything slips through
     return false;
   });
 
@@ -142,7 +165,7 @@ export default function RoadmapPage() {
         loading
           ? [1,2,3,4].map(function(i) { return React.createElement('div', { key: i, className: 'skel', style: { height: '76px', marginBottom: '0.75rem' } }); })
           : filtered.length > 0
-            ? filtered.map(function(entry) { return React.createElement(RoadmapCard, { key: entry[0], mapKey: entry[0], data: entry[1] }); })
+            ? filtered.map(function(entry) { return React.createElement(RoadmapCard, { key: entry[0], mapKey: entry[0], data: entry[1], onNavigate: handleNavigate }); })
             : React.createElement('div', { style: { textAlign: 'center', padding: '3rem', color: 'var(--text3)' } },
                 React.createElement('div', { style: { fontSize: '3rem', marginBottom: '0.75rem' } }, '🔍'),
                 React.createElement('div', { style: { fontWeight: 600 } }, 'No roadmaps found for "' + search + '"')
