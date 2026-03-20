@@ -32,51 +32,36 @@ export default function LoginPage() {
 
   return (
     React.createElement('div', {
-      style: { minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--bg)', padding: '2rem', position: 'relative', overflow: 'hidden' }
+      style: { minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--bg)', padding: '2rem' }
     },
-      React.createElement('div', { className: 'orb', style: { position: 'fixed', width: '500px', height: '500px', top: '-200px', right: '-200px', background: 'rgba(108,99,255,0.12)' } }),
-      React.createElement('div', { className: 'orb', style: { position: 'fixed', width: '400px', height: '400px', bottom: '-100px', left: '-100px', background: 'rgba(255,101,132,0.1)' } }),
-
-      floaters.map(function(emoji, i) {
-        return React.createElement('div', {
-          key: i,
-          style: {
-            position: 'fixed', left: (8 + i * 15) + '%', top: (20 + (i % 3) * 25) + '%',
-            fontSize: '1.8rem', opacity: 0.12, pointerEvents: 'none',
-            animation: 'float ' + (3 + i) + 's ease-in-out infinite',
-            animationDelay: (i * 0.4) + 's'
-          }
-        }, emoji);
-      }),
-
-      React.createElement('div', { className: 'asi', style: { width: '100%', maxWidth: '420px', position: 'relative', zIndex: 1 } },
-        React.createElement('div', { style: { textAlign: 'center', marginBottom: '2rem' } },
+      React.createElement('div', { className: 'asi', style: { width: '100%', maxWidth: '400px', position: 'relative', zIndex: 1 } },
+        React.createElement('div', { style: { textAlign: 'center', marginBottom: '2.5rem' } },
           React.createElement(Link, { to: '/', style: { textDecoration: 'none' } },
             React.createElement('div', {
-              style: { width: '54px', height: '54px', borderRadius: '16px', margin: '0 auto 1rem', background: 'linear-gradient(135deg,#6C63FF,#FF6584)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.8rem', fontWeight: 900, color: 'white', fontFamily: 'var(--font1)', boxShadow: '0 8px 30px rgba(108,99,255,0.4)' }
+              style: { width: '48px', height: '48px', borderRadius: '12px', margin: '0 auto 1.25rem', background: 'var(--brand)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.5rem', fontWeight: 800, color: 'white', fontFamily: 'var(--font1)', boxShadow: 'var(--shadow)' }
             }, 'E')
           ),
-          React.createElement('h1', { style: { fontFamily: 'var(--font1)', fontWeight: 800, fontSize: '1.8rem', marginBottom: '6px' } }, 'Welcome back! 👋'),
-          React.createElement('p', { style: { color: 'var(--text2)', fontSize: '0.9rem' } }, 'Continue your learning journey')
+          React.createElement('h1', { style: { fontFamily: 'var(--font1)', fontWeight: 800, fontSize: '1.75rem', marginBottom: '8px', color: 'var(--text)' } }, 'Welcome back! 👋'),
+          React.createElement('p', { style: { color: 'var(--text3)', fontSize: '0.95rem', fontWeight: 500 } }, 'Log in to continue your journey')
         ),
 
         React.createElement('form', {
           onSubmit: handleSubmit,
-          style: { background: 'var(--bg-card)', border: '1px solid var(--border)', borderRadius: 'var(--r4)', padding: '2rem' }
+          style: { background: 'var(--bg-card)', border: '1px solid var(--border)', borderRadius: 'var(--r3)', padding: '2.5rem', boxShadow: 'var(--shadow2)' }
         },
           React.createElement('div', { style: { marginBottom: '1.25rem' } },
-            React.createElement('label', { style: { display: 'block', fontSize: '0.88rem', fontWeight: 600, marginBottom: '6px', color: 'var(--text2)' } }, 'Email Address'),
-            React.createElement('input', { type: 'email', placeholder: 'student@example.com', value: email, onChange: function(e) { setEmail(e.target.value); }, className: 'inp', required: true })
+            React.createElement('label', { style: { display: 'block', fontSize: '0.85rem', fontWeight: 600, marginBottom: '6px', color: 'var(--text2)' } }, 'Email Address'),
+            React.createElement('input', { type: 'email', placeholder: 'name@example.com', value: email, onChange: function(e) { setEmail(e.target.value); }, className: 'inp', required: true })
           ),
 
-          React.createElement('div', { style: { marginBottom: '1.5rem' } },
-            React.createElement('label', { style: { display: 'block', fontSize: '0.88rem', fontWeight: 600, marginBottom: '6px', color: 'var(--text2)' } }, 'Password'),
+          React.createElement('div', { style: { marginBottom: '1.75rem' } },
+            React.createElement('label', { style: { display: 'block', fontSize: '0.85rem', fontWeight: 600, marginBottom: '6px', color: 'var(--text2)' } }, 'Password'),
             React.createElement('div', { style: { position: 'relative' } },
               React.createElement('input', {
                 type: showPass ? 'text' : 'password',
-                placeholder: 'Enter password', value: password,
+                placeholder: '••••••••', value: password,
                 onChange: function(e) { setPassword(e.target.value); },
-                className: 'inp', style: { paddingRight: '2.5rem' }, required: true
+                className: 'inp', required: true
               }),
               React.createElement('button', {
                 type: 'button', onClick: function() { setShowPass(!showPass); },
@@ -87,16 +72,16 @@ export default function LoginPage() {
 
           React.createElement('button', {
             type: 'submit', className: 'btn btn-p', disabled: loading,
-            style: { width: '100%', justifyContent: 'center', fontSize: '1rem', padding: '0.9rem' }
+            style: { width: '100%', justifyContent: 'center', fontSize: '1rem', padding: '0.85rem' }
           },
             loading
-              ? React.createElement('span', null, '⏳ Logging in...')
-              : React.createElement('span', null, 'Login to EduPath →')
+              ? React.createElement('span', null, 'Logging in...')
+              : React.createElement('span', null, 'Continue →')
           ),
 
-          React.createElement('p', { style: { textAlign: 'center', marginTop: '1.5rem', color: 'var(--text2)', fontSize: '0.9rem' } },
-            'New student? ',
-            React.createElement(Link, { to: '/register', style: { color: 'var(--purple-light)', textDecoration: 'none', fontWeight: 600 } }, 'Create account →')
+          React.createElement('p', { style: { textAlign: 'center', marginTop: '1.75rem', color: 'var(--text2)', fontSize: '0.875rem', fontWeight: 500 } },
+            "Don't have an account? ",
+            React.createElement(Link, { to: '/register', style: { color: 'var(--brand)', textDecoration: 'none', fontWeight: 700 } }, 'Register')
           )
         )
       )

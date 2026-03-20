@@ -15,14 +15,14 @@ import ResultPage from './pages/ResultPage';
 function Spinner() {
   return (
     React.createElement('div', {
-      style: { display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '100vh' }
+      style: { display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '100vw', background: 'var(--bg)' }
     },
       React.createElement('div', {
         style: {
-          width: 44, height: 44, borderRadius: '50%',
-          border: '3px solid rgba(108,99,255,0.2)',
-          borderTopColor: '#6C63FF',
-          animation: 'spin 0.9s linear infinite'
+          width: 48, height: 48, borderRadius: '50%',
+          border: '3px solid var(--brand-light)',
+          borderTopColor: 'var(--brand)',
+          animation: 'spin 0.8s cubic-bezier(0.4, 0, 0.2, 1) infinite'
         }
       })
     )
@@ -77,11 +77,17 @@ export default function App() {
         React.createElement(Toaster, {
           position: 'top-right',
           toastOptions: {
+            duration: 4000,
             style: {
-              background: '#16161E',
-              color: '#F0F0FF',
-              border: '1px solid rgba(108,99,255,0.3)',
-              fontFamily: 'Space Grotesk, sans-serif'
+              background: '#ffffff',
+              color: 'var(--text)',
+              border: '1px solid var(--border)',
+              borderRadius: '12px',
+              padding: '12px 16px',
+              fontSize: '0.9rem',
+              fontWeight: 600,
+              boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
+              fontFamily: 'Inter, sans-serif'
             }
           }
         }),

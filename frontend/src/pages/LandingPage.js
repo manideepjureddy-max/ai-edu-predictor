@@ -4,27 +4,27 @@ import { Link } from 'react-router-dom';
 var PHRASES = ['your future.', 'your stream.', 'your career.', 'your roadmap.'];
 
 var FEATURES = [
-  { icon: '🎯', title: 'AI Stream Prediction', desc: 'Gemini AI analyzes your interests and aptitude to suggest the perfect stream with high accuracy.', color: '#6C63FF' },
-  { icon: '🗺️', title: 'Personalized Roadmaps', desc: 'Step-by-step roadmaps from 10th class to your dream career — for every stream.', color: '#FF6584' },
-  { icon: '📝', title: 'Smart Aptitude Tests', desc: 'Domain-specific MCQ tests for MPC, BiPC, CSE-AI, ECE, MECH and more.', color: '#43E97B' },
-  { icon: '💼', title: 'Career Intelligence', desc: 'Real salary data, industry demand and growth projections for 2024-2026.', color: '#FFD93D' },
-  { icon: '💬', title: 'EduBot AI Chatbot', desc: 'Ask anything about streams, colleges and careers — powered by Google Gemini.', color: '#4ECDC4' },
-  { icon: '📊', title: 'Progress Dashboard', desc: 'Track all predictions, test scores and saved roadmaps in one place.', color: '#A89CFF' }
+  { icon: '🎯', title: 'AI Stream Prediction', desc: 'Gemini AI analyzes your interests and aptitude to suggest the perfect stream with high accuracy.', color: 'var(--brand)' },
+  { icon: '🗺️', title: 'Personalized Roadmaps', desc: 'Step-by-step roadmaps from 10th class to your dream career — for every stream.', color: 'var(--brand)' },
+  { icon: '📝', title: 'Smart Aptitude Tests', desc: 'Domain-specific MCQ tests for MPC, BiPC, CSE-AI, ECE, MECH and more.', color: 'var(--brand)' },
+  { icon: '💼', title: 'Career Intelligence', desc: 'Real salary data, industry demand and growth projections for 2024-2026.', color: 'var(--brand)' },
+  { icon: '💬', title: 'EduBot AI Chatbot', desc: 'Ask anything about streams, colleges and careers — powered by Google Gemini.', color: 'var(--brand)' },
+  { icon: '📊', title: 'Progress Dashboard', desc: 'Track all predictions, test scores and saved roadmaps in one place.', color: 'var(--brand)' }
 ];
 
 var STREAMS = [
-  { name: 'MPC → B.Tech', emoji: '⚡', desc: 'Engineering & Technology', color: '#6C63FF' },
-  { name: 'BiPC → MBBS', emoji: '🧬', desc: 'Medical & Life Sciences', color: '#FF6584' },
-  { name: 'MEC → Commerce', emoji: '📈', desc: 'Economics & Finance', color: '#43E97B' },
-  { name: 'CEC → Law', emoji: '⚖️', desc: 'Business & Public Service', color: '#FFD93D' },
-  { name: 'CSE → AI', emoji: '🤖', desc: 'Artificial Intelligence', color: '#4ECDC4' },
-  { name: 'CSE → Data Science', emoji: '📊', desc: 'Data & Analytics', color: '#A89CFF' }
+  { name: 'MPC → B.Tech', emoji: '⚡', desc: 'Engineering & Technology', color: 'var(--brand)' },
+  { name: 'BiPC → MBBS', emoji: '🧬', desc: 'Medical & Life Sciences', color: 'var(--brand)' },
+  { name: 'MEC → Commerce', emoji: '📈', desc: 'Economics & Finance', color: 'var(--brand)' },
+  { name: 'CEC → Law', emoji: '⚖️', desc: 'Business & Public Service', color: 'var(--brand)' },
+  { name: 'CSE → AI', emoji: '🤖', desc: 'Artificial Intelligence', color: 'var(--brand)' },
+  { name: 'CSE → Data Science', emoji: '📊', desc: 'Data & Analytics', color: 'var(--brand)' }
 ];
 
 var STEPS = [
-  { n: '01', icon: '🎓', title: 'Select Your Level', desc: '10th class, Intermediate or B.Tech — pick where you are now.', color: '#6C63FF' },
-  { n: '02', icon: '🧪', title: 'Take Assessment', desc: 'Interest survey or aptitude MCQ test. Both under 10 minutes.', color: '#FF6584' },
-  { n: '03', icon: '🚀', title: 'Get AI Roadmap', desc: 'Receive your predicted stream, confidence score and full learning roadmap.', color: '#43E97B' }
+  { n: '01', icon: '🎓', title: 'Select Your Level', desc: '10th class, Intermediate or B.Tech — pick where you are now.', color: 'var(--brand)' },
+  { n: '02', icon: '🧪', title: 'Take Assessment', desc: 'Interest survey or aptitude MCQ test. Both under 10 minutes.', color: 'var(--brand)' },
+  { n: '03', icon: '🚀', title: 'Get AI Roadmap', desc: 'Receive your predicted stream, confidence score and full learning roadmap.', color: 'var(--brand)' }
 ];
 
 export default function LandingPage() {
@@ -52,59 +52,59 @@ export default function LandingPage() {
 
   var s = {
     page: { background: 'var(--bg)', minHeight: '100vh', overflow: 'hidden' },
-    hero: { position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center', overflow: 'hidden' },
-    orb1: { orb: true, width: '600px', height: '600px', top: '-200px', right: '-200px', background: 'rgba(108,99,255,0.12)' },
-    orb2: { orb: true, width: '400px', height: '400px', bottom: '-100px', left: '-100px', background: 'rgba(255,101,132,0.1)' }
+    hero: { position: 'relative', minHeight: '90vh', display: 'flex', alignItems: 'center', overflow: 'hidden', borderBottom: '1px solid var(--border)' },
+    orb1: { orb: true, width: '400px', height: '400px', top: '-100px', right: '-100px', background: 'rgba(79,70,229,0.06)', position: 'absolute' },
+    orb2: { orb: true, width: '300px', height: '300px', bottom: '-50px', left: '-50px', background: 'rgba(79,70,229,0.04)', position: 'absolute' }
   };
 
   return (
     React.createElement('div', { style: s.page },
       /* ── HERO ── */
       React.createElement('section', { style: s.hero },
-        React.createElement('div', { className: 'orb', style: { width: '600px', height: '600px', top: '-200px', right: '-200px', background: 'rgba(108,99,255,0.12)', position: 'absolute' } }),
-        React.createElement('div', { className: 'orb', style: { width: '400px', height: '400px', bottom: '-100px', left: '-100px', background: 'rgba(255,101,132,0.1)', position: 'absolute' } }),
+        React.createElement('div', { className: 'orb', style: s.orb1 }),
+        React.createElement('div', { className: 'orb', style: s.orb2 }),
 
         React.createElement('div', { className: 'wrap', style: { position: 'relative', zIndex: 1 } },
           React.createElement('div', { style: { maxWidth: '660px', animation: 'fadeUp 0.8s ease both' } },
 
             React.createElement('div', { style: { display: 'flex', gap: '8px', marginBottom: '1.5rem', flexWrap: 'wrap' } },
-              React.createElement('span', { className: 'badge badge-p' }, '⚡ Powered by Google Gemini AI'),
-              React.createElement('span', { className: 'badge badge-g' }, '🇮🇳 Made for Indian Students')
+              React.createElement('span', { className: 'badge badge-p' }, '⚡ ai powered'),
+              React.createElement('span', { className: 'badge' }, '🇮🇳 made for Indian students')
             ),
 
             React.createElement('h1', {
               style: {
-                fontFamily: 'var(--font1)', fontSize: 'clamp(2.4rem,5vw,3.8rem)',
-                fontWeight: 900, lineHeight: 1.1, marginBottom: '1rem'
+                fontFamily: 'var(--font1)', fontSize: 'clamp(2.2rem,5vw,3.5rem)',
+                fontWeight: 800, lineHeight: 1.1, marginBottom: '1.25rem', color: 'var(--text)'
               }
             },
-              'AI predicts',
+              'Predict your ',
               React.createElement('span', { style: { display: 'block' } },
                 React.createElement('span', { className: 'gt' }, typed),
-                React.createElement('span', { style: { animation: 'blink 1s infinite', color: '#6C63FF', marginLeft: '2px' } }, '|')
+                React.createElement('span', { style: { animation: 'blink 1s infinite', color: 'var(--brand)', marginLeft: '2px' } }, '|')
               )
             ),
 
             React.createElement('p', {
-              style: { color: 'var(--text2)', fontSize: '1.1rem', lineHeight: 1.7, marginBottom: '2rem', maxWidth: '520px' }
+              style: { color: 'var(--text2)', fontSize: '1.05rem', lineHeight: 1.6, marginBottom: '2rem', maxWidth: '520px' }
             },
-              'Stop guessing what to study. Our AI analyzes your ',
-              React.createElement('strong', { style: { color: 'var(--text)' } }, 'interests, aptitude'),
+              'Empowering students to make informed educational choices. Our AI analyzes your ',
+              React.createElement('strong', { style: { color: 'var(--text)', fontWeight: 600 } }, 'interests'),
               ' and ',
-              React.createElement('strong', { style: { color: 'var(--text)' } }, 'career goals'),
-              ' to predict the perfect stream — from 10th to B.Tech to your dream career.'
+              React.createElement('strong', { style: { color: 'var(--text)', fontWeight: 600 } }, 'aptitude'),
+              ' to find your perfect path.'
             ),
 
             React.createElement('div', { style: { display: 'flex', gap: '12px', flexWrap: 'wrap' } },
-              React.createElement(Link, { to: '/register', className: 'btn btn-p', style: { fontSize: '1rem', padding: '0.9rem 2rem' } }, 'Start Free Prediction →'),
-              React.createElement(Link, { to: '/login', className: 'btn btn-o', style: { fontSize: '1rem', padding: '0.9rem 2rem' } }, 'Student Login')
+              React.createElement(Link, { to: '/register', className: 'btn btn-p', style: { fontSize: '0.95rem', padding: '0.8rem 1.8rem' } }, 'Start Journey →'),
+              React.createElement(Link, { to: '/login', className: 'btn btn-o', style: { fontSize: '0.95rem', padding: '0.8rem 1.8rem' } }, 'Student Login')
             ),
 
-            React.createElement('div', { style: { display: 'flex', gap: '2rem', marginTop: '2.5rem', flexWrap: 'wrap' } },
-              [['15,000+', 'Students guided'], ['95%', 'Prediction accuracy'], ['20+', 'Career paths']].map(function(item) {
+            React.createElement('div', { style: { display: 'flex', gap: '2.5rem', marginTop: '3rem', flexWrap: 'wrap' } },
+              [['15k+', 'Students'], ['95%', 'Accuracy'], ['20+', 'Paths']].map(function(item) {
                 return React.createElement('div', { key: item[1] },
-                  React.createElement('div', { className: 'gt', style: { fontFamily: 'var(--font1)', fontWeight: 800, fontSize: '1.4rem' } }, item[0]),
-                  React.createElement('div', { style: { color: 'var(--text3)', fontSize: '0.8rem' } }, item[1])
+                  React.createElement('div', { style: { fontFamily: 'var(--font1)', fontWeight: 700, fontSize: '1.3rem', color: 'var(--text)' } }, item[0]),
+                  React.createElement('div', { style: { color: 'var(--text3)', fontSize: '0.75rem', fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.05em' } }, item[1])
                 );
               })
             )
@@ -113,24 +113,24 @@ export default function LandingPage() {
       ),
 
       /* ── HOW IT WORKS ── */
-      React.createElement('section', { className: 'sec', style: { background: 'rgba(255,255,255,0.01)' } },
+      React.createElement('section', { className: 'sec', style: { background: 'var(--bg-card2)' } },
         React.createElement('div', { className: 'wrap' },
           React.createElement('div', { style: { textAlign: 'center', marginBottom: '3.5rem' } },
-            React.createElement('span', { className: 'badge badge-p', style: { marginBottom: '1rem' } }, 'Simple Process'),
-            React.createElement('h2', { style: { fontFamily: 'var(--font1)', fontSize: 'clamp(1.8rem,3vw,2.4rem)', fontWeight: 800 } },
-              'Get your prediction in ',
-              React.createElement('span', { className: 'gt' }, '3 steps')
+            React.createElement('span', { className: 'badge badge-p', style: { marginBottom: '0.75rem' } }, 'Simple Process'),
+            React.createElement('h2', { style: { fontFamily: 'var(--font1)', fontSize: 'clamp(1.6rem,3vw,2.2rem)', fontWeight: 800 } },
+              'Your future in ',
+              React.createElement('span', { className: 'gt' }, '3 simple steps')
             )
           ),
-          React.createElement('div', { style: { display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))', gap: '1.25rem' } },
+          React.createElement('div', { style: { display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))', gap: '1.5rem' } },
             STEPS.map(function(step) {
-              return React.createElement('div', { key: step.n, className: 'card', style: { position: 'relative', overflow: 'hidden' } },
+              return React.createElement('div', { key: step.n, className: 'card', style: { position: 'relative', overflow: 'hidden', padding: '2rem' } },
                 React.createElement('div', {
-                  style: { position: 'absolute', top: '-10px', right: '-10px', fontFamily: 'var(--font1)', fontWeight: 900, fontSize: '4rem', color: step.color + '15', lineHeight: 1 }
+                  style: { position: 'absolute', top: '10px', right: '20px', fontFamily: 'var(--font1)', fontWeight: 800, fontSize: '3rem', color: 'var(--bg-card2)', lineHeight: 1 }
                 }, step.n),
-                React.createElement('div', { style: { fontSize: '2.5rem', marginBottom: '1rem' } }, step.icon),
-                React.createElement('h3', { style: { fontFamily: 'var(--font1)', fontWeight: 700, marginBottom: '0.5rem', color: step.color } }, step.title),
-                React.createElement('p', { style: { color: 'var(--text2)', lineHeight: 1.6, fontSize: '0.93rem' } }, step.desc)
+                React.createElement('div', { style: { fontSize: '2.5rem', marginBottom: '1.25rem' } }, step.icon),
+                React.createElement('h3', { style: { fontFamily: 'var(--font1)', fontWeight: 700, marginBottom: '0.75rem', color: 'var(--text)', fontSize: '1.1rem' } }, step.title),
+                React.createElement('p', { style: { color: 'var(--text2)', lineHeight: 1.6, fontSize: '0.9rem' } }, step.desc)
               );
             })
           )
@@ -141,19 +141,19 @@ export default function LandingPage() {
       React.createElement('section', { className: 'sec' },
         React.createElement('div', { className: 'wrap' },
           React.createElement('div', { style: { textAlign: 'center', marginBottom: '3.5rem' } },
-            React.createElement('h2', { style: { fontFamily: 'var(--font1)', fontSize: 'clamp(1.8rem,3vw,2.4rem)', fontWeight: 800 } },
-              'Everything to ', React.createElement('span', { className: 'gt' }, 'decide right')
+            React.createElement('h2', { style: { fontFamily: 'var(--font1)', fontSize: 'clamp(1.6rem,3vw,2.2rem)', fontWeight: 800 } },
+              'Our ', React.createElement('span', { className: 'gt' }, 'Capabilities')
             )
           ),
-          React.createElement('div', { style: { display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(300px,1fr))', gap: '1rem' } },
+          React.createElement('div', { style: { display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(300px,1fr))', gap: '1.25rem' } },
             FEATURES.map(function(f) {
-              return React.createElement('div', { key: f.title, className: 'card', style: { display: 'flex', gap: '1rem', alignItems: 'flex-start' } },
+              return React.createElement('div', { key: f.title, className: 'card', style: { display: 'flex', gap: '1.25rem', alignItems: 'flex-start' } },
                 React.createElement('div', {
-                  style: { width: '46px', height: '46px', borderRadius: '12px', background: f.color + '20', border: '1px solid ' + f.color + '40', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.5rem', flexShrink: 0 }
+                  style: { width: '48px', height: '48px', borderRadius: '12px', background: 'var(--brand-light)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.5rem', flexShrink: 0 }
                 }, f.icon),
                 React.createElement('div', null,
-                  React.createElement('h3', { style: { fontFamily: 'var(--font1)', fontWeight: 700, marginBottom: '4px', fontSize: '1rem' } }, f.title),
-                  React.createElement('p', { style: { color: 'var(--text2)', fontSize: '0.86rem', lineHeight: 1.6 } }, f.desc)
+                  React.createElement('h3', { style: { fontFamily: 'var(--font1)', fontWeight: 700, marginBottom: '6px', fontSize: '1rem', color: 'var(--text)' } }, f.title),
+                  React.createElement('p', { style: { color: 'var(--text2)', fontSize: '0.875rem', lineHeight: 1.5 } }, f.desc)
                 )
               );
             })
@@ -162,22 +162,22 @@ export default function LandingPage() {
       ),
 
       /* ── STREAMS ── */
-      React.createElement('section', { className: 'sec', style: { background: 'rgba(255,255,255,0.01)' } },
+      React.createElement('section', { className: 'sec', style: { background: 'var(--bg-card2)' } },
         React.createElement('div', { className: 'wrap' },
-          React.createElement('div', { style: { textAlign: 'center', marginBottom: '2.5rem' } },
-            React.createElement('h2', { style: { fontFamily: 'var(--font1)', fontSize: 'clamp(1.8rem,3vw,2.4rem)', fontWeight: 800 } },
-              'Explore ', React.createElement('span', { className: 'gt' }, 'Stream Paths')
+          React.createElement('div', { style: { textAlign: 'center', marginBottom: '3rem' } },
+            React.createElement('h2', { style: { fontFamily: 'var(--font1)', fontSize: 'clamp(1.6rem,3vw,2.2rem)', fontWeight: 800 } },
+              'Supported ', React.createElement('span', { className: 'gt' }, 'Career Paths')
             )
           ),
-          React.createElement('div', { style: { display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(200px,1fr))', gap: '1rem' } },
+          React.createElement('div', { style: { display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(200px,1fr))', gap: '1.25rem' } },
             STREAMS.map(function(st) {
-              return React.createElement('div', { key: st.name, className: 'card', style: { textAlign: 'center', padding: '1.5rem 1rem' } },
+              return React.createElement('div', { key: st.name, className: 'card', style: { textAlign: 'center', padding: '2rem 1rem' } },
                 React.createElement('div', {
                   className: 'afloat',
-                  style: { width: '54px', height: '54px', borderRadius: '50%', background: st.color + '20', border: '2px solid ' + st.color + '40', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.8rem', margin: '0 auto 1rem' }
+                  style: { width: '56px', height: '56px', borderRadius: '50%', background: 'var(--brand-light)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.8rem', margin: '0 auto 1.25rem' }
                 }, st.emoji),
-                React.createElement('div', { style: { fontWeight: 700, marginBottom: '4px', fontFamily: 'var(--font1)', color: st.color } }, st.name),
-                React.createElement('div', { style: { color: 'var(--text3)', fontSize: '0.82rem' } }, st.desc)
+                React.createElement('div', { style: { fontWeight: 700, marginBottom: '6px', fontFamily: 'var(--font1)', color: 'var(--text)', fontSize: '0.95rem' } }, st.name),
+                React.createElement('div', { style: { color: 'var(--text3)', fontSize: '0.8rem', fontWeight: 500 } }, st.desc)
               );
             })
           )
@@ -188,30 +188,29 @@ export default function LandingPage() {
       React.createElement('section', { className: 'sec' },
         React.createElement('div', { className: 'wrap', style: { textAlign: 'center' } },
           React.createElement('div', {
-            style: { maxWidth: '580px', margin: '0 auto', padding: '4rem 2rem', background: 'var(--grad-card)', borderRadius: 'var(--r4)', border: '1px solid var(--border2)', position: 'relative', overflow: 'hidden' }
+            style: { maxWidth: '700px', margin: '0 auto', padding: '4rem 2rem', background: 'var(--brand)', borderRadius: 'var(--r3)', color: 'white', position: 'relative', overflow: 'hidden', boxShadow: 'var(--shadow-lg)' }
           },
-            React.createElement('div', { className: 'orb', style: { position: 'absolute', width: '300px', height: '300px', top: '-100px', left: '-100px', background: 'rgba(108,99,255,0.15)' } }),
             React.createElement('div', { style: { position: 'relative', zIndex: 1 } },
-              React.createElement('div', { style: { fontSize: '3rem', marginBottom: '1rem' } }, '🎯'),
-              React.createElement('h2', { style: { fontFamily: 'var(--font1)', fontWeight: 900, fontSize: '2rem', marginBottom: '1rem' } },
-                'Ready to find your ', React.createElement('span', { className: 'gt' }, 'perfect stream?')
+              React.createElement('div', { style: { fontSize: '2.5rem', marginBottom: '1.25rem' } }, '✨'),
+              React.createElement('h2', { style: { fontFamily: 'var(--font1)', fontWeight: 800, fontSize: '2rem', marginBottom: '1rem' } },
+                'Take the first step today'
               ),
-              React.createElement('p', { style: { color: 'var(--text2)', marginBottom: '2rem', lineHeight: 1.6 } },
-                'Join 15,000+ Indian students who made the right academic choice with EduPath AI.'
+              React.createElement('p', { style: { opacity: 0.9, marginBottom: '2rem', lineHeight: 1.6, fontSize: '1rem' } },
+                'Join thousands of students who found their ideal career path using EduPath AI.'
               ),
-              React.createElement(Link, { to: '/register', className: 'btn btn-p', style: { fontSize: '1rem', padding: '1rem 2.5rem' } }, 'Get Started Free →')
+              React.createElement(Link, { to: '/register', className: 'btn', style: { background: 'white', color: 'var(--brand)', fontSize: '1rem', padding: '0.8rem 2rem' } }, 'Get Started for Free')
             )
           )
         )
       ),
 
       /* ── FOOTER ── */
-      React.createElement('footer', { style: { borderTop: '1px solid var(--border)', padding: '2rem 1.5rem', textAlign: 'center' } },
-        React.createElement('div', { style: { fontFamily: 'var(--font1)', fontWeight: 700, marginBottom: '8px' } },
+      React.createElement('footer', { style: { borderTop: '1px solid var(--border)', padding: '2.5rem 1.5rem', textAlign: 'center', background: 'var(--bg-card)' } },
+        React.createElement('div', { style: { fontFamily: 'var(--font1)', fontWeight: 700, marginBottom: '8px', fontSize: '1.1rem', color: 'var(--text)' } },
           'EduPath ', React.createElement('span', { className: 'gt' }, 'AI')
         ),
-        React.createElement('p', { style: { color: 'var(--text3)', fontSize: '0.85rem' } },
-          'AI-powered academic guidance for Indian students • Built with ❤️ for India\'s future'
+        React.createElement('p', { className: 'branding-text' },
+          '© 2026 EduPath • Empowering student choices'
         )
       )
     )

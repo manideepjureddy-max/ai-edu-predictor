@@ -94,63 +94,68 @@ export default function TestPage() {
 
   /* SETUP */
   if (phase === 'setup') {
-    return React.createElement('div', { style: { paddingTop: '80px', minHeight: '100vh', padding: '5rem 1.5rem 2rem' } },
-      React.createElement('div', { style: { maxWidth: '620px', margin: '0 auto' } },
-        React.createElement('div', { style: { textAlign: 'center', marginBottom: '2rem' } },
-          React.createElement('h1', { style: { fontFamily: 'var(--font1)', fontWeight: 800, fontSize: '2rem', marginBottom: '8px' } }, '📝 Test ', React.createElement('span', { className: 'gt' }, 'Center')),
-          React.createElement('p', { style: { color: 'var(--text2)' } }, 'Domain-specific tests with fresh questions every session')
+    return React.createElement('div', { style: { paddingTop: '80px', minHeight: '100vh', padding: '4rem 1.5rem 2rem' } },
+      React.createElement('div', { style: { maxWidth: '720px', margin: '0 auto' } },
+        React.createElement('div', { style: { textAlign: 'center', marginBottom: '2.5rem' } },
+          React.createElement('h1', { style: { fontFamily: 'var(--font1)', fontWeight: 800, fontSize: '1.8rem', marginBottom: '8px', color: 'var(--text)' } }, 'Test ', React.createElement('span', { className: 'gt' }, 'Center')),
+          React.createElement('p', { style: { color: 'var(--text3)', fontSize: '1rem' } }, 'Assess your knowledge with specialized domain tests')
         ),
 
-        React.createElement('div', { className: 'card', style: { marginBottom: '1.25rem' } },
-          React.createElement('label', { style: { display: 'block', fontWeight: 700, marginBottom: '0.75rem', fontFamily: 'var(--font1)' } }, 'Education Level'),
-          React.createElement('div', { style: { display: 'flex', gap: '8px', flexWrap: 'wrap' } },
+        React.createElement('div', { className: 'card', style: { marginBottom: '1.5rem', padding: '1.5rem' } },
+          React.createElement('label', { style: { display: 'block', fontWeight: 700, marginBottom: '1rem', fontFamily: 'var(--font1)', color: 'var(--text)' } }, 'Select Education Level'),
+          React.createElement('div', { style: { display: 'flex', gap: '10px', flexWrap: 'wrap' } },
             ['10th','intermediate','btech'].map(function(l) {
+              var active = edLevel === l;
               return React.createElement('button', {
                 key: l, type: 'button',
                 onClick: function() { setEdLevel(l); setDomain(''); },
-                style: { padding: '0.5rem 1rem', borderRadius: '999px', cursor: 'pointer', background: edLevel === l ? 'rgba(108,99,255,0.2)' : 'var(--glass)', color: edLevel === l ? 'var(--purple-light)' : 'var(--text2)', border: edLevel === l ? '1px solid rgba(108,99,255,0.4)' : '1px solid var(--border)', fontWeight: 600, fontSize: '0.88rem', transition: 'all 0.2s' }
+                style: { padding: '0.65rem 1.25rem', borderRadius: '99px', cursor: 'pointer', background: active ? 'var(--brand)' : 'var(--bg)', color: active ? 'white' : 'var(--text2)', border: '1px solid ' + (active ? 'var(--brand)' : 'var(--border)'), fontWeight: 700, fontSize: '0.85rem', transition: 'all 0.2s', boxShadow: active ? 'var(--shadow)' : 'none' }
               }, l === '10th' ? '10th Class' : l === 'intermediate' ? 'Intermediate' : 'B.Tech');
             })
           )
         ),
 
-        React.createElement('div', { className: 'card', style: { marginBottom: '1.25rem' } },
-          React.createElement('label', { style: { display: 'block', fontWeight: 700, marginBottom: '0.75rem', fontFamily: 'var(--font1)' } }, 'Select Domain'),
-          (DOMAINS_MAP[edLevel] || []).map(function(d) {
-            return React.createElement('div', {
-              key: d.value,
-              onClick: function() { setDomain(d.value); },
-              style: { padding: '0.9rem 1.1rem', borderRadius: 'var(--r2)', cursor: 'pointer', border: '2px solid ' + (domain === d.value ? '#6C63FF' : 'var(--border)'), background: domain === d.value ? 'rgba(108,99,255,0.1)' : 'var(--glass)', transition: 'all 0.2s', display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.5rem' }
-            },
-              React.createElement('span', { style: { fontSize: '1.4rem' } }, d.emoji),
-              React.createElement('span', { style: { fontWeight: 600, fontSize: '0.9rem' } }, d.label),
-              domain === d.value && React.createElement('span', { style: { marginLeft: 'auto', color: '#6C63FF' } }, '✓')
-            );
-          })
-        ),
-
-        React.createElement('div', { className: 'card', style: { marginBottom: '1.5rem' } },
-          React.createElement('label', { style: { display: 'block', fontWeight: 700, marginBottom: '0.75rem', fontFamily: 'var(--font1)' } }, 'Test Type'),
-          React.createElement('div', { style: { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' } },
-            [
-              { value: 'aptitude', icon: '🧪', label: 'Aptitude MCQ', desc: 'Scored with correct answers' },
-              { value: 'interest', icon: '💭', label: 'Interest Survey', desc: 'Rate your topic interests' }
-            ].map(function(t) {
+        React.createElement('div', { className: 'card', style: { marginBottom: '1.5rem', padding: '1.5rem' } },
+          React.createElement('label', { style: { display: 'block', fontWeight: 700, marginBottom: '1rem', fontFamily: 'var(--font1)', color: 'var(--text)' } }, 'Choose Assessment Domain'),
+          React.createElement('div', { style: { display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '10px' } },
+            (DOMAINS_MAP[edLevel] || []).map(function(d) {
+              var active = domain === d.value;
               return React.createElement('div', {
-                key: t.value,
-                onClick: function() { setTestType(t.value); },
-                style: { padding: '1rem', borderRadius: 'var(--r2)', cursor: 'pointer', textAlign: 'center', border: '2px solid ' + (testType === t.value ? '#6C63FF' : 'var(--border)'), background: testType === t.value ? 'rgba(108,99,255,0.1)' : 'var(--glass)', transition: 'all 0.2s' }
+                key: d.value,
+                onClick: function() { setDomain(d.value); },
+                style: { padding: '1rem 1.25rem', borderRadius: 'var(--r3)', cursor: 'pointer', border: '2px solid ' + (active ? 'var(--brand)' : 'var(--border)'), background: active ? 'var(--brand-light)' : 'var(--bg)', transition: 'all 0.2s', display: 'flex', alignItems: 'center', gap: '1rem' }
               },
-                React.createElement('div', { style: { fontSize: '1.6rem', marginBottom: '4px' } }, t.icon),
-                React.createElement('div', { style: { fontWeight: 700, fontSize: '0.9rem', fontFamily: 'var(--font1)' } }, t.label),
-                React.createElement('div', { style: { color: 'var(--text3)', fontSize: '0.76rem', marginTop: '2px' } }, t.desc)
+                React.createElement('span', { style: { fontSize: '1.5rem' } }, d.emoji),
+                React.createElement('span', { style: { fontWeight: 700, fontSize: '0.95rem', color: active ? 'var(--brand)' : 'var(--text)' } }, d.label),
+                active && React.createElement('span', { style: { marginLeft: 'auto', color: 'var(--brand)', fontWeight: 800 } }, '✓')
               );
             })
           )
         ),
 
-        React.createElement('button', { onClick: startTest, disabled: !domain || loading, className: 'btn btn-p', style: { width: '100%', justifyContent: 'center', padding: '1rem', fontSize: '1rem' } },
-          loading ? '⏳ Loading...' : 'Start Test →'
+        React.createElement('div', { className: 'card', style: { marginBottom: '2rem', padding: '1.5rem' } },
+          React.createElement('label', { style: { display: 'block', fontWeight: 700, marginBottom: '1rem', fontFamily: 'var(--font1)', color: 'var(--text)' } }, 'Select Mode'),
+          React.createElement('div', { style: { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' } },
+            [
+              { value: 'aptitude', icon: '🧪', label: 'Aptitude MCQ', desc: 'Standard scored test' },
+              { value: 'interest', icon: '💭', label: 'Interest Quiz', desc: 'Rate your interests' }
+            ].map(function(t) {
+              var active = testType === t.value;
+              return React.createElement('div', {
+                key: t.value,
+                onClick: function() { setTestType(t.value); },
+                style: { padding: '1.5rem 1rem', borderRadius: 'var(--r3)', cursor: 'pointer', textAlign: 'center', border: '2px solid ' + (active ? 'var(--brand)' : 'var(--border)'), background: active ? 'var(--brand-light)' : 'var(--bg)', transition: 'all 0.2s' }
+              },
+                React.createElement('div', { style: { fontSize: '2rem', marginBottom: '8px' } }, t.icon),
+                React.createElement('div', { style: { fontWeight: 700, fontSize: '1rem', fontFamily: 'var(--font1)', color: active ? 'var(--brand)' : 'var(--text)' } }, t.label),
+                React.createElement('div', { style: { color: 'var(--text3)', fontSize: '0.8rem', marginTop: '4px' } }, t.desc)
+              );
+            })
+          )
+        ),
+
+        React.createElement('button', { onClick: startTest, disabled: !domain || loading, className: 'btn btn-p', style: { width: '100%', justifyContent: 'center', padding: '1rem', fontSize: '1.1rem', boxShadow: 'var(--shadow-lg)' } },
+          loading ? 'Loading Test...' : 'Begin Assessment →'
         )
       )
     );
@@ -158,48 +163,49 @@ export default function TestPage() {
 
   /* TEST */
   if (phase === 'test') {
-    return React.createElement('div', { style: { paddingTop: '80px', minHeight: '100vh', padding: '5rem 1.5rem 2rem' } },
-      React.createElement('div', { style: { maxWidth: '680px', margin: '0 auto' } },
-        React.createElement('div', { style: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem', position: 'sticky', top: '72px', background: 'var(--bg)', padding: '1rem 0', zIndex: 10 } },
+    return React.createElement('div', { style: { paddingTop: '80px', minHeight: '100vh', padding: '4rem 1.5rem 2rem' } },
+      React.createElement('div', { style: { maxWidth: '720px', margin: '0 auto' } },
+        React.createElement('div', { style: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem', position: 'sticky', top: '72px', background: 'var(--bg)', padding: '1rem 0', zIndex: 10, borderBottom: '1px solid var(--border)' } },
           React.createElement('div', null,
-            React.createElement('div', { style: { fontFamily: 'var(--font1)', fontWeight: 700 } }, domain + ' — ' + (testType === 'aptitude' ? 'Aptitude Test' : 'Interest Survey')),
-            React.createElement('div', { style: { color: 'var(--text3)', fontSize: '0.82rem' } }, Object.keys(answers).length + '/' + questions.length + ' answered')
+            React.createElement('div', { style: { fontFamily: 'var(--font1)', fontWeight: 800, color: 'var(--text)', fontSize: '1.1rem' } }, domain.toUpperCase() + ' Assessment'),
+            React.createElement('div', { style: { color: 'var(--text3)', fontSize: '0.875rem', fontWeight: 500 } }, Object.keys(answers).length + ' of ' + questions.length + ' tasks completed')
           ),
-          React.createElement('div', { style: { display: 'flex', alignItems: 'center', gap: '6px', padding: '0.4rem 0.9rem', background: timeLeft < 60 ? 'rgba(255,101,132,0.15)' : 'var(--glass)', border: '1px solid ' + (timeLeft < 60 ? 'rgba(255,101,132,0.4)' : 'var(--border)'), borderRadius: '999px', color: timeLeft < 60 ? '#FF6584' : 'var(--text)', fontWeight: 700, fontFamily: 'monospace' } },
+          React.createElement('div', { style: { display: 'flex', alignItems: 'center', gap: '8px', padding: '0.6rem 1.1rem', background: timeLeft < 60 ? 'var(--red-light)' : 'var(--bg-card)', border: '1px solid ' + (timeLeft < 60 ? 'var(--red)' : 'var(--border)'), borderRadius: '12px', color: timeLeft < 60 ? 'var(--red)' : 'var(--text)', fontWeight: 800, fontFamily: 'monospace', fontSize: '1.1rem' } },
             '⏱️ ' + fmt(timeLeft)
           )
         ),
 
-        React.createElement('div', { className: 'pbar', style: { marginBottom: '1.5rem' } },
-          React.createElement('div', { className: 'pfill', style: { width: (Object.keys(answers).length / questions.length * 100) + '%' } })
+        React.createElement('div', { className: 'pbar', style: { marginBottom: '2rem', height: '8px' } },
+          React.createElement('div', { className: 'pfill', style: { width: (Object.keys(answers).length / questions.length * 100) + '%', background: 'var(--brand)' } })
         ),
 
         questions.map(function(q, i) {
-          return React.createElement('div', { key: q.id, className: 'card', style: { marginBottom: '1rem' } },
-            React.createElement('div', { style: { display: 'flex', gap: '0.75rem', alignItems: 'flex-start', marginBottom: '0.75rem' } },
-              React.createElement('span', { style: { background: answers[q.id] !== undefined ? 'rgba(67,233,123,0.18)' : 'var(--glass)', color: answers[q.id] !== undefined ? '#43E97B' : 'var(--text3)', padding: '0.18rem 0.55rem', borderRadius: '6px', fontSize: '0.78rem', fontWeight: 700, flexShrink: 0, border: answers[q.id] !== undefined ? '1px solid rgba(67,233,123,0.3)' : '1px solid var(--border)' } }, 'Q' + (i + 1)),
-              React.createElement('p', { style: { fontWeight: 600, fontSize: '0.95rem', lineHeight: 1.5 } }, q.text)
+          var answered = answers[q.id] !== undefined;
+          return React.createElement('div', { key: q.id, className: 'card', style: { marginBottom: '1.25rem', padding: '1.5rem', borderColor: answered ? 'var(--border)' : 'var(--border)' } },
+            React.createElement('div', { style: { display: 'flex', gap: '1rem', alignItems: 'flex-start', marginBottom: '1.5rem' } },
+              React.createElement('span', { style: { width: '30px', height: '30px', borderRadius: '8px', background: answered ? 'var(--brand)' : 'var(--bg)', color: answered ? 'white' : 'var(--text3)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.85rem', fontWeight: 800, flexShrink: 0, border: '1px solid ' + (answered ? 'var(--brand)' : 'var(--border)') } }, i + 1),
+              React.createElement('p', { style: { fontWeight: 600, fontSize: '1.05rem', lineHeight: 1.5, color: 'var(--text)' } }, q.text)
             ),
             testType === 'aptitude' ? (
-              React.createElement('div', null,
+              React.createElement('div', { style: { display: 'grid', gap: '10px' } },
                 (q.options || []).map(function(opt, oi) {
                   var active = answers[q.id] === oi;
                   return React.createElement('button', {
                     key: oi, type: 'button',
                     onClick: function() { setAnswers(function(p) { var n = Object.assign({}, p); n[q.id] = oi; return n; }); },
-                    style: { display: 'block', width: '100%', padding: '0.6rem 1rem', borderRadius: '10px', border: 'none', cursor: 'pointer', textAlign: 'left', background: active ? 'rgba(108,99,255,0.2)' : 'var(--glass)', color: active ? 'var(--purple-light)' : 'var(--text2)', border: active ? '2px solid rgba(108,99,255,0.4)' : '1px solid var(--border)', fontWeight: active ? 700 : 500, transition: 'all 0.2s', marginBottom: '6px', fontFamily: 'var(--font2)', fontSize: '0.88rem' }
+                    style: { display: 'block', width: '100%', padding: '0.85rem 1.25rem', borderRadius: '12px', cursor: 'pointer', textAlign: 'left', background: active ? 'var(--brand-light)' : 'transparent', color: active ? 'var(--brand)' : 'var(--text2)', border: '1px solid ' + (active ? 'var(--brand)' : 'var(--border)'), fontWeight: active ? 700 : 500, transition: 'all 0.2s', fontFamily: 'var(--font1)', fontSize: '0.95rem' }
                   }, ['A','B','C','D'][oi] + '. ' + opt);
                 })
               )
             ) : (
-              React.createElement('div', { style: { display: 'grid', gridTemplateColumns: 'repeat(2,1fr)', gap: '6px' } },
+              React.createElement('div', { style: { display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '10px' } },
                 (q.options || []).map(function(opt, oi) {
                   var vals = [3,2,1,0];
                   var active = answers[q.id] === vals[oi];
                   return React.createElement('button', {
                     key: oi, type: 'button',
                     onClick: function() { setAnswers(function(p) { var n = Object.assign({}, p); n[q.id] = vals[oi]; return n; }); },
-                    style: { padding: '0.55rem', borderRadius: '10px', border: 'none', cursor: 'pointer', background: active ? 'rgba(108,99,255,0.2)' : 'var(--glass)', color: active ? 'var(--purple-light)' : 'var(--text2)', border: active ? '2px solid rgba(108,99,255,0.4)' : '1px solid var(--border)', fontWeight: 600, transition: 'all 0.2s', fontFamily: 'var(--font2)', fontSize: '0.85rem' }
+                    style: { padding: '0.75rem', borderRadius: '12px', cursor: 'pointer', background: active ? 'var(--brand-light)' : 'transparent', color: active ? 'var(--brand)' : 'var(--text2)', border: '1px solid ' + (active ? 'var(--brand)' : 'var(--border)'), fontWeight: 700, transition: 'all 0.2s', fontFamily: 'var(--font1)', fontSize: '0.9rem', textAlign: 'center' }
                   }, opt);
                 })
               )
@@ -207,48 +213,50 @@ export default function TestPage() {
           );
         }),
 
-        React.createElement('button', { onClick: submitTest, disabled: loading, className: 'btn btn-p', style: { width: '100%', justifyContent: 'center', padding: '1rem', fontSize: '1rem', marginTop: '0.5rem' } },
-          loading ? '⏳ Submitting...' : '✅ Submit Test'
+        React.createElement('button', { onClick: submitTest, disabled: loading, className: 'btn btn-p', style: { width: '100%', justifyContent: 'center', padding: '1rem', fontSize: '1.1rem', marginTop: '1rem', boxShadow: 'var(--shadow-lg)' } },
+          loading ? 'Submitting Answers...' : 'Submit Assessment ✓'
         )
       )
     );
   }
 
   /* RESULT */
-  return React.createElement('div', { style: { paddingTop: '80px', minHeight: '100vh', padding: '5rem 1.5rem 2rem' } },
-    React.createElement('div', { style: { maxWidth: '580px', margin: '0 auto', textAlign: 'center' } },
-      React.createElement('div', { style: { fontSize: '4rem', marginBottom: '1rem', animation: 'scaleIn 0.5s ease' } }, '🎉'),
-      React.createElement('h1', { style: { fontFamily: 'var(--font1)', fontWeight: 900, fontSize: '2rem', marginBottom: '8px' } }, 'Test ', React.createElement('span', { className: 'gt' }, 'Complete!')),
+  return React.createElement('div', { style: { paddingTop: '80px', minHeight: '100vh', padding: '100px 1.5rem 2rem' } },
+    React.createElement('div', { style: { maxWidth: '640px', margin: '0 auto', textAlign: 'center' } },
+      React.createElement('div', { style: { fontSize: '4.5rem', marginBottom: '1.5rem' } }, '🎯'),
+      React.createElement('h1', { style: { fontFamily: 'var(--font1)', fontWeight: 800, fontSize: '2rem', marginBottom: '12px', color: 'var(--text)' } }, 'Test ', React.createElement('span', { className: 'gt' }, 'Complete!')),
+      React.createElement('p', { style: { color: 'var(--text3)', fontSize: '1.1rem', marginBottom: '2.5rem' } }, 'Your performance has been evaluated by our AI'),
 
-      result && React.createElement('div', { className: 'card', style: { margin: '1.5rem 0', background: 'var(--grad-card)' } },
-        React.createElement('div', { className: 'gt', style: { fontSize: '3.5rem', fontFamily: 'var(--font1)', fontWeight: 900, marginBottom: '4px' } }, result.percentage + '%'),
-        React.createElement('div', { style: { color: 'var(--text2)', marginBottom: '1rem' } }, 'Score: ' + result.totalCorrect + '/' + result.totalQuestions),
+      result && React.createElement('div', { className: 'card', style: { margin: '0 0 2.5rem', padding: '3rem 2rem', background: 'var(--bg-card)', border: '1px solid var(--border)', boxShadow: 'var(--shadow2)' } },
+        React.createElement('div', { className: 'gt', style: { fontSize: '4.5rem', fontFamily: 'var(--font1)', fontWeight: 800, marginBottom: '8px' } }, result.percentage + '%'),
+        React.createElement('div', { style: { color: 'var(--text2)', marginBottom: '2rem', fontWeight: 600, fontSize: '1.1rem' } }, result.totalCorrect + ' Correct / ' + result.totalQuestions + ' Total'),
 
         result.subjectWise && Object.keys(result.subjectWise).length > 0 && React.createElement('div', null,
-          React.createElement('div', { style: { fontWeight: 700, marginBottom: '0.75rem', fontFamily: 'var(--font1)', textAlign: 'left' } }, 'Subject-wise:'),
+          React.createElement('div', { style: { fontWeight: 800, marginBottom: '1.25rem', fontFamily: 'var(--font1)', textAlign: 'left', color: 'var(--text)', fontSize: '0.95rem', textTransform: 'uppercase', letterSpacing: '0.05em' } }, 'Subject Performance'),
           Object.entries(result.subjectWise).map(function(entry) {
             var subj = entry[0];
             var score = entry[1];
-            var c = score >= 70 ? '#43E97B' : score >= 40 ? '#FFD93D' : '#FF6584';
-            return React.createElement('div', { key: subj, style: { marginBottom: '0.6rem' } },
-              React.createElement('div', { style: { display: 'flex', justifyContent: 'space-between', marginBottom: '4px', fontSize: '0.88rem' } },
-                React.createElement('span', { style: { color: 'var(--text2)', textTransform: 'capitalize' } }, subj),
-                React.createElement('span', { style: { fontWeight: 700, color: c } }, score + '%')
+            var color = score >= 75 ? 'var(--green)' : score >= 50 ? 'var(--yellow)' : 'var(--red)';
+            var lightColor = score >= 75 ? 'var(--green-light)' : score >= 50 ? 'var(--yellow-light)' : 'var(--red-light)';
+            return React.createElement('div', { key: subj, style: { marginBottom: '1.25rem' } },
+              React.createElement('div', { style: { display: 'flex', justifyContent: 'space-between', marginBottom: '8px', fontSize: '0.95rem' } },
+                React.createElement('span', { style: { color: 'var(--text)', fontWeight: 700, textTransform: 'capitalize' } }, subj),
+                React.createElement('span', { style: { fontWeight: 800, color: color } }, score + '%')
               ),
-              React.createElement('div', { className: 'pbar' },
-                React.createElement('div', { style: { height: '100%', width: score + '%', background: c, borderRadius: '3px', transition: 'width 0.5s ease' } })
+              React.createElement('div', { className: 'pbar', style: { height: '10px', background: 'var(--bg)' } },
+                React.createElement('div', { style: { height: '100%', width: score + '%', background: color, borderRadius: '10px', transition: 'width 1s cubic-bezier(0.4, 0, 0.2, 1)', boxShadow: '0 0 10px ' + lightColor } })
               )
             );
           })
         )
       ),
 
-      React.createElement('div', { style: { display: 'flex', gap: '0.75rem', justifyContent: 'center', flexWrap: 'wrap' } },
+      React.createElement('div', { style: { display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' } },
         React.createElement('button', {
           onClick: function() { setPhase('setup'); setResult(null); setAnswers({}); },
-          className: 'btn btn-g'
-        }, 'Take Another Test'),
-        React.createElement('a', { href: '/predict', className: 'btn btn-p' }, 'Get AI Prediction →')
+          className: 'btn btn-o', style: { padding: '0.9rem 1.5rem' }
+        }, 'Try Another Domain'),
+        React.createElement('a', { href: '/predict', className: 'btn btn-p', style: { padding: '0.9rem 1.5rem' } }, 'See AI Career Path →')
       )
     )
   );

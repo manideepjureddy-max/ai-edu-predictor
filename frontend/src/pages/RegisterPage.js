@@ -53,116 +53,113 @@ export default function RegisterPage() {
 
   return (
     React.createElement('div', {
-      style: { minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--bg)', padding: '2rem', position: 'relative', overflow: 'hidden' }
+      style: { minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--bg)', padding: '2rem' }
     },
-      React.createElement('div', { className: 'orb', style: { position: 'fixed', width: '500px', height: '500px', top: '-200px', right: '-200px', background: 'rgba(108,99,255,0.12)' } }),
-      React.createElement('div', { className: 'orb', style: { position: 'fixed', width: '400px', height: '400px', bottom: '-200px', left: '-100px', background: 'rgba(255,101,132,0.1)' } }),
-
-      React.createElement('div', { className: 'asi', style: { width: '100%', maxWidth: '460px', position: 'relative', zIndex: 1 } },
+      React.createElement('div', { className: 'asi', style: { width: '100%', maxWidth: '440px', position: 'relative', zIndex: 1 } },
         /* Header */
         React.createElement('div', { style: { textAlign: 'center', marginBottom: '1.5rem' } },
           React.createElement(Link, { to: '/', style: { textDecoration: 'none' } },
-            React.createElement('div', { style: { width: '54px', height: '54px', borderRadius: '16px', margin: '0 auto 1rem', background: 'linear-gradient(135deg,#6C63FF,#FF6584)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.8rem', fontWeight: 900, color: 'white', fontFamily: 'var(--font1)', boxShadow: '0 8px 30px rgba(108,99,255,0.4)' } }, 'E')
+            React.createElement('div', { style: { width: '48px', height: '48px', borderRadius: '12px', margin: '0 auto 1rem', background: 'var(--brand)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.5rem', fontWeight: 800, color: 'white', fontFamily: 'var(--font1)', boxShadow: 'var(--shadow)' } }, 'E')
           ),
-          React.createElement('h1', { style: { fontFamily: 'var(--font1)', fontWeight: 800, fontSize: '1.8rem', marginBottom: '4px' } }, 'Create account 🚀'),
-          React.createElement('p', { style: { color: 'var(--text2)', fontSize: '0.88rem' } }, 'Step ' + step + ' of 3 — ' + ['Personal Info','Education Level','Complete'][step - 1])
+          React.createElement('h1', { style: { fontFamily: 'var(--font1)', fontWeight: 800, fontSize: '1.75rem', marginBottom: '4px', color: 'var(--text)' } }, 'Join EduPath 🚀'),
+          React.createElement('p', { style: { color: 'var(--text3)', fontSize: '0.9rem', fontWeight: 500 } }, 'Step ' + step + ' of 3 — ' + ['Account Info', 'Your Level', 'Review'][step - 1])
         ),
 
         /* Progress */
-        React.createElement('div', { className: 'pbar', style: { marginBottom: '1.5rem' } },
-          React.createElement('div', { className: 'pfill', style: { width: pct + '%' } })
+        React.createElement('div', { className: 'pbar', style: { marginBottom: '1.5rem', height: '6px' } },
+          React.createElement('div', { className: 'pfill', style: { width: pct + '%', background: 'var(--brand)' } })
         ),
 
-        React.createElement('div', { style: { background: 'var(--bg-card)', border: '1px solid var(--border)', borderRadius: 'var(--r4)', padding: '2rem' } },
+        React.createElement('div', { style: { background: 'var(--bg-card)', border: '1px solid var(--border)', borderRadius: 'var(--r3)', padding: '2rem', boxShadow: 'var(--shadow2)' } },
 
           /* STEP 1 */
           step === 1 && React.createElement('div', null,
             [
-              ['name', 'text', 'Full Name *', 'Your full name'],
-              ['email', 'email', 'Email Address *', 'student@email.com']
+              ['name', 'text', 'Full Name *', 'John Doe'],
+              ['email', 'email', 'Email Address *', 'john@example.com']
             ].map(function(f) {
-              return React.createElement('div', { key: f[0], style: { marginBottom: '1.1rem' } },
-                React.createElement('label', { style: { display: 'block', fontSize: '0.88rem', fontWeight: 600, marginBottom: '6px', color: 'var(--text2)' } }, f[2]),
+              return React.createElement('div', { key: f[0], style: { marginBottom: '1.25rem' } },
+                React.createElement('label', { style: { display: 'block', fontSize: '0.85rem', fontWeight: 600, marginBottom: '6px', color: 'var(--text2)' } }, f[2]),
                 React.createElement('input', { type: f[1], placeholder: f[3], value: form[f[0]], onChange: upd(f[0]), className: 'inp' })
               );
             }),
-            React.createElement('div', { style: { marginBottom: '1.1rem' } },
-              React.createElement('label', { style: { display: 'block', fontSize: '0.88rem', fontWeight: 600, marginBottom: '6px', color: 'var(--text2)' } }, 'Password *'),
-              React.createElement('input', { type: 'password', placeholder: 'Min 6 characters', value: form.password, onChange: upd('password'), className: 'inp' })
+            React.createElement('div', { style: { marginBottom: '1.25rem' } },
+              React.createElement('label', { style: { display: 'block', fontSize: '0.85rem', fontWeight: 600, marginBottom: '6px', color: 'var(--text2)' } }, 'Password *'),
+              React.createElement('input', { type: 'password', placeholder: '••••••••', value: form.password, onChange: upd('password'), className: 'inp' })
             ),
-            React.createElement('div', { style: { marginBottom: '1.5rem' } },
-              React.createElement('label', { style: { display: 'block', fontSize: '0.88rem', fontWeight: 600, marginBottom: '6px', color: 'var(--text2)' } }, 'Confirm Password *'),
-              React.createElement('input', { type: 'password', placeholder: 'Repeat password', value: form.confirm, onChange: upd('confirm'), className: 'inp' })
+            React.createElement('div', { style: { marginBottom: '1.75rem' } },
+              React.createElement('label', { style: { display: 'block', fontSize: '0.85rem', fontWeight: 600, marginBottom: '6px', color: 'var(--text2)' } }, 'Confirm Password *'),
+              React.createElement('input', { type: 'password', placeholder: '••••••••', value: form.confirm, onChange: upd('confirm'), className: 'inp' })
             ),
-            React.createElement('button', { onClick: nextStep, className: 'btn btn-p', style: { width: '100%', justifyContent: 'center' } }, 'Next Step →')
+            React.createElement('button', { onClick: nextStep, className: 'btn btn-p', style: { width: '100%', justifyContent: 'center', padding: '0.85rem' } }, 'Continue →')
           ),
 
           /* STEP 2 */
           step === 2 && React.createElement('div', null,
-            React.createElement('p', { style: { color: 'var(--text2)', marginBottom: '1.25rem', fontSize: '0.9rem' } }, 'Select your current education level'),
+            React.createElement('p', { style: { color: 'var(--text2)', marginBottom: '1.25rem', fontSize: '0.9rem', textAlign: 'center' } }, 'Select your current education level'),
             EDU_OPTIONS.map(function(opt) {
               var active = form.educationLevel === opt.value;
               return React.createElement('div', {
                 key: opt.value,
                 onClick: function() { setForm(function(p) { return Object.assign({}, p, { educationLevel: opt.value }); }); },
-                style: { padding: '1rem 1.25rem', borderRadius: 'var(--r2)', border: '2px solid ' + (active ? '#6C63FF' : 'var(--border)'), background: active ? 'rgba(108,99,255,0.1)' : 'var(--glass)', cursor: 'pointer', transition: 'all 0.2s', display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '0.75rem' }
+                style: { padding: '1rem', borderRadius: 'var(--r2)', border: '2px solid ' + (active ? 'var(--brand)' : 'var(--border)'), background: active ? 'var(--brand-light)' : 'var(--bg-card)', cursor: 'pointer', transition: 'all 0.2s', display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '0.75rem' }
               },
-                React.createElement('span', { style: { fontSize: '1.8rem' } }, opt.emoji),
+                React.createElement('span', { style: { fontSize: '1.5rem' } }, opt.emoji),
                 React.createElement('div', { style: { flex: 1 } },
-                  React.createElement('div', { style: { fontWeight: 700, fontFamily: 'var(--font1)' } }, opt.label),
-                  React.createElement('div', { style: { color: 'var(--text3)', fontSize: '0.8rem' } }, opt.desc)
+                  React.createElement('div', { style: { fontWeight: 700, fontFamily: 'var(--font1)', fontSize: '0.95rem', color: active ? 'var(--brand)' : 'var(--text)' } }, opt.label),
+                  React.createElement('div', { style: { color: 'var(--text2)', fontSize: '0.75rem' } }, opt.desc)
                 ),
-                active && React.createElement('span', { style: { color: '#6C63FF', fontSize: '1.2rem' } }, '✓')
+                active && React.createElement('span', { style: { color: 'var(--brand)', fontSize: '1rem' } }, '✓')
               );
             }),
-            (form.educationLevel === 'intermediate' || form.educationLevel === 'btech') && React.createElement('div', { style: { marginBottom: '1.25rem' } },
-              React.createElement('label', { style: { display: 'block', fontSize: '0.88rem', fontWeight: 600, marginBottom: '8px', color: 'var(--text2)' } }, 'Current Stream (optional)'),
-              React.createElement('div', { style: { display: 'flex', flexWrap: 'wrap', gap: '6px' } },
+            (form.educationLevel === 'intermediate' || form.educationLevel === 'btech') && React.createElement('div', { style: { marginBottom: '1.5rem', marginTop: '1rem' } },
+              React.createElement('label', { style: { display: 'block', fontSize: '0.85rem', fontWeight: 600, marginBottom: '8px', color: 'var(--text2)' } }, 'Current Stream'),
+              React.createElement('div', { style: { display: 'flex', flexWrap: 'wrap', gap: '8px' } },
                 (STREAMS[form.educationLevel] || []).map(function(s) {
                   var active = form.currentStream === s;
                   return React.createElement('button', {
                     key: s, type: 'button',
                     onClick: function() { setForm(function(p) { return Object.assign({}, p, { currentStream: s }); }); },
-                    style: { padding: '0.4rem 0.9rem', borderRadius: '999px', border: 'none', cursor: 'pointer', background: active ? 'rgba(108,99,255,0.25)' : 'var(--glass)', color: active ? 'var(--purple-light)' : 'var(--text2)', border: active ? '1px solid rgba(108,99,255,0.4)' : '1px solid var(--border)', fontWeight: 600, fontSize: '0.82rem', transition: 'all 0.2s' }
+                    style: { padding: '0.4rem 0.8rem', borderRadius: 'var(--r)', border: '1px solid ' + (active ? 'var(--brand)' : 'var(--border)'), cursor: 'pointer', background: active ? 'var(--brand)' : 'transparent', color: active ? 'white' : 'var(--text2)', fontWeight: 600, fontSize: '0.8rem', transition: 'all 0.2s' }
                   }, s);
                 })
               )
             ),
-            React.createElement('div', { style: { display: 'flex', gap: '8px' } },
-              React.createElement('button', { onClick: function() { setStep(1); }, className: 'btn btn-g', style: { flex: 1, justifyContent: 'center' } }, '← Back'),
-              React.createElement('button', { onClick: nextStep, className: 'btn btn-p', style: { flex: 2, justifyContent: 'center' } }, 'Next →')
+            React.createElement('div', { style: { display: 'flex', gap: '10px' } },
+              React.createElement('button', { onClick: function() { setStep(1); }, className: 'btn btn-o', style: { flex: 1, padding: '0.8rem' } }, 'Back'),
+              React.createElement('button', { onClick: nextStep, className: 'btn btn-p', style: { flex: 2, padding: '0.8rem' } }, 'Next')
             )
           ),
 
           /* STEP 3 */
           step === 3 && React.createElement('div', null,
-            React.createElement('div', { style: { marginBottom: '1.1rem' } },
-              React.createElement('label', { style: { display: 'block', fontSize: '0.88rem', fontWeight: 600, marginBottom: '6px', color: 'var(--text2)' } }, 'School / College Name'),
-              React.createElement('input', { type: 'text', placeholder: 'e.g. Sri Chaitanya Junior College', value: form.school, onChange: upd('school'), className: 'inp' })
+            React.createElement('div', { style: { marginBottom: '1.25rem' } },
+              React.createElement('label', { style: { display: 'block', fontSize: '0.85rem', fontWeight: 600, marginBottom: '6px', color: 'var(--text2)' } }, 'School / College Name'),
+              React.createElement('input', { type: 'text', placeholder: 'Enter your school name', value: form.school, onChange: upd('school'), className: 'inp' })
             ),
-            React.createElement('div', { style: { marginBottom: '1.5rem' } },
-              React.createElement('label', { style: { display: 'block', fontSize: '0.88rem', fontWeight: 600, marginBottom: '6px', color: 'var(--text2)' } }, 'City'),
-              React.createElement('input', { type: 'text', placeholder: 'e.g. Hyderabad, Vijayawada', value: form.city, onChange: upd('city'), className: 'inp' })
+            React.createElement('div', { style: { marginBottom: '1.75rem' } },
+              React.createElement('label', { style: { display: 'block', fontSize: '0.85rem', fontWeight: 600, marginBottom: '6px', color: 'var(--text2)' } }, 'City'),
+              React.createElement('input', { type: 'text', placeholder: 'Enter your city', value: form.city, onChange: upd('city'), className: 'inp' })
             ),
-            React.createElement('div', { style: { padding: '1rem', background: 'rgba(67,233,123,0.07)', borderRadius: 'var(--r2)', border: '1px solid rgba(67,233,123,0.2)', marginBottom: '1.5rem' } },
-              React.createElement('div', { style: { fontWeight: 700, marginBottom: '6px', color: '#43E97B', fontSize: '0.9rem' } }, '✅ Account Summary'),
-              React.createElement('div', { style: { color: 'var(--text2)', fontSize: '0.85rem', lineHeight: 1.9 } },
+            React.createElement('div', { style: { padding: '1rem', background: 'var(--bg-card2)', borderRadius: 'var(--r2)', border: '1px solid var(--border)', marginBottom: '1.75rem' } },
+              React.createElement('div', { style: { fontWeight: 700, marginBottom: '8px', color: 'var(--brand)', fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.05em' } }, 'Summary'),
+              React.createElement('div', { style: { color: 'var(--text2)', fontSize: '0.875rem', lineHeight: 1.8 } },
                 React.createElement('div', null, '👤 ' + form.name),
                 React.createElement('div', null, '📧 ' + form.email),
-                React.createElement('div', null, '🎓 ' + form.educationLevel + (form.currentStream ? ' → ' + form.currentStream : ''))
+                React.createElement('div', null, '🎓 ' + form.educationLevel + (form.currentStream ? ' • ' + form.currentStream : ''))
               )
             ),
-            React.createElement('div', { style: { display: 'flex', gap: '8px' } },
-              React.createElement('button', { onClick: function() { setStep(2); }, className: 'btn btn-g', style: { flex: 1, justifyContent: 'center' } }, '← Back'),
-              React.createElement('button', { onClick: handleSubmit, className: 'btn btn-p', disabled: loading, style: { flex: 2, justifyContent: 'center' } },
-                loading ? '⏳ Creating...' : 'Create Account 🎉'
+            React.createElement('div', { style: { display: 'flex', gap: '10px' } },
+              React.createElement('button', { onClick: function() { setStep(2); }, className: 'btn btn-o', style: { flex: 1, padding: '0.8rem' } }, 'Back'),
+              React.createElement('button', { onClick: handleSubmit, className: 'btn btn-p', disabled: loading, style: { flex: 2, padding: '0.8rem' } },
+                loading ? 'Creating...' : 'Create Account 🎉'
               )
             )
           ),
 
-          React.createElement('p', { style: { textAlign: 'center', marginTop: '1.5rem', color: 'var(--text2)', fontSize: '0.9rem' } },
+          React.createElement('p', { style: { textAlign: 'center', marginTop: '1.75rem', color: 'var(--text2)', fontSize: '0.875rem', fontWeight: 500 } },
             'Already have an account? ',
-            React.createElement(Link, { to: '/login', style: { color: 'var(--purple-light)', textDecoration: 'none', fontWeight: 600 } }, 'Login →')
+            React.createElement(Link, { to: '/login', style: { color: 'var(--brand)', textDecoration: 'none', fontWeight: 700 } }, 'Login')
           )
         )
       )
