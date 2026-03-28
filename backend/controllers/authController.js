@@ -2,8 +2,59 @@ const bcrypt  = require('bcryptjs');
 const jwt     = require('jsonwebtoken');
 const { OAuth2Client } = require('google-auth-library');
 const db      = require('../config/db');
+const nodemailer = require('nodemailer');
 
 const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
+const otps = {}; // In-memory OTP store for email verification
+
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS
+  }
+});
+
+exports.sendOTP = async (req, res) => {
+  const { email } = req.body;
+  if (!email) return res.status(400).json({ error: 'Email is required' });
+  
+  try {
+    const exists = await db.query('SELECT id FROM users WHERE email = $1', [email.toLowerCase()]);
+    if (exists.rows.length) return res.status(400).json({ error: 'Email is already registered' });
+  } catch(e) {}
+
+  const otp = Math.floor(100000 + Math.random() * 900000).toString();
+  otps[email.toLowerCase()] = { otp, expires: Date.now() + 10 * 60000, verified: false };
+
+  try {
+    if (process.env.EMAIL_USER && process.env.EMAIL_PASS) {
+      await transporter.sendMail({
+        from: process.env.EMAIL_USER,
+        to: email,
+        subject: 'EduPath - Verify your email',
+        text: `Your OTP for EduPath registration is: ${otp}. It expires in 10 minutes.`
+      });
+    } else {
+      console.log('--- NO SMTP CREDENTIALS --- OTP for ' + email + ' is ' + otp + ' ---');
+    }
+    res.json({ success: true, message: 'OTP sent successfully' });
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to send OTP email: ' + err.message });
+  }
+};
+
+exports.verifyOTP = async (req, res) => {
+  const { email, otp } = req.body;
+  if (!email || !otp) return res.status(400).json({ error: 'Email and OTP required' });
+  const record = otps[email.toLowerCase()];
+  if (!record) return res.status(400).json({ error: 'No OTP requested for this email' });
+  if (Date.now() > record.expires) return res.status(400).json({ error: 'OTP expired' });
+  if (record.otp !== otp) return res.status(400).json({ error: 'Invalid OTP' });
+  
+  record.verified = true;
+  res.json({ success: true, message: 'Email verified successfully' });
+};
 
 const genToken = (id) =>
   jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXPIRE || '30d' });
@@ -14,6 +65,12 @@ exports.register = async (req, res) => {
 
   if (!name || !email || !password || !educationLevel)
     return res.status(400).json({ error: 'name, email, password, educationLevel are required' });
+
+  // ONLY ALLOW IF VERIFIED VIA OTP
+  const record = otps[email.toLowerCase()];
+  if (!record || !record.verified) {
+    return res.status(400).json({ error: 'Please verify your email via OTP before registering' });
+  }
 
   try {
     // duplicate check

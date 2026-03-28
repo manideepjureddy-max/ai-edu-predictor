@@ -17,7 +17,7 @@ const getAIRecommendation = async (educationLevel, domain, answers, rawKeys) => 
 
   try {
 
-    const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+    const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
     const prompt = `
 You are an expert academic counselor for Indian students.
 Based on the student's interest assessment, select the BEST educational/career roadmap from the provided list.
@@ -31,8 +31,9 @@ AVAILABLE ROADMAPS (Keys):
 ${roadmapKeys.join(', ')}
 
 DIRECTIONS:
-1. Analyze the answers to understand the student's strengths and interests.
-2. Select the most relevant roadmap key from the list above.
+1. Analyze the answers to understand the student's highest strengths and specific interests.
+2. Select the most relevant roadmap key from the list above. 
+CRITICAL RULE: Do NOT default to AI (Artificial Intelligence) or CSE just because it is popular. If their highest scores/positive answers are in Mechanical/Physics, strictly choose the MECH roadmap. If Civil/Architecture, choose Civil/BArch. If Electronics, choose ECE. ONLY predict AI, Data Science, or CSE if they specifically answered positively about AI or Coding!
 3. Provide a friendly 3-4 sentence explanation for this recommendation.
 4. Output your response ONLY as a JSON object with this exact structure:
 {
@@ -48,7 +49,12 @@ DIRECTIONS:
     const text = result.response.text();
     const match = text.match(/\{[\s\S]*\}/);
     if (match) {
-      return JSON.parse(match[0]);
+      const parsed = JSON.parse(match[0]);
+      if (!roadmapKeys.includes(parsed.roadmapKey)) {
+        console.warn('AI hallucinated invalid key:', parsed.roadmapKey, 'forcing heuristic fallback.');
+        throw new Error('AI hallucinated invalid key');
+      }
+      return parsed;
     }
     throw new Error('Invalid AI response');
   } catch (err) {
@@ -86,15 +92,15 @@ DIRECTIONS:
         const s = a.score || 1;
         const sub = (a.subject || '').toLowerCase();
         
-        if (sub === 'coding') { scores.BTech_CSE += s*3; scores.BTech_AI += s*2; scores.BTech_IT += s*2; scores.BCA += s*2; }
-        if (sub === 'ai') { scores.BTech_AI += s*3; scores.BTech_AIDS += s*3; scores.BTech_DataScience += s*2; }
-        if (sub === 'data') { scores.BTech_DataScience += s*3; scores.BTech_AIDS += s*2; }
-        if (sub === 'electronics') { scores.BTech_ECE += s*3; scores.BTech_ECM += s*2; scores.BTech_EEE += s*2; }
-        if (sub === 'electrical') { scores.BTech_EEE += s*3; }
-        if (sub === 'mechanical' || sub === 'machines') { scores.BTech_MECH += s*3; }
-        if (sub === 'civil' || sub === 'construction') { scores.BTech_Civil += s*3; scores.BArch += s*2; }
-        if (sub === 'security') { scores.BTech_CyberSecurity += s*3; }
-        if (sub === 'hardware' || sub === 'embedded') { scores.BTech_ECM += s*3; scores.BTech_ECE += s*2; }
+        if (sub === 'coding') { scores.BTech_CSE += s*4; scores.BTech_IT += s*3; scores.BCA += s*2; scores.BTech_AI += s*1; }
+        if (sub === 'ai') { scores.BTech_AI += s*4; scores.BTech_AIDS += s*3; scores.BTech_DataScience += s*1; }
+        if (sub === 'data') { scores.BTech_DataScience += s*4; scores.BTech_AIDS += s*2; }
+        if (sub === 'electronics') { scores.BTech_ECE += s*4; scores.BTech_ECM += s*2; scores.BTech_EEE += s*2; }
+        if (sub === 'electrical' || sub === 'power') { scores.BTech_EEE += s*4; }
+        if (sub === 'mechanical' || sub === 'machines' || sub === 'physics') { scores.BTech_MECH += s*4; }
+        if (sub === 'civil' || sub === 'construction') { scores.BTech_Civil += s*4; scores.BArch += s*2; }
+        if (sub === 'security') { scores.BTech_CyberSecurity += s*4; }
+        if (sub === 'hardware' || sub === 'embedded') { scores.BTech_ECM += s*4; scores.BTech_ECE += s*2; }
         
         if (sub === 'biology' || sub === 'anatomy' || sub === 'medical') { scores.Med_MBBS += s*3; scores.BPharm += s*2; scores.BSc_Ag += s; scores.BSc_Nursing += s*2; scores.Med_BDS += s*2; scores.BTech_Biotech += s*2;}
         if (sub === 'biotech' || sub === 'research') { scores.BTech_Biotech += s*3; }
@@ -186,6 +192,8 @@ DIRECTIONS:
     if (!finalKey) {
       if (educationLevel === '10th') finalKey = '10th_to_MPC';
       else if (educationLevel === 'intermediate') finalKey = 'Inter_to_BTech_CSE';
+      else if (educationLevel === 'mbbs') finalKey = 'MBBS_to_GeneralPhysician';
+      else if (educationLevel === 'barch') finalKey = 'Degree_to_Architect';
       else finalKey = 'BTech_to_SoftwareDeveloper';
     }
 
@@ -294,7 +302,7 @@ exports.predictFromAptitude = async (req, res) => {
 /* ── AI Analysis helper (kept for aptitude or simple fallback) ── */
 async function geminiAnalysis(recommended, confidence, alternatives, educationLevel, domain) {
   try {
-    const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+    const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
     const result = await model.generateContent(
       `You are an expert academic counselor for Indian students.
 A ${educationLevel} student's assessment result for ${domain}:
@@ -322,7 +330,11 @@ exports.getSavedPredictions = async (req, res) => {
        FROM predictions WHERE user_id = $1 ORDER BY created_at DESC LIMIT 20`,
       [req.user.id]
     );
-    res.json({ success: true, predictions: rows });
+    const parsedRows = rows.map(r => ({
+      ...r,
+      roadmap: typeof r.roadmap === 'string' ? JSON.parse(r.roadmap) : r.roadmap
+    }));
+    res.json({ success: true, predictions: parsedRows });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -350,7 +362,7 @@ exports.getPredictionById = async (req, res) => {
           confidenceScore:    p.confidence_score,
           alternativeOptions: p.alternative_options || [],
           aiAnalysis:         p.ai_analysis,
-          roadmap:            p.roadmap,
+          roadmap:            typeof p.roadmap === 'string' ? JSON.parse(p.roadmap) : p.roadmap,
         },
       },
     });
@@ -363,7 +375,7 @@ exports.getPredictionById = async (req, res) => {
 exports.chatWithAI = async (req, res) => {
   try {
     const { message, context } = req.body;
-    const model  = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+    const model  = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
     const result = await model.generateContent(
       `You are EduBot, a friendly AI academic counselor for Indian students.
 Context: ${JSON.stringify(context || {})}

@@ -156,8 +156,9 @@ export default function ResultPage() {
                 React.createElement('div', { style: { fontWeight: 800, fontFamily: 'var(--font1)', marginBottom: '8px', color: 'var(--brand)', fontSize: '1rem' } },
                   step.phase || step.sem || ('Phase ' + (i + 1))
                 ),
-                step.tasks && React.createElement('ul', { style: { paddingLeft: '1.2rem', color: 'var(--text2)', fontSize: '0.92rem', lineHeight: 1.8 } },
-                  step.tasks.map(function(t, j) { return React.createElement('li', { key: j }, t); })
+                step.focus && React.createElement('div', { style: { color: 'var(--text)', fontWeight: 600, fontSize: '0.9rem', marginBottom: '8px' } }, 'Focus: ' + step.focus),
+                (step.tasks || step.subjects) && React.createElement('ul', { style: { paddingLeft: '1.2rem', color: 'var(--text2)', fontSize: '0.92rem', lineHeight: 1.8 } },
+                  (step.tasks || step.subjects).map(function(t, j) { return React.createElement('li', { key: j }, t); })
                 )
               )
             );

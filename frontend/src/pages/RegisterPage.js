@@ -3,11 +3,14 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { GoogleLogin } from '@react-oauth/google';
 import toast from 'react-hot-toast';
+import { INDIAN_CITIES, BTECH_COLLEGES, MBBS_COLLEGES, BARCH_COLLEGES, SCHOOLS_10TH, INTER_COLLEGES } from '../data/constants';
 
 var EDU_OPTIONS = [
   { value: '10th', label: '10th Class', emoji: '📖', desc: 'Choosing Intermediate stream' },
   { value: 'intermediate', label: 'Intermediate', emoji: '🎒', desc: 'Choosing B.Tech branch' },
-  { value: 'btech', label: 'B.Tech', emoji: '🎓', desc: 'Choosing Career Path' }
+  { value: 'btech', label: 'B.Tech', emoji: '🎓', desc: 'Choosing Career Path' },
+  { value: 'mbbs', label: 'MBBS', emoji: '⚕️', desc: 'Choosing Specialization' },
+  { value: 'barch', label: 'B.Arch', emoji: '🏛️', desc: 'Choosing Career Path' }
 ];
 
 var STREAMS = {
@@ -20,7 +23,44 @@ export default function RegisterPage() {
   var nav = useNavigate();
   var [step, setStep] = useState(1);
   var [loading, setLoading] = useState(false);
+  var [otpMode, setOtpMode] = useState(false);
+  var [otpVal, setOtpVal] = useState('');
+  var [emailVerified, setEmailVerified] = useState(false);
   var [form, setForm] = useState({ name: '', email: '', password: '', confirm: '', educationLevel: '', currentStream: '', school: '', city: '' });
+
+  async function sendOtp() {
+    if (!form.email) return toast.error('Enter email first');
+    setLoading(true);
+    try {
+      var r = await fetch('http://localhost:5000/api/auth/send-otp', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: form.email })
+      });
+      var d = await r.json();
+      if (!r.ok) throw new Error(d.error);
+      toast.success(d.message);
+      setOtpMode(true);
+      setOtpVal('');
+    } catch (e) { toast.error(e.message); }
+    setLoading(false);
+  }
+
+  async function verifyOtp() {
+    if (!otpVal) return toast.error('Enter OTP');
+    setLoading(true);
+    try {
+      var r = await fetch('http://localhost:5000/api/auth/verify-otp', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: form.email, otp: otpVal })
+      });
+      var d = await r.json();
+      if (!r.ok) throw new Error(d.error);
+      toast.success(d.message);
+      setEmailVerified(true);
+      setOtpMode(false);
+    } catch (e) { toast.error(e.message); }
+    setLoading(false);
+  }
 
   function upd(k) {
     return function(e) { setForm(function(p) { var n = Object.assign({}, p); n[k] = e.target.value; return n; }); };
@@ -29,6 +69,7 @@ export default function RegisterPage() {
   function nextStep() {
     if (step === 1) {
       if (!form.name || !form.email || !form.password) { toast.error('Fill all required fields'); return; }
+      if (!emailVerified) { toast.error('Please verify your email via OTP to continue'); return; }
       if (form.password !== form.confirm) { toast.error('Passwords do not match'); return; }
       if (form.password.length < 6) { toast.error('Password min 6 characters'); return; }
     }
@@ -105,15 +146,27 @@ export default function RegisterPage() {
 
           /* STEP 1 */
           step === 1 && React.createElement('div', null,
-            [
-              ['name', 'text', 'Full Name *', 'John Doe'],
-              ['email', 'email', 'Email Address *', 'john@example.com']
-            ].map(function(f) {
-              return React.createElement('div', { key: f[0], style: { marginBottom: '1.25rem' } },
-                React.createElement('label', { style: { display: 'block', fontSize: '0.85rem', fontWeight: 600, marginBottom: '6px', color: 'var(--text2)' } }, f[2]),
-                React.createElement('input', { type: f[1], placeholder: f[3], value: form[f[0]], onChange: upd(f[0]), className: 'inp' })
-              );
-            }),
+            React.createElement('div', { style: { marginBottom: '1.25rem' } },
+              React.createElement('label', { style: { display: 'block', fontSize: '0.85rem', fontWeight: 600, marginBottom: '6px', color: 'var(--text2)' } }, 'Full Name *'),
+              React.createElement('input', { type: 'text', placeholder: 'John Doe', value: form.name, onChange: upd('name'), className: 'inp', disabled: emailVerified })
+            ),
+            React.createElement('div', { style: { marginBottom: '1.25rem' } },
+              React.createElement('label', { style: { display: 'block', fontSize: '0.85rem', fontWeight: 600, marginBottom: '6px', color: 'var(--text2)' } }, 'Email Address *'),
+              React.createElement('div', { style: { display: 'flex', gap: '8px' } },
+                React.createElement('input', { type: 'email', placeholder: 'john@example.com', value: form.email, onChange: upd('email'), className: 'inp', disabled: emailVerified || otpMode }),
+                !emailVerified && !otpMode && React.createElement('button', { type: 'button', onClick: sendOtp, className: 'btn btn-p', disabled: loading, style: { padding: '0 1rem', whiteSpace: 'nowrap' } }, loading ? '...' : 'Verify Email')
+              )
+            ),
+            otpMode && !emailVerified && React.createElement('div', { style: { marginBottom: '1.25rem', padding: '1rem', background: 'var(--bg-card2)', borderRadius: 'var(--r)', border: '1px solid var(--brand)' } },
+              React.createElement('label', { style: { display: 'block', fontSize: '0.85rem', fontWeight: 600, marginBottom: '6px', color: 'var(--text2)' } }, 'Enter 6-digit OTP sent to your email'),
+              React.createElement('div', { style: { display: 'flex', gap: '8px' } },
+                React.createElement('input', { type: 'text', placeholder: '123456', value: otpVal, onChange: function(e) { setOtpVal(e.target.value); }, className: 'inp' }),
+                React.createElement('button', { type: 'button', onClick: verifyOtp, className: 'btn btn-p', disabled: loading, style: { padding: '0 1rem' } }, 'Confirm')
+              ),
+              React.createElement('div', { style: { marginTop: '8px', textAlign: 'right' } },
+                React.createElement('button', { type: 'button', onClick: sendOtp, disabled: loading, style: { background: 'none', border: 'none', color: 'var(--brand)', fontSize: '0.8rem', fontWeight: 600, cursor: 'pointer', outline: 'none' } }, loading ? 'Resending...' : 'Resend OTP')
+              )
+            ),
             React.createElement('div', { style: { marginBottom: '1.25rem' } },
               React.createElement('label', { style: { display: 'block', fontSize: '0.85rem', fontWeight: 600, marginBottom: '6px', color: 'var(--text2)' } }, 'Password *'),
               React.createElement('input', { type: 'password', placeholder: '••••••••', value: form.password, onChange: upd('password'), className: 'inp' })
@@ -122,7 +175,7 @@ export default function RegisterPage() {
               React.createElement('label', { style: { display: 'block', fontSize: '0.85rem', fontWeight: 600, marginBottom: '6px', color: 'var(--text2)' } }, 'Confirm Password *'),
               React.createElement('input', { type: 'password', placeholder: '••••••••', value: form.confirm, onChange: upd('confirm'), className: 'inp' })
             ),
-            React.createElement('button', { onClick: nextStep, className: 'btn btn-p', style: { width: '100%', justifyContent: 'center', padding: '0.85rem' } }, 'Continue →')
+            React.createElement('button', { onClick: nextStep, className: 'btn btn-p', style: { width: '100%', justifyContent: 'center', padding: '0.85rem' }, disabled: !emailVerified }, emailVerified ? 'Continue →' : 'Verify Email to Continue')
           ),
 
           /* STEP 2 */
@@ -166,11 +219,21 @@ export default function RegisterPage() {
           step === 3 && React.createElement('div', null,
             React.createElement('div', { style: { marginBottom: '1.25rem' } },
               React.createElement('label', { style: { display: 'block', fontSize: '0.85rem', fontWeight: 600, marginBottom: '6px', color: 'var(--text2)' } }, 'School / College Name'),
-              React.createElement('input', { type: 'text', placeholder: 'Enter your school name', value: form.school, onChange: upd('school'), className: 'inp' })
+              React.createElement('input', { type: 'text', placeholder: 'Enter your school name', list: 'colleges-list', value: form.school, onChange: upd('school'), className: 'inp' }),
+              React.createElement('datalist', { id: 'colleges-list' },
+                (form.educationLevel === 'mbbs' ? MBBS_COLLEGES : 
+                 form.educationLevel === 'barch' ? BARCH_COLLEGES : 
+                 form.educationLevel === 'btech' ? BTECH_COLLEGES :
+                 form.educationLevel === 'intermediate' ? INTER_COLLEGES :
+                 SCHOOLS_10TH).map(function(c) { return React.createElement('option', { key: c, value: c }); })
+              )
             ),
             React.createElement('div', { style: { marginBottom: '1.75rem' } },
               React.createElement('label', { style: { display: 'block', fontSize: '0.85rem', fontWeight: 600, marginBottom: '6px', color: 'var(--text2)' } }, 'City'),
-              React.createElement('input', { type: 'text', placeholder: 'Enter your city', value: form.city, onChange: upd('city'), className: 'inp' })
+              React.createElement('input', { type: 'text', placeholder: 'Enter your city', list: 'cities-list', value: form.city, onChange: upd('city'), className: 'inp' }),
+              React.createElement('datalist', { id: 'cities-list' },
+                INDIAN_CITIES.map(function(c) { return React.createElement('option', { key: c, value: c }); })
+              )
             ),
             React.createElement('div', { style: { padding: '1rem', background: 'var(--bg-card2)', borderRadius: 'var(--r2)', border: '1px solid var(--border)', marginBottom: '1.75rem' } },
               React.createElement('div', { style: { fontWeight: 700, marginBottom: '8px', color: 'var(--brand)', fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.05em' } }, 'Summary'),
