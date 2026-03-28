@@ -1,6 +1,9 @@
 const bcrypt  = require('bcryptjs');
 const jwt     = require('jsonwebtoken');
+const { OAuth2Client } = require('google-auth-library');
 const db      = require('../config/db');
+
+const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
 const genToken = (id) =>
   jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXPIRE || '30d' });
@@ -57,6 +60,72 @@ exports.login = async (req, res) => {
     });
   } catch (err) {
     res.status(500).json({ error: err.message });
+  }
+};
+
+// POST /api/auth/google
+exports.googleLogin = async (req, res) => {
+  const { credential } = req.body;
+  
+  if (!credential) {
+    return res.status(400).json({ error: 'Google credential required' });
+  }
+
+  try {
+    const ticket = await client.verifyIdToken({
+      idToken: credential,
+      audience: process.env.GOOGLE_CLIENT_ID,
+    });
+    
+    const payload = ticket.getPayload();
+    const { sub: google_id, email, name, email_verified } = payload;
+
+    if (!email_verified) {
+      return res.status(400).json({ error: 'Google email not verified' });
+    }
+
+    // 1. Check by google_id
+    let { rows } = await db.query('SELECT * FROM users WHERE google_id = $1', [google_id]);
+    let user = rows[0];
+
+    // 2. If not found, check by email (existing account linking)
+    if (!user) {
+      const emailCheck = await db.query('SELECT * FROM users WHERE email = $1', [email.toLowerCase()]);
+      if (emailCheck.rows.length) {
+        // Link existing account
+        const update = await db.query(
+          'UPDATE users SET google_id = $1, is_email_verified = $2 WHERE email = $3 RETURNING *',
+          [google_id, true, email.toLowerCase()]
+        );
+        user = update.rows[0];
+      } else {
+        // 3. Create new user
+        // Note: they will need to fill profile later or we can provide defaults
+        const newUser = await db.query(
+          `INSERT INTO users (name, email, google_id, is_email_verified, education_level)
+           VALUES ($1, $2, $3, $4, '10th') 
+           RETURNING *`,
+          [name, email.toLowerCase(), google_id, true]
+        );
+        user = newUser.rows[0];
+      }
+    }
+
+    res.json({
+      success: true,
+      token: genToken(user.id),
+      user: {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        educationLevel: user.education_level,
+        currentStream: user.current_stream,
+        isGoogleUser: true
+      },
+    });
+  } catch (err) {
+    console.error('Google Auth Error:', err);
+    res.status(500).json({ error: 'Google authentication failed', message: err.message });
   }
 };
 

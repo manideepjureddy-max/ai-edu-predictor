@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { GoogleLogin } from '@react-oauth/google';
+import { useAuth } from '../context/AuthContext';
+import toast from 'react-hot-toast';
 
 var PHRASES = ['your future.', 'your stream.', 'your career.', 'your roadmap.'];
 
@@ -28,26 +31,28 @@ var STEPS = [
 ];
 
 export default function LandingPage() {
+  var auth = useAuth();
+  var nav = useNavigate();
   var [typed, setTyped] = useState('');
   var [phraseIdx, setPhraseIdx] = useState(0);
   var [deleting, setDeleting] = useState(false);
 
-  useEffect(function() {
+  useEffect(function () {
     var current = PHRASES[phraseIdx];
     var speed = deleting ? 50 : 100;
-    var t = setTimeout(function() {
+    var t = setTimeout(function () {
       if (!deleting && typed.length < current.length) {
         setTyped(current.slice(0, typed.length + 1));
       } else if (!deleting && typed.length === current.length) {
-        setTimeout(function() { setDeleting(true); }, 1500);
+        setTimeout(function () { setDeleting(true); }, 1500);
       } else if (deleting && typed.length > 0) {
         setTyped(current.slice(0, typed.length - 1));
       } else if (deleting && typed.length === 0) {
         setDeleting(false);
-        setPhraseIdx(function(p) { return (p + 1) % PHRASES.length; });
+        setPhraseIdx(function (p) { return (p + 1) % PHRASES.length; });
       }
     }, speed);
-    return function() { clearTimeout(t); };
+    return function () { clearTimeout(t); };
   }, [typed, deleting, phraseIdx]);
 
   var s = {
@@ -95,13 +100,26 @@ export default function LandingPage() {
               ' to find your perfect path.'
             ),
 
-            React.createElement('div', { style: { display: 'flex', gap: '12px', flexWrap: 'wrap' } },
-              React.createElement(Link, { to: '/register', className: 'btn btn-p', style: { fontSize: '0.95rem', padding: '0.8rem 1.8rem' } }, 'Start Journey →'),
-              React.createElement(Link, { to: '/login', className: 'btn btn-o', style: { fontSize: '0.95rem', padding: '0.8rem 1.8rem' } }, 'Student Login')
+            React.createElement('div', { style: { display: 'flex', gap: '12px', alignItems: 'center', flexWrap: 'wrap' } },
+              React.createElement(Link, { to: '/register', className: 'btn btn-p', style: { fontSize: '0.95rem', padding: '0.8rem 1.8rem' } }, 'Take Test →'),
+              React.createElement(Link, { to: '/login', className: 'btn btn-o', style: { fontSize: '0.95rem', padding: '0.8rem 1.8rem' } }, 'Student Login'),
+              React.createElement('div', { style: { height: '32px', width: '1px', background: 'var(--border)', margin: '0 8px' } }),
+              React.createElement(GoogleLogin, {
+                onSuccess: function (cred) {
+                  auth.googleLogin(cred.credential)
+                    .then(function () { toast.success('Signed in with Google! 🎉'); nav('/dashboard'); })
+                    .catch(function () { toast.error('Google login failed'); });
+                },
+                onError: function () { toast.error('Google login failed'); },
+                useOneTap: true,
+                theme: 'filled_blue',
+                shape: 'pill',
+                size: 'large'
+              })
             ),
 
             React.createElement('div', { style: { display: 'flex', gap: '2.5rem', marginTop: '3rem', flexWrap: 'wrap' } },
-              [['15k+', 'Students'], ['95%', 'Accuracy'], ['20+', 'Paths']].map(function(item) {
+              [['0', 'Students'], ['95%', 'Accuracy'], ['20+', 'Paths']].map(function (item) {
                 return React.createElement('div', { key: item[1] },
                   React.createElement('div', { style: { fontFamily: 'var(--font1)', fontWeight: 700, fontSize: '1.3rem', color: 'var(--text)' } }, item[0]),
                   React.createElement('div', { style: { color: 'var(--text3)', fontSize: '0.75rem', fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.05em' } }, item[1])
@@ -123,7 +141,7 @@ export default function LandingPage() {
             )
           ),
           React.createElement('div', { style: { display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))', gap: '1.5rem' } },
-            STEPS.map(function(step) {
+            STEPS.map(function (step) {
               return React.createElement('div', { key: step.n, className: 'card', style: { position: 'relative', overflow: 'hidden', padding: '2rem' } },
                 React.createElement('div', {
                   style: { position: 'absolute', top: '10px', right: '20px', fontFamily: 'var(--font1)', fontWeight: 800, fontSize: '3rem', color: 'var(--bg-card2)', lineHeight: 1 }
@@ -146,7 +164,7 @@ export default function LandingPage() {
             )
           ),
           React.createElement('div', { style: { display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(300px,1fr))', gap: '1.25rem' } },
-            FEATURES.map(function(f) {
+            FEATURES.map(function (f) {
               return React.createElement('div', { key: f.title, className: 'card', style: { display: 'flex', gap: '1.25rem', alignItems: 'flex-start' } },
                 React.createElement('div', {
                   style: { width: '48px', height: '48px', borderRadius: '12px', background: 'var(--brand-light)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.5rem', flexShrink: 0 }
@@ -170,7 +188,7 @@ export default function LandingPage() {
             )
           ),
           React.createElement('div', { style: { display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(200px,1fr))', gap: '1.25rem' } },
-            STREAMS.map(function(st) {
+            STREAMS.map(function (st) {
               return React.createElement('div', { key: st.name, className: 'card', style: { textAlign: 'center', padding: '2rem 1rem' } },
                 React.createElement('div', {
                   className: 'afloat',
@@ -208,6 +226,11 @@ export default function LandingPage() {
       React.createElement('footer', { style: { borderTop: '1px solid var(--border)', padding: '2.5rem 1.5rem', textAlign: 'center', background: 'var(--bg-card)' } },
         React.createElement('div', { style: { fontFamily: 'var(--font1)', fontWeight: 700, marginBottom: '8px', fontSize: '1.1rem', color: 'var(--text)' } },
           'EduPath ', React.createElement('span', { className: 'gt' }, 'AI')
+        ),
+        React.createElement('div', { style: { marginBottom: '1rem', display: 'flex', justifyContent: 'center', gap: '1.5rem', flexWrap: 'wrap' } },
+          React.createElement(Link, { to: '/career-guide', style: { color: 'var(--brand)', textDecoration: 'none', fontSize: '0.9rem', fontWeight: 600 } }, 'Engineering Career Guide'),
+          React.createElement(Link, { to: '/register', style: { color: 'var(--text3)', textDecoration: 'none', fontSize: '0.9rem' } }, 'Take Test'),
+          React.createElement(Link, { to: '/login', style: { color: 'var(--text3)', textDecoration: 'none', fontSize: '0.9rem' } }, 'Login')
         ),
         React.createElement('p', { className: 'branding-text' },
           '© 2026 EduPath • Empowering student choices'

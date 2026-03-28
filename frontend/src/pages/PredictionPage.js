@@ -7,7 +7,9 @@ import toast from 'react-hot-toast';
 var EDU_LEVELS = [
   { value: '10th', label: '10th Class', emoji: '📖', desc: 'Find your Intermediate stream' },
   { value: 'intermediate', label: 'Intermediate', emoji: '🎒', desc: 'Find your B.Tech branch' },
-  { value: 'btech', label: 'B.Tech', emoji: '🎓', desc: 'Find your career path' }
+  { value: 'btech', label: 'B.Tech', emoji: '🎓', desc: 'Find your career path' },
+  { value: 'mbbs', label: 'MBBS', emoji: '⚕️', desc: 'Find your career path' },
+  { value: 'barch', label: 'B.Arch', emoji: '🏛️', desc: 'Find your career path' }
 ];
 
 var DOMAINS = {
@@ -21,9 +23,26 @@ var DOMAINS = {
   btech: [
     { value: 'CSE', label: 'CSE', emoji: '💻' },
     { value: 'CSE-AI', label: 'CSE-AI', emoji: '🤖' },
+    { value: 'DataScience', label: 'Data Science', emoji: '📊' },
+    { value: 'CyberSecurity', label: 'Cyber Security', emoji: '🛡️' },
+    { value: 'IT', label: 'IT', emoji: '🌐' },
+    { value: 'AIDS', label: 'AI & Data Science', emoji: '🧠' },
+    { value: 'ECM', label: 'Electronics & Computer', emoji: '⚡💻' },
     { value: 'ECE', label: 'ECE', emoji: '📡' },
+    { value: 'EEE', label: 'EEE', emoji: '🔌' },
     { value: 'MECH', label: 'MECH', emoji: '⚙️' },
-    { value: 'CE', label: 'Civil', emoji: '🏗️' }
+    { value: 'Civil', label: 'Civil', emoji: '🏗️' },
+    { value: 'Chemical', label: 'Chemical', emoji: '🧪' },
+    { value: 'Robotics', label: 'Robotics', emoji: '🦾' },
+    { value: 'Aeronautical', label: 'Aeronautical', emoji: '✈️' },
+    { value: 'Production', label: 'Production', emoji: '🏭' },
+    { value: 'Instrumentation', label: 'Instrumentation', emoji: '🎛️' }
+  ],
+  mbbs: [
+    { value: 'MBBS', label: 'MBBS', emoji: '⚕️' }
+  ],
+  barch: [
+    { value: 'BArch', label: 'B.Arch', emoji: '🏛️' }
   ]
 };
 

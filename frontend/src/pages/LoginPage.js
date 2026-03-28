@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { GoogleLogin } from '@react-oauth/google';
 import toast from 'react-hot-toast';
 
 export default function LoginPage() {
@@ -45,10 +46,39 @@ export default function LoginPage() {
           React.createElement('p', { style: { color: 'var(--text3)', fontSize: '0.95rem', fontWeight: 500 } }, 'Log in to continue your journey')
         ),
 
-        React.createElement('form', {
-          onSubmit: handleSubmit,
-          style: { background: 'var(--bg-card)', border: '1px solid var(--border)', borderRadius: 'var(--r3)', padding: '2.5rem', boxShadow: 'var(--shadow2)' }
-        },
+        React.createElement('div', { style: { background: 'var(--bg-card)', border: '1px solid var(--border)', borderRadius: 'var(--r3)', padding: '2.5rem', boxShadow: 'var(--shadow2)' } },
+          /* Google Login */
+          React.createElement('div', { style: { marginBottom: '1.5rem', display: 'flex', justifyContent: 'center' } },
+            React.createElement(GoogleLogin, {
+              onSuccess: function(credentialResponse) {
+                auth.googleLogin(credentialResponse.credential)
+                  .then(function() {
+                    toast.success('Signed in with Google! 🎉');
+                    nav('/dashboard');
+                  })
+                  .catch(function(err) {
+                    toast.error('Google login failed');
+                  });
+              },
+              onError: function() {
+                toast.error('Google login failed');
+              },
+              useOneTap: true,
+              theme: 'outline',
+              width: '100%'
+            })
+          ),
+
+          /* Divider */
+          React.createElement('div', { style: { display: 'flex', alignItems: 'center', margin: '1.5rem 0', color: 'var(--text3)', fontSize: '0.8rem', fontWeight: 600 } },
+            React.createElement('div', { style: { flex: 1, height: '1px', background: 'var(--border)' } }),
+            React.createElement('span', { style: { padding: '0 10px', textTransform: 'uppercase', letterSpacing: '0.1em' } }, 'OR'),
+            React.createElement('div', { style: { flex: 1, height: '1px', background: 'var(--border)' } })
+          ),
+
+          React.createElement('form', {
+            onSubmit: handleSubmit,
+          },
           React.createElement('div', { style: { marginBottom: '1.25rem' } },
             React.createElement('label', { style: { display: 'block', fontSize: '0.85rem', fontWeight: 600, marginBottom: '6px', color: 'var(--text2)' } }, 'Email Address'),
             React.createElement('input', { type: 'email', placeholder: 'name@example.com', value: email, onChange: function(e) { setEmail(e.target.value); }, className: 'inp', required: true })
@@ -83,6 +113,7 @@ export default function LoginPage() {
             "Don't have an account? ",
             React.createElement(Link, { to: '/register', style: { color: 'var(--brand)', textDecoration: 'none', fontWeight: 700 } }, 'Register')
           )
+        )
         )
       )
     )

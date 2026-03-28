@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { AuthProvider, useAuth } from './context/AuthContext';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 import Navbar from './components/ui/Navbar';
 import LandingPage from './pages/LandingPage';
 import LoginPage from './pages/LoginPage';
@@ -11,6 +12,7 @@ import PredictionPage from './pages/PredictionPage';
 import TestPage from './pages/TestPage';
 import RoadmapPage from './pages/RoadmapPage';
 import ResultPage from './pages/ResultPage';
+import CareerGuidePage from './pages/CareerGuidePage';
 
 function Spinner() {
   return (
@@ -62,6 +64,8 @@ function AppInner() {
           element: React.createElement(PrivateRoute, null, React.createElement(TestPage)) }),
         React.createElement(Route, { path: '/roadmap',
           element: React.createElement(PrivateRoute, null, React.createElement(RoadmapPage)) }),
+        React.createElement(Route, { path: '/career-guide',
+          element: React.createElement(CareerGuidePage) }),
         React.createElement(Route, { path: '/result/:id',
           element: React.createElement(PrivateRoute, null, React.createElement(ResultPage)) }),
         React.createElement(Route, { path: '*', element: React.createElement(Navigate, { to: '/', replace: true }) })
@@ -71,10 +75,18 @@ function AppInner() {
 }
 
 export default function App() {
+  React.useEffect(function() {
+    var id = process.env.REACT_APP_GOOGLE_CLIENT_ID;
+    if (!id || id.includes('your_google_client_id')) {
+      console.warn('⚠️ Google OAuth is NOT configured yet. Get your Client ID from Google Cloud Console and paste it into /frontend/.env');
+    }
+  }, []);
+
   return (
     React.createElement(BrowserRouter, null,
-      React.createElement(AuthProvider, null,
-        React.createElement(Toaster, {
+      React.createElement(GoogleOAuthProvider, { clientId: process.env.REACT_APP_GOOGLE_CLIENT_ID },
+        React.createElement(AuthProvider, null,
+          React.createElement(Toaster, {
           position: 'top-right',
           toastOptions: {
             duration: 4000,
@@ -94,5 +106,6 @@ export default function App() {
         React.createElement(AppInner)
       )
     )
-  );
+  )
+);
 }

@@ -247,6 +247,170 @@ const questionsBank = {
           { id: "ce_c5", text: "WBM road stands for:", subject: "civil", options: ["Water Bound Macadam", "Wide Base Macadam", "Water Base Mixture", "Weighted Bound Macadam"], correct: 0 }
         ]
       }
+    },
+    DataScience: {
+      interest: [
+        { id: "ds_i1", text: "Do you enjoy working with statistics and probability?", subject: "statistics", options: ["Strongly Yes", "Yes", "Neutral", "No"] },
+        { id: "ds_i2", text: "Are you interested in discovering patterns in large data sets?", subject: "data", options: ["Strongly Yes", "Yes", "Neutral", "No"] }
+      ],
+      aptitude: {
+        data: [
+          { id: "ds_a1", text: "Which language is most popular for data science?", subject: "data", options: ["C++", "Java", "Python", "HTML"], correct: 2 },
+          { id: "ds_a2", text: "What is the mean of 1, 2, 3, 4, 5?", subject: "statistics", options: ["2", "3", "4", "5"], correct: 1 }
+        ]
+      }
+    },
+    CyberSecurity: {
+      interest: [
+        { id: "cs_i1", text: "Do you like finding vulnerabilities in computer networks?", subject: "network", options: ["Strongly Yes", "Yes", "Neutral", "No"] },
+        { id: "cs_i2", text: "Are you interested in ethical hacking and security?", subject: "security", options: ["Strongly Yes", "Yes", "Neutral", "No"] }
+      ],
+      aptitude: {
+        security: [
+          { id: "cs_a1", text: "What does HTTPS stand for?", subject: "network", options: ["Hyper Text Transfer Protocol Secure", "High Text Transfer Protocol Secure", "Hyper Text Transmission Protocol Secure", "None"], correct: 0 },
+          { id: "cs_a2", text: "A firewall is used to:", subject: "security", options: ["Cool the server", "Prevent unauthorized access", "Speed up internet", "Store data"], correct: 1 }
+        ]
+      }
+    },
+    IT: {
+      interest: [
+        { id: "it_i1", text: "Do you enjoy building web applications and writing code?", subject: "web", options: ["Strongly Yes", "Yes", "Neutral", "No"] },
+        { id: "it_i2", text: "Are you interested in software development life cycles?", subject: "program", options: ["Strongly Yes", "Yes", "Neutral", "No"] }
+      ],
+      aptitude: {
+        code: [
+          { id: "it_a1", text: "Which tag is used for linking in HTML?", subject: "web", options: ["<link>", "<a>", "<href>", "<src>"], correct: 1 },
+          { id: "it_a2", text: "What is a loop used for in programming?", subject: "code", options: ["To repeat a task", "To stop a task", "To declare a variable", "To compile code"], correct: 0 }
+        ]
+      }
+    },
+    AIDS: {
+      interest: [
+        { id: "aid_i1", text: "Are you fascinated by machine learning and artificial intelligence?", subject: "ai", options: ["Strongly Yes", "Yes", "Neutral", "No"] },
+        { id: "aid_i2", text: "Do you enjoy processing massive amounts of data?", subject: "data", options: ["Strongly Yes", "Yes", "Neutral", "No"] }
+      ],
+      aptitude: {
+        ai: [
+          { id: "aid_a1", text: "Which algorithm is used for classification?", subject: "data", options: ["Linear Regression", "Logistic Regression", "K-Means", "PCA"], correct: 1 },
+          { id: "aid_a2", text: "What is a neural network modeled after?", subject: "ai", options: ["Human brain", "Computer processor", "Tree structure", "Network cables"], correct: 0 }
+        ]
+      }
+    },
+    ECM: {
+      interest: [
+        { id: "ecm_i1", text: "Are you interested in designing embedded systems and circuits?", subject: "embedded", options: ["Strongly Yes", "Yes", "Neutral", "No"] },
+        { id: "ecm_i2", text: "Do you like writing code that interacts directly with hardware?", subject: "program", options: ["Strongly Yes", "Yes", "Neutral", "No"] }
+      ],
+      aptitude: {
+        electronics: [
+          { id: "ecm_a1", text: "Which component stores electrical energy?", subject: "circuits", options: ["Resistor", "Inductor", "Capacitor", "Diode"], correct: 2 },
+          { id: "ecm_a2", text: "A microcontroller usually contains:", subject: "embedded", options: ["CPU", "Memory", "I/O peripherals", "All of the above"], correct: 3 }
+        ]
+      }
+    },
+    EEE: {
+      interest: [
+        { id: "eee_i1", text: "Are you passionate about power grids and electrical systems?", subject: "electrical", options: ["Strongly Yes", "Yes", "Neutral", "No"] },
+        { id: "eee_i2", text: "Do you enjoy learning about motors, generators, and transformers?", subject: "circuits", options: ["Strongly Yes", "Yes", "Neutral", "No"] }
+      ],
+      aptitude: {
+        power: [
+          { id: "eee_a1", text: "What is the unit of electrical power?", subject: "circuits", options: ["Volt", "Ampere", "Ohm", "Watt"], correct: 3 },
+          { id: "eee_a2", text: "Which device steps up or steps down voltage?", subject: "power", options: ["Motor", "Generator", "Transformer", "Rectifier"], correct: 2 }
+        ]
+      }
+    },
+    Chemical: {
+      interest: [
+        { id: "chem_i1", text: "Are you interested in industrial chemical processes and reactions?", subject: "chemical", options: ["Strongly Yes", "Yes", "Neutral", "No"] },
+        { id: "chem_i2", text: "Do you like designing plants for pharmaceutical or fuel production?", subject: "chemistry", options: ["Strongly Yes", "Yes", "Neutral", "No"] }
+      ],
+      aptitude: {
+        chemistry: [
+          { id: "chem_a1", text: "What process separates crude oil into different products?", subject: "chemical", options: ["Filtration", "Fractional Distillation", "Decantation", "Centrifugation"], correct: 1 },
+          { id: "chem_a2", text: "Which of the following is an exothermic reaction?", subject: "chemistry", options: ["Melting ice", "Combustion", "Boiling water", "Photosynthesis"], correct: 1 }
+        ]
+      }
+    },
+    Robotics: {
+      interest: [
+        { id: "rob_i1", text: "Do you want to build and program autonomous robots?", subject: "robot", options: ["Strongly Yes", "Yes", "Neutral", "No"] },
+        { id: "rob_i2", text: "Are you interested in machine kinematics and control systems?", subject: "machine", options: ["Strongly Yes", "Yes", "Neutral", "No"] }
+      ],
+      aptitude: {
+        robotics: [
+          { id: "rob_a1", text: "What sensor is typically used by a robot to measure distance?", subject: "robot", options: ["Temperature sensor", "Ultrasonic sensor", "Light sensor", "Pressure sensor"], correct: 1 },
+          { id: "rob_a2", text: "What does ROI stand for in computer vision?", subject: "program", options: ["Region of Interest", "Rate of Info", "Return on Income", "Robot Output Input"], correct: 0 }
+        ]
+      }
+    },
+    Aeronautical: {
+      interest: [
+        { id: "aero_i1", text: "Are you fascinated by airplanes, rockets, and flight dynamics?", subject: "aircraft", options: ["Strongly Yes", "Yes", "Neutral", "No"] },
+        { id: "aero_i2", text: "Do you enjoy studying aerodynamics and propulsion?", subject: "aero", options: ["Strongly Yes", "Yes", "Neutral", "No"] }
+      ],
+      aptitude: {
+        flight: [
+          { id: "aero_a1", text: "Which force opposes the thrust of an aircraft?", subject: "flight", options: ["Lift", "Gravity", "Drag", "Weight"], correct: 2 },
+          { id: "aero_a2", text: "What provides the lifting force for an airplane?", subject: "aero", options: ["Engine", "Wings", "Tail", "Landing gear"], correct: 1 }
+        ]
+      }
+    },
+    Production: {
+      interest: [
+        { id: "prod_i1", text: "Are you interested in optimizing manufacturing processes and assembly lines?", subject: "machine", options: ["Strongly Yes", "Yes", "Neutral", "No"] },
+        { id: "prod_i2", text: "Do you like industrial engineering and quality control?", subject: "mechanic", options: ["Strongly Yes", "Yes", "Neutral", "No"] }
+      ],
+      aptitude: {
+        mechanics: [
+          { id: "prod_a1", text: "Which methodology is used to minimize waste in manufacturing?", subject: "machine", options: ["Agile", "Lean", "Scrum", "Waterfall"], correct: 1 },
+          { id: "prod_a2", text: "What tool is used for precision machining?", subject: "mechanic", options: ["Hammer", "CNC Machine", "Screwdriver", "Wrench"], correct: 1 }
+        ]
+      }
+    },
+    Instrumentation: {
+      interest: [
+        { id: "inst_i1", text: "Do you enjoy working with sensors, meters, and measurement devices?", subject: "embedded", options: ["Strongly Yes", "Yes", "Neutral", "No"] },
+        { id: "inst_i2", text: "Are you interested in control systems for industrial automation?", subject: "circuits", options: ["Strongly Yes", "Yes", "Neutral", "No"] }
+      ],
+      aptitude: {
+        electronics: [
+          { id: "inst_a1", text: "A thermocouple is used to measure:", subject: "embedded", options: ["Pressure", "Temperature", "Flow", "Level"], correct: 1 },
+          { id: "inst_a2", text: "What is used to convert an analog signal to a digital signal?", subject: "circuits", options: ["DAC", "ADC", "Amplifier", "Filter"], correct: 1 }
+        ]
+      }
+    }
+  },
+  "mbbs": {
+    "MBBS": {
+      interest: [
+        { id: "mbbs_i1", text: "Are you passionate about disease diagnosis and patient care?", subject: "medical", options: ["Strongly Yes", "Yes", "Neutral", "No"] },
+        { id: "mbbs_i2", text: "Do you want to perform surgeries and treat injuries?", subject: "surgery", options: ["Strongly Yes", "Yes", "Neutral", "No"] },
+        { id: "mbbs_i3", text: "Are you fascinated by human anatomy and physiological functions?", subject: "anatomy", options: ["Strongly Yes", "Yes", "Neutral", "No"] }
+      ],
+      aptitude: {
+        biology: [
+          { id: "mbbs_a1", text: "Which organ is responsible for pumping blood?", subject: "health", options: ["Liver", "Lungs", "Heart", "Kidney"], correct: 2 },
+          { id: "mbbs_a2", text: "What is the structural unit of the human body?", subject: "anatomy", options: ["Tissue", "Cell", "Organ", "System"], correct: 1 },
+          { id: "mbbs_a3", text: "Which branch of medicine deals with surgery?", subject: "surgery", options: ["Pathology", "Radiology", "Surgery", "Dermatology"], correct: 2 }
+        ]
+      }
+    }
+  },
+  "barch": {
+    "BArch": {
+      interest: [
+        { id: "ba_i1", text: "Do you enjoy sketching, designing, and architectural planning?", subject: "architecture", options: ["Strongly Yes", "Yes", "Neutral", "No"] },
+        { id: "ba_i2", text: "Are you interested in designing smart cities and urban spaces?", subject: "urban", options: ["Strongly Yes", "Yes", "Neutral", "No"] },
+        { id: "ba_i3", text: "Do you like creating 3D building models using CAD?", subject: "drawing", options: ["Strongly Yes", "Yes", "Neutral", "No"] }
+      ],
+      aptitude: {
+        design: [
+          { id: "ba_a1", text: "Which software is widely used for architectural drafting?", subject: "cad", options: ["Photoshop", "AutoCAD", "Excel", "Word"], correct: 1 },
+          { id: "ba_a2", text: "The concept of designing cities and public spaces is called:", subject: "urban", options: ["Structural design", "Urban planning", "Interior design", "Traffic mapping"], correct: 1 },
+          { id: "ba_a3", text: "What is the primary purpose of a foundation in a building?", subject: "architecture", options: ["Aesthetics", "Roof support", "Load distribution to soil", "Insulation"], correct: 2 }
+        ]
+      }
     }
   }
 };

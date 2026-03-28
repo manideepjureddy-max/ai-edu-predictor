@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { GoogleLogin } from '@react-oauth/google';
 import toast from 'react-hot-toast';
 
 var EDU_OPTIONS = [
@@ -71,6 +72,36 @@ export default function RegisterPage() {
         ),
 
         React.createElement('div', { style: { background: 'var(--bg-card)', border: '1px solid var(--border)', borderRadius: 'var(--r3)', padding: '2rem', boxShadow: 'var(--shadow2)' } },
+          /* Google Register (only show on step 1) */
+          step === 1 && React.createElement(React.Fragment, null,
+            React.createElement('div', { style: { marginBottom: '1.5rem', display: 'flex', justifyContent: 'center' } },
+              React.createElement(GoogleLogin, {
+                onSuccess: function(credentialResponse) {
+                  auth.googleLogin(credentialResponse.credential)
+                    .then(function() {
+                      toast.success('Joined with Google! 🎉');
+                      nav('/dashboard');
+                    })
+                    .catch(function(err) {
+                      toast.error('Google registration failed');
+                    });
+                },
+                onError: function() {
+                  toast.error('Google registration failed');
+                },
+                useOneTap: true,
+                theme: 'outline',
+                width: '100%'
+              })
+            ),
+
+            /* Divider */
+            React.createElement('div', { style: { display: 'flex', alignItems: 'center', margin: '1.5rem 0 1rem', color: 'var(--text3)', fontSize: '0.8rem', fontWeight: 600 } },
+              React.createElement('div', { style: { flex: 1, height: '1px', background: 'var(--border)' } }),
+              React.createElement('span', { style: { padding: '0 10px', textTransform: 'uppercase', letterSpacing: '0.1em' } }, 'OR'),
+              React.createElement('div', { style: { flex: 1, height: '1px', background: 'var(--border)' } })
+            )
+          ),
 
           /* STEP 1 */
           step === 1 && React.createElement('div', null,

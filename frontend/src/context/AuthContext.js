@@ -48,6 +48,17 @@ export function AuthProvider(props) {
       });
   }
 
+  function googleLogin(credential) {
+    return axios.post(API + '/auth/google', { credential: credential })
+      .then(function(res) {
+        localStorage.setItem('edu_token', res.data.token);
+        axios.defaults.headers.common['Authorization'] = 'Bearer ' + res.data.token;
+        setToken(res.data.token);
+        setUser(res.data.user);
+        return res.data;
+      });
+  }
+
   function logout() {
     localStorage.removeItem('edu_token');
     delete axios.defaults.headers.common['Authorization'];
@@ -56,7 +67,7 @@ export function AuthProvider(props) {
   }
 
   return React.createElement(AuthContext.Provider, {
-    value: { user: user, token: token, loading: loading, login: login, register: register, logout: logout }
+    value: { user: user, token: token, loading: loading, login: login, register: register, googleLogin: googleLogin, logout: logout }
   }, props.children);
 }
 

@@ -15,13 +15,20 @@ CREATE TABLE IF NOT EXISTS users (
   id             UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   name           VARCHAR(100) NOT NULL,
   email          VARCHAR(255) UNIQUE NOT NULL,
-  password_hash  VARCHAR(255) NOT NULL,
+  password_hash  VARCHAR(255), -- becomes optional for google users
+  google_id      VARCHAR(255) UNIQUE,
+  is_email_verified BOOLEAN DEFAULT FALSE,
   education_level VARCHAR(20) CHECK (education_level IN ('10th','intermediate','btech')) NOT NULL,
   current_stream VARCHAR(50),
   school         VARCHAR(200),
   city           VARCHAR(100),
   created_at     TIMESTAMPTZ DEFAULT NOW()
 );
+
+-- Migrations for existing tables
+ALTER TABLE users ADD COLUMN IF NOT EXISTS google_id VARCHAR(255) UNIQUE;
+ALTER TABLE users ADD COLUMN IF NOT EXISTS is_email_verified BOOLEAN DEFAULT FALSE;
+ALTER TABLE users ALTER COLUMN password_hash DROP NOT NULL;
 
 CREATE INDEX IF NOT EXISTS idx_users_email ON users(email);
 

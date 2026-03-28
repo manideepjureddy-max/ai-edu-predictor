@@ -6,7 +6,8 @@ var links = [
   { path: '/dashboard', label: 'Dashboard', icon: '🏠' },
   { path: '/predict', label: 'Predict', icon: '🎯' },
   { path: '/test', label: 'Test', icon: '📝' },
-  { path: '/roadmap', label: 'Roadmaps', icon: '🗺️' }
+  { path: '/roadmap', label: 'Roadmaps', icon: '🗺️' },
+  { path: '/career-guide', label: 'Career Guide', icon: '🎓' }
 ];
 
 export default function Navbar() {

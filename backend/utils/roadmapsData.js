@@ -153,6 +153,42 @@ const roadmaps = {
     topCompanies: ["Wipro", "Cognizant", "Capgemini", "Tech Mahindra"],
     relatedCareers: ["BTech_to_SoftwareDeveloper", "BTech_to_CloudArchitect"]
   },
+  "Inter_to_BTech_AIDS": {
+    stream: "B.Tech - AIDS",
+    fullName: "B.Tech in Artificial Intelligence & Data Science",
+    description: "A hybrid engineering branch focusing on building intelligent systems using massive data architectures.",
+    duration: "4 years",
+    careerPaths: ["Big Data Engineer", "ML Ops Engineer", "Data Architect"],
+    semesterPlan: [
+      { sem: "Year 1", subjects: ["Math & Probablity", "Python Programming", "Digital Systems"], focus: "Basics" },
+      { sem: "Year 2", subjects: ["Advanced Data Structures", "Database Systems (NoSQL)", "Intro to ML"], focus: "Core Science" },
+      { sem: "Year 3", subjects: ["Deep Learning", "Spark/Hadoop Architecture", "Reinforcement Learning"], focus: "AI/Data Apps" },
+      { sem: "Year 4", subjects: ["Generative AI", "Data Governance", "Major Project & Internship"], focus: "Innovation" }
+    ],
+    skills: ["Python/R", "PyTorch", "Big Data Tools", "Statistical Modeling"],
+    certifications: ["Google Professional Data Engineer", "Databricks ML Professional"],
+    salaryRange: "₹7-35 LPA",
+    topCompanies: ["Meta", "Microsoft", "Databricks", "Snowflake", "Google"],
+    relatedCareers: ["BTech_to_DataScientist"]
+  },
+  "Inter_to_BTech_ECM": {
+    stream: "B.Tech - ECM",
+    fullName: "B.Tech in Electronics & Computer Engineering",
+    description: "Modern engineering branch bridging the gap between hardware architecture and software systems.",
+    duration: "4 years",
+    careerPaths: ["Software Engineer", "Hardware-Software Co-designer", "Embedded Engineer"],
+    semesterPlan: [
+      { sem: "Year 1", subjects: ["C Programming", "Digital Logic", "Calculus"], focus: "Foundations" },
+      { sem: "Year 2", subjects: ["Microprocessors", "Computer Organization", "Java Programming"], focus: "Dual Core" },
+      { sem: "Year 3", subjects: ["Operating Systems", "Computer Networks", "IoT & Sensor Systems"], focus: "Integration" },
+      { sem: "Year 4", subjects: ["VLSI Design", "Full Stack Development", "Real-time Systems"], focus: "Advanced Specialization" }
+    ],
+    skills: ["Embedded C", "C++", "VHDL/Verilog", "OS Fundamentals"],
+    certifications: ["CompTIA A+", "Cisco CCNA", "ARM Accredited Engineer"],
+    salaryRange: "₹5-28 LPA",
+    topCompanies: ["Intel", "Samsung", "Nvidia", "Adobe", "Qualcomm"],
+    relatedCareers: ["BTech_to_EmbeddedEngineer", "BTech_to_SoftwareDeveloper"]
+  },
   "Inter_to_BTech_ECE": {
     stream: "B.Tech - ECE",
     fullName: "Electronics & Communication Engineering",
@@ -292,6 +328,24 @@ const roadmaps = {
     salaryRange: "₹5-20 LPA",
     topCompanies: ["ISRO", "DRDO", "HAL", "Airbus India", "Boeing India"]
   },
+  "Inter_to_BTech_Robotics": {
+    stream: "B.Tech - Robotics",
+    fullName: "B.Tech in Robotics & Automation",
+    description: "Designing, building, and programming autonomous robots and automated systems.",
+    duration: "4 years",
+    careerPaths: ["Robotics Engineer", "Automation Developer", "Control Systems Analyst"],
+    semesterPlan: [
+      { sem: "Year 1", subjects: ["Engineering Math", "Basic Electronics", "C Programming"], focus: "Foundations" },
+      { sem: "Year 2", subjects: ["Mechanisms & Machines", "Microcontrollers", "Digital Logic"], focus: "Mechatronics Basics" },
+      { sem: "Year 3", subjects: ["Robotic Kinematics", "Sensors & Actuators", "Computer Vision", "Control Systems"], focus: "Core Robotics" },
+      { sem: "Year 4", subjects: ["Path Planning", "Industrial Automation (PLC)", "AI in Robotics", "Major Project"], focus: "Advanced Autonomy" }
+    ],
+    skills: ["Python/C++", "ROS (Robot OS)", "MATLAB", "SolidWorks"],
+    certifications: ["Fanuc Robotics Cert", "Certified Automation Professional"],
+    salaryRange: "₹6-30 LPA",
+    topCompanies: ["FANUC", "Tesla", "TCS Robotics", "GreyOrange", "Hyundai"],
+    relatedCareers: ["BTech_to_RoboticsEngineer"]
+  },
 
   // === Intermediate (Inter) to B.Arch ===
 
@@ -426,6 +480,150 @@ const roadmaps = {
     topCompanies: ["Bayer", "Syngenta", "ITC", "Monsanto", "NABARD"],
     relatedCareers: ["BScAg_to_AgriOfficer"]
   },
+
+  // === Additional Degree to Career Roadmaps ===
+
+  "BTech_to_AI_Engineer": {
+    career: "AI Engineer",
+    description: "Building, training, and deploying large-scale AI models and intelligent software.",
+    timeToAchieve: "0-2 years after B.Tech (CSE/AI)",
+    roadmap: [
+      { phase: "Degree Level", tasks: ["Master Python and Advanced Math", "Take Deep Learning / NLP electives", "Build and deploy 2-3 Generative AI apps"] },
+      { phase: "Early Career", tasks: ["Join AI-first startups or R&D labs", "Fine-tune models (LLMs)", "Learn MLOps (Weights & Biases, MLflow)"] },
+      { phase: "Advanced", tasks: ["Specialize in Research or AI Architecture", "Lead AI implementation for scale"] }
+    ],
+    skills: ["Python", "PyTorch/TensorFlow", "NLP", "Computer Vision", "MLOps"],
+    salaryProgression: { fresher: "₹8-15 LPA", midLevel: "₹20-45 LPA", senior: "₹50-1.2Cr LPA" },
+    topCompanies: ["OpenAI", "Google", "DeepMind", "NVIDIA", "Meta"]
+  },
+  "BTech_to_VLSI_Engineer": {
+    career: "VLSI / Chip Design Engineer",
+    description: "Designing integrated circuits (ICs) for smartphones, cars, and computers.",
+    timeToAchieve: "0-2 years after B.Tech (ECE/EEE)",
+    roadmap: [
+      { phase: "Degree Level", tasks: ["Master Digital Design and CMOS basics", "Learn Verilog / VHDL", "Practice FPGA prototyping"] },
+      { phase: "Specialization", tasks: ["Learn Synthesis and Physical Design tools (Cadence/Synopsys)", "Apply for VLSI internships"] },
+      { phase: "Career", tasks: ["Join semiconductor giants", "Work on Analog/Digital IC Design or Verification"] }
+    ],
+    skills: ["Verilog/SystemVerilog", "Cadence Tools", "Static Timing Analysis", "Scripting (Tcl/Perl)"],
+    salaryProgression: { fresher: "₹6-12 LPA", midLevel: "₹15-35 LPA", senior: "₹45-80 LPA" },
+    topCompanies: ["Qualcomm", "Intel", "IBM", "Apple", "AMD"]
+  },
+  "BTech_to_PowerSystemsEngineer": {
+    career: "Power Systems Engineer",
+    description: "Managing large-scale electrical grids, renewable energy, and power distribution.",
+    timeToAchieve: "0-2 years after B.Tech (EEE)",
+    roadmap: [
+      { phase: "Degree Level", tasks: ["Master Power System Analysis", "Learn protective relaying", "Join electrical safety workshops"] },
+      { phase: "Placement", tasks: ["Aim for PSUs (NTPC, PGCIL) or heavy industries", "Get certifications in Smart Grids"] },
+      { phase: "Career", tasks: ["Design renewable energy integration", "Manage grid stability and load dispatch"] }
+    ],
+    skills: ["ETAP", "Power Electronics", "Renewable Energy Design", "MATLAB"],
+    salaryProgression: { fresher: "₹4-10 LPA", midLevel: "₹12-25 LPA", senior: "₹30-50 LPA" },
+    topCompanies: ["BHEL", "Tata Power", "Siemens", "General Electric", "PGCIL"]
+  },
+  "BTech_to_ChemicalEngineer": {
+    career: "Chemical Process Engineer",
+    description: "Optimizing the large-scale production of chemicals, pharmaceuticals, and fuels.",
+    timeToAchieve: "0-2 years after B.Tech (Chem)",
+    roadmap: [
+      { phase: "Degree Level", tasks: ["Master Thermodynamics and Reaction Engineering", "Learn Aspen Plus simulation", "Lab safety certifications"] },
+      { phase: "Early Career", tasks: ["Join refinery or pharma plant as trainee", "Get hands-on experience in unit operations"] },
+      { phase: "Specialization", tasks: ["Optimize process efficiency", "Work on Green Hydrogen or Carbon Capture"] }
+    ],
+    skills: ["Aspen Plus", "P&ID Interpretation", "Mass & Heat Transfer", "Process Safety"],
+    salaryProgression: { fresher: "₹5-12 LPA", midLevel: "₹15-28 LPA", senior: "₹30-55 LPA" },
+    topCompanies: ["Reliance", "ONGC", "Dr. Reddy's", "Royal Dutch Shell", "Asian Paints"]
+  },
+  "BTech_to_AerospaceEngineer": {
+    career: "Aerospace Systems Engineer",
+    description: "Designing next-gen aircraft, satellites, and space exploration tech.",
+    timeToAchieve: "0-3 years after B.Tech (Aero/Mech)",
+    roadmap: [
+      { phase: "Degree Level", tasks: ["Master Fluid Dynamics & Propulsion", "Learn CFD tools", "Join aerospace design competitions"] },
+      { phase: "Career Launch", tasks: ["Clear GATE for ISRO/DRDO", "Join HAL as Management Trainee", "Specialization in Avionics or Structures"] }
+    ],
+    skills: ["Aerodynamics", "CATIA", "CFD Analysis", "Composite Materials"],
+    salaryProgression: { fresher: "₹6-14 LPA", midLevel: "₹18-35 LPA", senior: "₹40-80 LPA" },
+    topCompanies: ["ISRO", "Airbus", "Boeing", "SpaceX", "Lockheed Martin"]
+  },
+  "BTech_to_BiotechResearcher": {
+    career: "Biotech / Pharma Researcher",
+    description: "Developing vaccines, drugs, and bio-engineered products.",
+    timeToAchieve: "1-4 years after B.Tech (Biotech)",
+    roadmap: [
+      { phase: "Foundations", tasks: ["Intensive lab work in Genomics and Molecular Bio", "Internships in Pharma R&D units"] },
+      { phase: "Certification", tasks: ["Qualify CSIR-NET or GATE", "Learn Bioinformatics tools (NCBI/BLAST)"] },
+      { phase: "Career", tasks: ["Clinical Trials management", "Drug Discovery pipeline development"] }
+    ],
+    skills: ["PCR Tech", "DNA Sequencing", "Bioinformatics", "GLP/GMP"],
+    salaryProgression: { fresher: "₹4-9 LPA", midLevel: "₹10-22 LPA", senior: "₹25-50 LPA" },
+    topCompanies: ["Biocon", "Serum Institute", "Pfizer", "Gilead", "Novartis"]
+  },
+  "BTech_to_RoboticsEngineer": {
+    career: "Robotics & Automation Engineer",
+    description: "Developing intelligent robots for manufacturing, space, and medical fields.",
+    timeToAchieve: "1-3 years after B.Tech (Mech/ECE/CSE)",
+    roadmap: [
+      { phase: "Degree Level", tasks: ["Join robotics competitions", "Master ROS (Robot Operating System)", "Build 2-3 custom robotics projects"] },
+      { phase: "Skill Up", tasks: ["Learn Computer Vision and SLAM", "Intern at automation firms"] },
+      { phase: "Career", tasks: ["Design industrial robots or medical assist systems", "Work on drone autonomy"] }
+    ],
+    skills: ["ROS", "Python/C++", "Mechatronics", "Computer Vision", "Control Systems"],
+    salaryProgression: { fresher: "₹7-15 LPA", midLevel: "₹18-40 LPA", senior: "₹50-90 LPA" },
+    topCompanies: ["Tesla", "GreyOrange", "ABB", "Hyundai Robotics", "SpaceX"]
+  },
+  "MBBS_to_GeneralPhysician": {
+    career: "General Physician",
+    description: "The primary care provider for patient diagnosis and basic treatment.",
+    timeToAchieve: "0-1 years after MBBS",
+    roadmap: [
+      { phase: "MBBS", tasks: ["Focus on Internal Medicine", "Complete internship with diverse ward rotations"] },
+      { phase: "Launch", tasks: ["Obtain NMC License", "Start clinical practice or join govt health department"] }
+    ],
+    skills: ["Clinical Diagnosis", "Patient Management", "Emergency Care", "Empathy"],
+    salaryProgression: { fresher: "₹8-14 LPA", midLevel: "₹18-30 LPA", senior: "₹35-60 LPA" },
+    topCompanies: ["Apollo", "Fortis", "Govt Health Centers", "Private Practice"]
+  },
+  "MBBS_to_Surgeon": {
+    career: "Specialist Surgeon (MS)",
+    description: "Performing life-saving surgeries with high technical precision.",
+    timeToAchieve: "3-5 years after MBBS",
+    roadmap: [
+      { phase: "MBBS", tasks: ["Excel in Human Anatomy and General Surgery subjects during degree"] },
+      { phase: "Masters", tasks: ["Clear NEET PG", "Complete 3 years of MS (General Surgery) residency"] },
+      { phase: "Expertise", tasks: ["Perform 100+ supervised surgeries", "Post-surgical patient care"] }
+    ],
+    skills: ["Surgical Precision", "Technical Knowledge", "Decision Making", "Stamina"],
+    salaryProgression: { fresher: "₹12-22 LPA (Resident)", midLevel: "₹30-65 LPA", senior: "₹80-2.5Cr LPA" },
+    topCompanies: ["AIIMS", "Max Healthcare", "Medanta", "Global Hospitals"]
+  },
+  "Degree_to_Architect": {
+    career: "Professional Architect",
+    description: "Designing iconic structures and sustainable living spaces.",
+    timeToAchieve: "0-2 years after B.Arch",
+    roadmap: [
+      { phase: "Degree", tasks: ["Master Revit and SketchUp", "Intern at top architecture firms during 4th year"] },
+      { phase: "COA", tasks: ["Register with Council of Architecture (COA)", "Start under a licensed Senior Architect"] },
+      { phase: "Practice", tasks: ["Design residential/commercial projects", "Build a high-quality portfolio"] }
+    ],
+    skills: ["Spatial Design", "Revit/AutoCAD", "Sustainability", "Visualization"],
+    salaryProgression: { fresher: "₹4-9 LPA", midLevel: "₹12-25 LPA", senior: "₹30-55 LPA" },
+    topCompanies: ["Hafeez Contractor", "CP Kukreja", "Sanjay Puri Architects", "Genesis"]
+  },
+  "Degree_to_UrbanPlanner": {
+    career: "Urban / Town Planner",
+    description: "Designing the cities of the future with a focus on smart infrastructure and zoning.",
+    timeToAchieve: "1-3 years after B.Arch/B.Tech Civil",
+    roadmap: [
+      { phase: "Degree", tasks: ["Electives in Urban Design and Transportation"] },
+      { phase: "Masters (Optional)", tasks: ["Pursue M.Plan from SPA or IITs (highly recommended for govt roles)"] },
+      { phase: "Career", tasks: ["Join city municipal corporations or smart city advisory boards"] }
+    ],
+    skills: ["GIS Mapping", "City Zoning Laws", "Demographic Analysis", "Sustainability"],
+    salaryProgression: { fresher: "₹5-12 LPA", midLevel: "₹14-28 LPA", senior: "₹30-60 LPA" },
+    topCompanies: ["NHAI", "NITI Aayog", "JLL India", "PwC Infrastructure Division"]
+  },
   "Inter_to_BSc_Nursing": {
     stream: "B.Sc Nursing",
     fullName: "Bachelor of Science in Nursing",
@@ -444,6 +642,214 @@ const roadmaps = {
     topCompanies: ["Apollo", "Fortis", "Manipal Hospitals", "Govt Health Sector"],
     relatedCareers: ["Nursing_to_NurseAdmin"]
   },
+
+  // === Additional Specialized Career Paths (Mechanical & Civil) ===
+
+  "BTech_to_DesignEngineer": {
+    career: "Design Engineer",
+    description: "Creating technical drawings and blueprints for mechanical parts using CAD/CAE tools.",
+    timeToAchieve: "0-2 years after B.Tech MECH",
+    roadmap: [
+      { phase: "Mastering Tools", tasks: ["Excel in AutoCAD, SolidWorks, and CATIA", "Learn GD&T (Geometric Dimensioning & Tolerancing)"] },
+      { phase: "Simulation", tasks: ["Learn Finite Element Analysis (FEA) using ANSYS", "Understand materials and manufacturing constraints"] },
+      { phase: "Career", tasks: ["Junior Design Engineer in Automotive or Aerospace", "Senior Designer / Product Architect"] }
+    ],
+    skills: ["CAD", "CAE", "GD&T", "Materials Science"],
+    salaryEntry: "₹4-10 LPA",
+    topCompanies: ["Tata Motors", "Mahindra", "L&T", "General Electric"]
+  },
+  "BTech_to_ProductionEngineer": {
+    career: "Production Engineer",
+    description: "Managing assembly lines, optimizing manufacturing processes, and ensuring output targets.",
+    timeToAchieve: "0-1 years after B.Tech MECH",
+    roadmap: [
+      { phase: "Factory Floor", tasks: ["Understand CNC machining and shop floor management", "Learn Lean Manufacturing and Kaizen"] },
+      { phase: "Operations", tasks: ["Manage supply chain and inventory (ERP tools like SAP)", "Optimize production cycle times"] }
+    ],
+    skills: ["Lean Mfg", "CNC Programming", "SAP/ERP", "Operations Research"],
+    salaryEntry: "₹3.5-8 LPA",
+    topCompanies: ["Maruti Suzuki", "Hero MotoCorp", "ITC", "Bosch"]
+  },
+  "BTech_to_MaintenanceEngineer": {
+    career: "Maintenance Engineer",
+    description: "Ensuring machines and plant equipment stay operational with minimal downtime.",
+    timeToAchieve: "0-1 years after B.Tech MECH",
+    roadmap: [
+      { phase: "Basics", tasks: ["Learn Preventive vs Breakdown maintenance", "Understand hydraulics and pneumatics"] },
+      { phase: "Advanced", tasks: ["Predictive maintenance using IoT sensors", "Reliability Centered Maintenance (RCM)"] }
+    ],
+    skills: ["Hydraulics", "IoT for Maintenance", "Troubleshooting", "Safety Protocols"],
+    salaryEntry: "₹3-7 LPA",
+    topCompanies: ["Reliance Industries", "JSW Steel", "Adani Power", "HAL"]
+  },
+  "BTech_to_EV_Engineer": {
+    career: "EV (Electric Vehicle) Engineer",
+    description: "Designing battery systems, electric powertrains, and motor controllers for the future of mobility.",
+    timeToAchieve: "1-2 years after B.Tech MECH/EE",
+    roadmap: [
+      { phase: "Foundations", tasks: ["Study Battery Chemistry and Thermal Management", "Learn Power Electronics for EV"] },
+      { phase: "Simulation", tasks: ["MATLAB/Simulink for vehicle dynamics", "Battery Management System (BMS) design"] }
+    ],
+    skills: ["BMS", "Motor Control", "Python", "Simulink", "Battery Tech"],
+    salaryEntry: "₹6-15 LPA",
+    topCompanies: ["Ola Electric", "Ather Energy", "Tesla", "TVS", "Mahindra Electric"]
+  },
+  "BTech_to_QualityEngineer": {
+    career: "Quality Engineer",
+    description: "Ensuring products meet stringent quality standards and regulatory requirements.",
+    timeToAchieve: "0-2 years after B.Tech",
+    roadmap: [
+      { phase: "Control", tasks: ["Master Statistical Process Control (SPC)", "Learn Six Sigma methodologies"] },
+      { phase: "Compliance", tasks: ["Understand ISO standards and quality auditing", "Implementation of TQM (Total Quality Management)"] }
+    ],
+    skills: ["Six Sigma", "SPC", "Quality Auditing", "ISO Standards"],
+    salaryEntry: "₹4-9 LPA",
+    topCompanies: ["Tata Motors", "Bosch", "L&T", "Maruti Suzuki"]
+  },
+  "BTech_to_Mech_GovtJobs": {
+    career: "PESB / PSU / State Govt (Mech)",
+    description: "Working in government-run entities or appearing for elite civil services.",
+    timeToAchieve: "1-3 years of preparation",
+    roadmap: [
+      { phase: "Prep", tasks: ["Intensive preparation for GATE and ESE (UPSC)", "General studies and current affairs"] },
+      { phase: "Goal", tasks: ["Join as Assistant Engineer (AE) or Management Trainee in PSUs"] }
+    ],
+    skills: ["Core Technical Mastery", "Logical Reasoning", "Exam Strategy"],
+    salaryEntry: "₹8-14 LPA (plus perks)",
+    topCompanies: ["BHEL", "IOCL", "NTPC", "Indian Railways", "ISRO"]
+  },
+  "BTech_to_Mech_Entrepreneur": {
+    career: "Manufacturing / EV Entrepreneur",
+    description: "Starting a production unit or tech startup in the mechanical domain.",
+    timeToAchieve: "2-5 years",
+    roadmap: [
+      { phase: "Concept", tasks: ["Prototype development and market research", "Business plan and startup registration"] },
+      { phase: "Scale", tasks: ["Small scale manufacturing setup", "Fundraising for innovation (EV/Robotics)"] }
+    ],
+    skills: ["Business Mgmt", "Pitching", "Financial Literacy", "Supply Chain"],
+    salaryEntry: "Variable (High scale potential)",
+    topCompanies: ["Self-Employed", "Startup India Incubators"]
+  },
+  "BTech_to_SiteEngineer": {
+    career: "Site Engineer",
+    description: "Supervising construction activities directly on the field.",
+    timeToAchieve: "0-1 years after B.Tech Civil",
+    roadmap: [
+      { phase: "Execution", tasks: ["Labor oversight and site safety management", "Reading blueprints and coordinating with designers"] },
+      { phase: "Quality", tasks: ["On-site material testing (Concrete/Steel)", "Process documentation"] }
+    ],
+    skills: ["Execution", "Safety Management", "Surveying Basics", "Documentation"],
+    salaryEntry: "₹3-6 LPA",
+    topCompanies: ["L&T", "GMR", "Tata Projects", "Shapoorji Pallonji"]
+  },
+  "BTech_to_ProjectEngineer": {
+    career: "Project Engineer / Manager",
+    description: "Managing project schedules, budgets, and overall execution coordination.",
+    timeToAchieve: "0-3 years after B.Tech Civil",
+    roadmap: [
+      { phase: "Planning", tasks: ["Master Microsoft Project or Primavera P6", "Resource planning and monitoring"] },
+      { phase: "Delivery", tasks: ["Stakeholder management and milestone tracking", "Cost control and risk assessment"] }
+    ],
+    skills: ["MS Project", "Primavera", "Scheduling", "Risk Management"],
+    salaryEntry: "₹4.5-10 LPA",
+    topCompanies: ["Adani Infrastructure", "Reliance Infrastructure", "WSP India"]
+  },
+  "BTech_to_QuantitySurveyor": {
+    career: "Quantity Surveyor / Estimator",
+    description: "Analyzing costs, preparing BOQs, and managing financial aspects of construction.",
+    timeToAchieve: "0-2 years after B.Tech Civil",
+    roadmap: [
+      { phase: "Estimation", tasks: ["Learn detailed quantity estimation from architectural drawings", "Prepare Bill of Quantities (BOQ)"] },
+      { phase: "Contracting", tasks: ["Contract management and vendor billing", "Cost analysis and budgeting"] }
+    ],
+    skills: ["BOQ", "MS Excel", "Estimation", "Contract Law"],
+    salaryEntry: "₹4-10 LPA",
+    topCompanies: ["Turner & Townsend", "CBRE", "L&T Construction"]
+  },
+  "BTech_to_GeotechnicalEngineer": {
+    career: "Geotechnical Engineer",
+    description: "Analyzing soil and rock properties for safe structure foundations.",
+    timeToAchieve: "1-3 years (M.Tech often needed)",
+    roadmap: [
+      { phase: "Analysis", tasks: ["Soil sample testing and reporting", "Foundation design for bridges and tunnels"] },
+      { phase: "Advanced", tasks: ["Learn Plaxis or GeoStudio software", "Work on seismic and slope stability projects"] }
+    ],
+    skills: ["Soil Mechanics", "Plaxis", "Foundation Design", "Geology"],
+    salaryEntry: "₹5-12 LPA",
+    topCompanies: ["Jacobs", "AECOM", "Keller", "L&T Infrastructure"]
+  },
+  "BTech_to_EnvironmentalEngineer": {
+    career: "Environmental Engineer (Civil)",
+    description: "Building sustainable systems for water, waste, and pollution control.",
+    timeToAchieve: "0-2 years after B.Tech Civil",
+    roadmap: [
+      { phase: "Green Tech", tasks: ["Design waste treatment plants", "Study Environmental Impact Assessment (EIA) protocols"] },
+      { phase: "Systems", tasks: ["Water distribution and treatment networks", "Solid waste management strategies"] }
+    ],
+    skills: ["EIA", "Waste Treatment Design", "GIS", "Sustainability"],
+    salaryEntry: "₹4-9 LPA",
+    topCompanies: ["Suez", "Veolia", "CPWD", "Green Consulting Firms"]
+  },
+  "BTech_to_TransportationEngineer": {
+    career: "Transportation / Highway Engineer",
+    description: "Designing roads, highways, and transport networks for urban development.",
+    timeToAchieve: "0-3 years",
+    roadmap: [
+      { phase: "Design", tasks: ["Learn Highway Geometric Design", "Traffic analysis and flow optimization"] },
+      { phase: "Pavements", tasks: ["Flexible and Rigid pavement design", "Work on NHAI/State highway projects"] }
+    ],
+    skills: ["Traffic Analysis", "Highway Design", "CIVIL 3D", "Pavement Design"],
+    salaryEntry: "₹5-12 LPA",
+    topCompanies: ["NHAI", "ARUP", "WSP", "Afcons Infrastructure"]
+  },
+  "BTech_to_WaterResourcesEngineer": {
+    career: "Water Resources Engineer",
+    description: "Designing systems for water supply, irrigation, and dam management.",
+    timeToAchieve: "1-3 years",
+    roadmap: [
+      { phase: "Hydraulics", tasks: ["Study open channel flow and pipe hydraulics", "Learn HEC-RAS or EPANET software"] },
+      { phase: "Conservation", tasks: ["Design rainwater harvesting and irrigation systems", "Flood risk management"] }
+    ],
+    skills: ["HEC-RAS", "Hydraulic Design", "EPANET", "GIS"],
+    salaryEntry: "₹4-10 LPA",
+    topCompanies: ["WAPCOS", "Irrigation Department", "MEIL", "L&T Water"]
+  },
+  "BTech_to_SmartCities_Planner": {
+    career: "Smart Cities / Urban Development Expert",
+    description: "Building the cities of the future with tech-integrated infrastructure.",
+    timeToAchieve: "1-4 years",
+    roadmap: [
+      { phase: "Governance", tasks: ["Understand Smart City Mission rules and zoning laws", "Public-Private Partnership (PPP) modeling"] },
+      { phase: "Tech Integration", tasks: ["Implementing IoT for smart lighting and traffic", "Sustainable urban planning"] }
+    ],
+    skills: ["Urban Planning", "IoT", "PPP Models", "Policy Analysis"],
+    salaryEntry: "₹6-15 LPA",
+    topCompanies: ["NITI Aayog", "Smart City Missions", "JLL", "PwC Infrastructure"]
+  },
+  "BTech_to_Civil_GovtJobs": {
+    career: "IES / CPWD / State AE (Civil)",
+    description: "Building national infrastructure via elite government services.",
+    timeToAchieve: "1-3 years of prep",
+    roadmap: [
+      { phase: "Competitive Exam", tasks: ["Master civil subjects for GATE, IES, and State PSCs", "Focus on general studies and aptitude"] },
+      { phase: "Career", tasks: ["Join as Sub-Divisional Officer or Assistant Engineer in CPWD/Railways"] }
+    ],
+    skills: ["Civil Mastery", "Analytical Skills", "Ethics", "Governance Basics"],
+    salaryEntry: "₹10-18 LPA (with perks)",
+    topCompanies: ["CPWD", "Indian Railways", "DMRC", "NHAI", "State PWDs"]
+  },
+  "BTech_to_Civil_Entrepreneur": {
+    career: "Construction / Consultancy Entrepreneur",
+    description: "Launching your own construction firm or civil consultancy.",
+    timeToAchieve: "3-6 years",
+    roadmap: [
+      { phase: "Experience", tasks: ["Gain 3-5 years of industry experience to understand client specs", "Registration with Council of Engineers/Contractors"] },
+      { phase: "Launch", tasks: ["Build a portfolio with small residential or road contracts", "Tender bidding mastery"] }
+    ],
+    skills: ["Bidding", "Client Management", "Finance", "Legal Approvals"],
+    salaryEntry: "Variable (High scale potential)",
+    topCompanies: ["Self-Employed", "Real Estate Ventures"]
+  },
   "Inter_to_BSc_Biotech": {
     stream: "B.Sc Biotechnology",
     fullName: "Bachelor of Science in Biotechnology",
@@ -459,6 +865,24 @@ const roadmaps = {
     certifications: ["Bioinformatics Cert", "GLP (Good Lab Practices)"],
     salaryRange: "₹3-12 LPA",
     topCompanies: ["Biocon", "Serum Institute", "Dr. Reddy's", "Bharat Biotech"]
+  },
+  "Inter_to_BTech_Biotech": {
+    stream: "B.Tech - Biotechnology",
+    fullName: "Bachelor of Technology in Biotechnology",
+    description: "Engineering principles applied to biological sciences and medical breakthroughs.",
+    duration: "4 years",
+    careerPaths: ["Bioprocess Engineer", "Clinical Researcher", "R&D Scientist"],
+    semesterPlan: [
+      { sem: "Year 1", subjects: ["Engineering Math", "Microbiology", "Calculus"], focus: "Foundations" },
+      { sem: "Year 2", subjects: ["Biochemistry", "Momentum Transfer", "Genetic Engineering"], focus: "Chemical & Bio Specs" },
+      { sem: "Year 3", subjects: ["Biomass Conversion", "Bioinformatics", "IPR in Pharma"], focus: "Engineering Apps" },
+      { sem: "Year 4", subjects: ["Bionanotechnology", "Plant & Animal Biotech", "Major Thesis"], focus: "Research & Industry" }
+    ],
+    skills: ["Bioprocessing", "Genomics", "Chemical Engineering Basics", "Bio-safety"],
+    certifications: ["CSIR-NET (for research)", "Quality Assurance Professional"],
+    salaryRange: "₹4-18 LPA",
+    topCompanies: ["Biocon", "Gilead", "Novartis", "AstraZeneca"],
+    relatedCareers: ["Med_to_Specialist"]
   },
 
   // === Intermediate (Inter) to Commerce & Management ===

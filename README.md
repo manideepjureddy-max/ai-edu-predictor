@@ -132,11 +132,23 @@ NODE_ENV=development
 **`frontend/.env`**:
 ```env
 REACT_APP_API_URL=http://localhost:5000/api
+REACT_APP_GOOGLE_CLIENT_ID=your_google_client_id_here.apps.googleusercontent.com
 ```
 
 ---
 
-### 4. Initialise Database Tables (run once)
+### 4. Enable Google Authentication (Optional)
+
+1. Go to [Google Cloud Console](https://console.cloud.google.com/)
+2. Create **Credentials** → **OAuth client ID** → **Web application**
+3. Add `http://localhost:3000` to **Authorized JavaScript origins**
+4. Copy the Client ID into both `.env` files:
+   - `backend/.env` → `GOOGLE_CLIENT_ID`
+   - `frontend/.env` → `REACT_APP_GOOGLE_CLIENT_ID`
+
+---
+
+### 5. Initialise Database Tables (run once)
 
 ```bash
 cd backend
@@ -204,7 +216,9 @@ CREATE TABLE users (
   id             UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   name           VARCHAR(100) NOT NULL,
   email          VARCHAR(255) UNIQUE NOT NULL,
-  password_hash  VARCHAR(255) NOT NULL,
+  password_hash  VARCHAR(255), -- optional for google users
+  google_id      VARCHAR(255) UNIQUE,
+  is_email_verified BOOLEAN DEFAULT FALSE,
   education_level VARCHAR(20) NOT NULL,
   current_stream VARCHAR(50),
   school         VARCHAR(200),
