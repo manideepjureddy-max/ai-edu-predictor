@@ -28,12 +28,16 @@ export var authAPI = {
   updateProfile: function(d) { return api.put('/auth/profile', d); }
 };
 
+if (process.env.NODE_ENV === 'production' && !process.env.REACT_APP_API_URL) {
+  console.warn('⚠️ REACT_APP_API_URL is not set. API calls will likely fail in production. Set it in your Render dashboard.');
+}
+
 export var predAPI = {
-  fromInterests: function(d) { return api.post('/prediction/interests', d); },
-  fromAptitude: function(d) { return api.post('/prediction/aptitude', d); },
-  getSaved: function() { return api.get('/prediction/saved'); },
-  getById: function(id) { return api.get('/prediction/' + id); },
-  chat: function(d) { return api.post('/prediction/chat', d); }
+  fromInterests: function(d) { return api.post('/predict/interests', d); },
+  fromAptitude: function(d) { return api.post('/predict/aptitude', d); },
+  getSaved: function() { return api.get('/predict/saved'); },
+  getById: function(id) { return api.get('/predict/' + id); },
+  chat: function(d) { return api.post('/predict/chat', d); }
 };
 
 export var testsAPI = {

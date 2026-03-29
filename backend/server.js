@@ -41,6 +41,7 @@ app.use(express.json({ limit: '10kb' }));
 
 app.use('/api/auth',       authRoutes);
 app.use('/api/prediction', predictionRoutes);
+app.use('/api/predict',    predictionRoutes); // Alias for robustness
 app.use('/api/tests',      testRoutes);
 app.use('/api/roadmap',    roadmapRoutes);
 app.use('/api/dashboard',  dashboardRoutes);
