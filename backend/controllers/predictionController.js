@@ -1,8 +1,10 @@
 const { GoogleGenerativeAI } = require('@google/generative-ai');
+const OpenAI = require('openai');
 const db        = require('../config/db');
 const roadmaps  = require('../utils/roadmapsData');
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || '');
+const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY || '' });
 
 /* ── helpers ──────────────────────────────────────────────── */
 /* ── helpers ──────────────────────────────────────────────── */
@@ -15,10 +17,7 @@ const getAIRecommendation = async (educationLevel, domain, answers, rawKeys) => 
   else if (educationLevel === 'barch') roadmapKeys = rawKeys.filter(k => k.startsWith('Degree_to_'));
   else roadmapKeys = rawKeys.filter(k => k.startsWith('BTech_to_'));
 
-  try {
-
-    const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
-    const prompt = `
+  const prompt = `
 You are an expert academic counselor for Indian students.
 Based on the student's interest assessment, select the BEST educational/career roadmap from the provided list.
 
@@ -45,20 +44,38 @@ CRITICAL RULE: Do NOT default to AI (Artificial Intelligence) or CSE just becaus
 }
 `;
 
+  // TRY GEMINI FIRST
+  try {
+    const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
     const result = await model.generateContent(prompt);
     const text = result.response.text();
     const match = text.match(/\{[\s\S]*\}/);
     if (match) {
       const parsed = JSON.parse(match[0]);
-      if (!roadmapKeys.includes(parsed.roadmapKey)) {
-        console.warn('AI hallucinated invalid key:', parsed.roadmapKey, 'forcing heuristic fallback.');
-        throw new Error('AI hallucinated invalid key');
-      }
-      return parsed;
+      if (roadmapKeys.includes(parsed.roadmapKey)) return parsed;
     }
-    throw new Error('Invalid AI response');
   } catch (err) {
-    console.error('AI Rec Error (using heuristic fallback):', err.message);
+    console.error('Gemini Error (failing over to OpenAI):', err.message);
+  }
+
+  // TRY OPENAI SECOND
+  try {
+    if (process.env.OPENAI_API_KEY && process.env.OPENAI_API_KEY !== 'your_openai_api_key_here') {
+      const response = await openai.chat.completions.create({
+        model: "gpt-4o",
+        messages: [{ role: "user", content: prompt }],
+        response_format: { type: "json_object" }
+      });
+      const parsed = JSON.parse(response.choices[0].message.content);
+      if (roadmapKeys.includes(parsed.roadmapKey)) return parsed;
+    }
+  } catch (err) {
+    console.error('OpenAI Error (failing over to Heuristic):', err.message);
+  }
+
+  // HEURISTIC FALLBACK (Reliable even if both AIs fail)
+  try {
+    // ... heuristic logic continues here ...
     
     // HEURISTIC FALLBACK: Reliable even if AI fails
     let recommendedStream = domain || 'General Stream';
@@ -136,26 +153,87 @@ CRITICAL RULE: Do NOT default to AI (Artificial Intelligence) or CSE just becaus
       };
       
       answers.forEach(assessment => {
-          const sub = (assessment.subject || assessment.topic || '').toLowerCase();
+          const sub = (assessment.subject || assessment.topic || assessment.question || '').toLowerCase();
           const s = assessment.score || 1;
-          if (sub.includes('program') || sub.includes('code') || sub.includes('web')) { scores.SoftwareDeveloper += s; scores.CloudArchitect += s; }
-          if (sub.includes('data') || sub.includes('statistics') || sub.includes('math')) { scores.DataScientist += s; scores.AI_Engineer += s; }
-          if (sub.includes('security') || sub.includes('hack') || sub.includes('network')) { scores.CyberSecurity += s; }
-          if (sub.includes('design') || sub.includes('drawing') || sub.includes('cad')) { scores.DesignEngineer += s*2; scores.StructuralEngineer += s; scores.Architect += s*2; scores.UrbanPlanner += s; }
-          if (sub.includes('machine') || sub.includes('robot') || sub.includes('mechanic')) { scores.MechanicalEngineer += s; scores.RoboticsEngineer += s; scores.ProductionEngineer += s; }
-          if (sub.includes('ev') || sub.includes('electric vehicle') || sub.includes('battery')) { scores.EV_Engineer += s*3; }
-          if (sub.includes('govt') || sub.includes('ies') || sub.includes('psu') || sub.includes('exam')) { scores.Mech_GovtJobs += s*2; scores.Civil_GovtJobs += s*2; }
-          if (sub.includes('business') || sub.includes('startup') || sub.includes('own')) { scores.Mech_Entrepreneurship += s*2; scores.Civil_Entrepreneurship += s*2; }
-          if (sub.includes('building') || sub.includes('infrastructure') || sub.includes('site')) { scores.CivilEngineer += s; scores.SiteEngineer += s*2; }
-          if (sub.includes('water') || sub.includes('river') || sub.includes('environment')) { scores.WaterResourcesEngineer += s*2; scores.EnvironmentalEngineer += s*2; }
-          if (sub.includes('city') || sub.includes('urban') || sub.includes('smart')) { scores.SmartCities_Planner += s*3; scores.UrbanPlanner += s*3; }
-          if (sub.includes('embedded') || sub.includes('circuits') || sub.includes('electronics')) { scores.EmbeddedEngineer += s*3; scores.VLSI_Engineer += s; }
-          if (sub.includes('health') || sub.includes('medical') || sub.includes('biology')) { scores.GeneralPhysician += s; scores.Surgeon += s; }
-          if (sub.includes('surgery') || sub.includes('anatomy')) { scores.Surgeon += s*2; }
-          if (sub.includes('architecture')) { scores.Architect += s*3; }
-          if (sub.includes('aero') || sub.includes('aircraft') || sub.includes('flight')) { scores.AerospaceEngineer += s*3; }
-          if (sub.includes('chemical') || sub.includes('chemistry')) { scores.ChemicalEngineer += s*3; }
-          if (sub.includes('electrical') || sub.includes('power')) { scores.PowerSystemsEngineer += s*3; }
+          
+          // Software & Systems
+          if (sub.includes('program') || sub.includes('code') || sub.includes('web') || sub.includes('app') || sub.includes('software')) { 
+              scores.SoftwareDeveloper += s * 2; 
+              scores.CloudArchitect += s;
+          }
+          if (sub.includes('arch') || sub.includes('system') || sub.includes('design')) { 
+              scores.SoftwareDeveloper += s; 
+              scores.CloudArchitect += s; 
+              scores.StructuralEngineer += s;
+              scores.DesignEngineer += s;
+          }
+          if (sub.includes('database') || sub.includes('sql') || sub.includes('storage') || sub.includes('query')) { 
+              scores.SoftwareDeveloper += s; 
+              scores.DataScientist += s; 
+          }
+          if (sub.includes('cloud') || sub.includes('devops') || sub.includes('infrastructure') || sub.includes('network')) { 
+              scores.CloudArchitect += s * 2; 
+              scores.CyberSecurity += s;
+          }
+          
+          // Data & AI
+          if (sub.includes('statistics') || sub.includes('math')) { 
+              scores.DataScientist += s; 
+              scores.AI_Engineer += s; 
+          }
+          if (sub.includes('datascience') || (sub.includes('data') && !sub.includes('database'))) { 
+              scores.DataScientist += s * 2; 
+          }
+          if (sub.includes('ai') || sub.includes('machine learning') || sub.includes('ml') || sub.includes('neural') || sub.includes('vision') || sub.includes('nlp')) { 
+              scores.AI_Engineer += s * 3; 
+              scores.DataScientist += s;
+              scores.RoboticsEngineer += s;
+          }
+          
+          // Security
+          if (sub.includes('security') || sub.includes('hack') || sub.includes('crypto')) { 
+              scores.CyberSecurity += s * 3; 
+          }
+
+          // Engineering & Hardware
+          if (sub.includes('machine') || sub.includes('robot') || sub.includes('mech') || sub.includes('automotive')) { 
+              scores.MechanicalEngineer += s; 
+              scores.RoboticsEngineer += s * 2; 
+              scores.ProductionEngineer += s; 
+          }
+          if (sub.includes('ev') || sub.includes('electric vehicle') || sub.includes('battery')) { 
+              scores.EV_Engineer += s * 3; 
+          }
+          if (sub.includes('embedded') || sub.includes('circuit') || sub.includes('electronic') || sub.includes('hardware') || sub.includes('vlsi')) { 
+              scores.EmbeddedEngineer += s * 3; 
+              scores.VLSI_Engineer += s * 2; 
+          }
+          if (sub.includes('building') || sub.includes('infra') || sub.includes('site') || sub.includes('structural')) { 
+              scores.CivilEngineer += s; 
+              scores.SiteEngineer += s * 2; 
+              scores.StructuralEngineer += s * 2;
+          }
+          if (sub.includes('urban') || sub.includes('city') || sub.includes('smart')) { 
+              scores.UrbanPlanner += s * 3; 
+              scores.SmartCities_Planner += s * 3; 
+          }
+          
+          // Medical
+          if (sub.includes('health') || sub.includes('medical') || sub.includes('biology')) { 
+              scores.GeneralPhysician += s; 
+              scores.Surgeon += s; 
+          }
+          if (sub.includes('surgery') || sub.includes('anatomy')) { 
+              scores.Surgeon += s * 2; 
+          }
+          
+          // Others
+          if (sub.includes('architecture')) { scores.Architect += s * 3; }
+          if (sub.includes('aero') || sub.includes('aircraft') || sub.includes('flight')) { scores.AerospaceEngineer += s * 3; }
+          if (sub.includes('chemical') || sub.includes('chemistry')) { scores.ChemicalEngineer += s * 3; }
+          if (sub.includes('electrical') || sub.includes('power')) { scores.PowerSystemsEngineer += s * 3; }
+          if (sub.includes('govt') || sub.includes('ies') || sub.includes('psu')) { scores.Mech_GovtJobs += s * 2; scores.Civil_GovtJobs += s * 2; }
+          if (sub.includes('business') || sub.includes('startup')) { scores.Mech_Entrepreneurship += s * 2; scores.Civil_Entrepreneurship += s * 2; }
       });
       
       let validKeys = ['SoftwareDeveloper', 'DataScientist', 'CyberSecurity', 'CloudArchitect', 'ProductManager', 'MechanicalEngineer', 'CivilEngineer', 'EmbeddedEngineer', 'AI_Engineer', 'VLSI_Engineer', 'PowerSystemsEngineer', 'ChemicalEngineer', 'AerospaceEngineer', 'BiotechResearcher', 'RoboticsEngineer', 'DesignEngineer', 'ProductionEngineer', 'MaintenanceEngineer', 'QualityEngineer', 'EV_Engineer', 'Mech_GovtJobs', 'Mech_Entrepreneurship', 'StructuralEngineer', 'SiteEngineer', 'ProjectEngineer', 'QuantitySurveyor', 'GeotechnicalEngineer', 'EnvironmentalEngineer', 'TransportationEngineer', 'WaterResourcesEngineer', 'SmartCities_Planner', 'Civil_GovtJobs', 'Civil_Entrepreneurship'];
@@ -170,7 +248,7 @@ CRITICAL RULE: Do NOT default to AI (Artificial Intelligence) or CSE just becaus
         if (domain === 'EEE') validKeys = ['PowerSystemsEngineer', 'EmbeddedEngineer', 'SoftwareDeveloper'];
       }
       else if (domain === 'CSE-AI' || domain === 'CSE-DS' || domain === 'AIDS' || domain === 'AI' || domain === 'DataScience') validKeys = ['DataScientist', 'SoftwareDeveloper', 'ProductManager', 'AI_Engineer', 'RoboticsEngineer'];
-      else if (domain === 'CSE' || domain === 'IT' || domain === 'CyberSecurity' || domain === 'CSE-Cyber') validKeys = ['SoftwareDeveloper', 'CloudArchitect', 'CyberSecurity', 'ProductManager', 'DataScientist'];
+      else if (domain === 'CSE' || domain === 'IT' || domain === 'CyberSecurity' || domain === 'CSE-Cyber') validKeys = ['SoftwareDeveloper', 'AI_Engineer', 'CloudArchitect', 'CyberSecurity', 'ProductManager', 'DataScientist'];
       else if (domain === 'Chem' || domain === 'Chemical') validKeys = ['ChemicalEngineer', 'ProductManager', 'SoftwareDeveloper'];
       else if (domain === 'Biotech') validKeys = ['BiotechResearcher', 'ProductManager', 'SoftwareDeveloper'];
       else if (domain === 'Aero' || domain === 'Aeronautical') validKeys = ['AerospaceEngineer', 'MechanicalEngineer', 'ProductManager'];
@@ -197,14 +275,23 @@ CRITICAL RULE: Do NOT default to AI (Artificial Intelligence) or CSE just becaus
       else finalKey = 'BTech_to_SoftwareDeveloper';
     }
 
-    return {
-      recommendedStream,
-      roadmapKey: finalKey,
-      explanation: "Our analysis suggests this path matches your strengths. We recommend exploring the detailed modules in the roadmap below to start your journey.",
-      confidence: 80,
-      alternatives: alternatives.slice(0, 2).filter(k => roadmapKeys.includes(k))
-    };
-  }
+      return {
+        recommendedStream,
+        roadmapKey: finalKey,
+        explanation: "Our analysis suggests this path matches your strengths. We recommend exploring the detailed modules in the roadmap below to start your journey.",
+        confidence: 80,
+        alternatives: alternatives.slice(0, 2).filter(k => roadmapKeys.includes(k))
+      };
+    } catch (err) {
+      console.error('Critical Heuristic Failure:', err.message);
+      return {
+        recommendedStream: 'General Stream',
+        roadmapKey: educationLevel === '10th' ? '10th_to_MPC' : (educationLevel === 'intermediate' ? 'Inter_to_BTech_CSE' : 'BTech_to_SoftwareDeveloper'),
+        explanation: 'Due to technical error, we recommend a general path. You can retake the assessment later.',
+        confidence: 50,
+        alternatives: []
+      };
+    }
 };
 
 /* ── POST /api/prediction/interests ──────────────────────── */
@@ -373,17 +460,33 @@ exports.getPredictionById = async (req, res) => {
 
 /* ── POST /api/prediction/chat ───────────────────────────── */
 exports.chatWithAI = async (req, res) => {
-  try {
-    const { message, context } = req.body;
-    const model  = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
-    const result = await model.generateContent(
-      `You are EduBot, a friendly AI academic counselor for Indian students.
+  const { message, context } = req.body;
+  const prompt = `You are EduBot, a friendly AI academic counselor for Indian students.
 Context: ${JSON.stringify(context || {})}
 Student: ${message}
-Reply helpfully in under 180 words. Mention relevant Indian colleges, salaries, or entrance exams where useful.`
-    );
-    res.json({ success: true, reply: result.response.text() });
-  } catch {
-    res.json({ success: true, reply: "I'm having trouble connecting right now. Please try again in a moment!" });
+Reply helpfully in under 180 words. Mention relevant Indian colleges, salaries, or entrance exams where useful.`;
+
+  // TRY GEMINI
+  try {
+    const model  = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
+    const result = await model.generateContent(prompt);
+    return res.json({ success: true, reply: result.response.text() });
+  } catch (err) {
+    console.error('Gemini Chat Error (failing over):', err.message);
   }
+
+  // TRY OPENAI
+  try {
+    if (process.env.OPENAI_API_KEY && process.env.OPENAI_API_KEY !== 'your_openai_api_key_here') {
+      const resp = await openai.chat.completions.create({
+        model: "gpt-4o",
+        messages: [{ role: "user", content: prompt }]
+      });
+      return res.json({ success: true, reply: resp.choices[0].message.content });
+    }
+  } catch (err) {
+    console.error('OpenAI Chat Error:', err.message);
+  }
+
+  res.json({ success: true, reply: "I'm having trouble connecting right now. Please try again in a moment!" });
 };
