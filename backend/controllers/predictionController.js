@@ -9,7 +9,7 @@ const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY || '' });
 /* ── helpers ──────────────────────────────────────────────── */
 /* ── helpers ──────────────────────────────────────────────── */
 
-const getAIRecommendation = async (educationLevel, domain, answers, rawKeys) => {
+const getAIRecommendation = async (educationLevel, domain, answers, rawKeys, baseConfidence = null) => {
   let roadmapKeys = rawKeys;
   if (educationLevel === '10th') roadmapKeys = rawKeys.filter(k => k.startsWith('10th_to_'));
   else if (educationLevel === 'intermediate') roadmapKeys = rawKeys.filter(k => k.startsWith('Inter_to_'));
@@ -36,12 +36,11 @@ CRITICAL RULE: Do NOT default to AI (Artificial Intelligence) or CSE just becaus
 3. Provide a friendly 3-4 sentence explanation for this recommendation.
 4. Output your response ONLY as a JSON object with this exact structure:
 {
-  "recommendedStream": "A human-readable name for the stream",
-  "roadmapKey": "The exact matching key from the list",
-  "explanation": "Your 3-4 sentence explanation",
   "confidence": 85,
   "alternatives": ["AlternativeKey1", "AlternativeKey2"]
 }
+
+IMPORTANT: The "confidence" score (0-100) MUST accurately reflect the student's strength in the recommended stream. Based on the raw assessment data, we recommend a confidence of approximately ${baseConfidence || '80'}. Your value should be very close to this.
 `;
 
   // TRY GEMINI FIRST
@@ -275,13 +274,28 @@ CRITICAL RULE: Do NOT default to AI (Artificial Intelligence) or CSE just becaus
       else finalKey = 'BTech_to_SoftwareDeveloper';
     }
 
-      return {
-        recommendedStream,
-        roadmapKey: finalKey,
-        explanation: "Our analysis suggests this path matches your strengths. We recommend exploring the detailed modules in the roadmap below to start your journey.",
-        confidence: 80,
-        alternatives: alternatives.slice(0, 2).filter(k => roadmapKeys.includes(k))
-      };
+    // Calculate dynamic confidence based on the top score relative to max points
+    // If baseConfidence was provided (e.g. from aptitude scores), prioritize it.
+    let calculatedConfidence = baseConfidence;
+    
+    if (calculatedConfidence === null) {
+      // Logic for interest quiz where we need to deduce it
+      const maxPossiblePerQuestion = (educationLevel === '10th' || educationLevel === 'intermediate') ? 3 : 5;
+      const avgTopScore = (scores[sorted[0]] || 0) / (answers.length || 1);
+      // Weights average to approx 3-4, so divide points by (answers.length * 4) as estimate
+      calculatedConfidence = Math.round((avgTopScore / 4) * 100);
+    }
+    
+    // Safety clamp (50-98%)
+    calculatedConfidence = Math.max(50, Math.min(98, calculatedConfidence || 80));
+
+    return {
+      recommendedStream,
+      roadmapKey: finalKey,
+      explanation: "Based on our heuristic analysis of your responses, this path matches your strengths. We recommend exploring the detailed modules in the roadmap below to start your journey.",
+      confidence: calculatedConfidence,
+      alternatives: alternatives.slice(0, 2).filter(k => roadmapKeys.includes(k))
+    };
     } catch (err) {
       console.error('Critical Heuristic Failure:', err.message);
       return {
@@ -338,7 +352,7 @@ exports.predictFromInterests = async (req, res) => {
 /* ── POST /api/prediction/aptitude ───────────────────────── */
 exports.predictFromAptitude = async (req, res) => {
   try {
-    const { educationLevel, domain, scores } = req.body;
+    const { educationLevel, domain, scores, percentage } = req.body;
     
     const roadmapKeys = Object.keys(roadmaps);
     
@@ -352,8 +366,16 @@ exports.predictFromAptitude = async (req, res) => {
       answersForPrediction.push({ subject: domain, score: 5 });
     }
 
-    const recommendation = await getAIRecommendation(educationLevel, domain, answersForPrediction, roadmapKeys);
-    const { recommendedStream, roadmapKey, explanation, confidence, alternatives } = recommendation;
+    // Use the actual test percentage as base confidence;
+    // fall back to the highest subject score if not provided
+    const baseConfidence = (percentage != null && percentage > 0)
+      ? percentage
+      : Math.max(...Object.values(scores || {}), 0);
+
+    const recommendation = await getAIRecommendation(educationLevel, domain, answersForPrediction, roadmapKeys, baseConfidence);
+    // Always use the actual test percentage as the final confidence, not the AI's value
+    const { recommendedStream, roadmapKey, explanation, alternatives } = recommendation;
+    const confidence = Math.max(50, Math.min(98, baseConfidence || 80));
 
     const { rows } = await db.query(
       `INSERT INTO predictions

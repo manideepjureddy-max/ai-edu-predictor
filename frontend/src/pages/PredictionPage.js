@@ -97,7 +97,14 @@ export default function PredictionPage() {
         });
         return testsAPI.submitTest({ educationLevel: level, domain: domain, answers: fmt, testType: 'aptitude' })
           .then(function(r) {
-            return predAPI.fromAptitude({ educationLevel: level, domain: domain, testResults: fmt, scores: r.data.result ? r.data.result.subjectWise : {} });
+            var result = r.data.result || {};
+            return predAPI.fromAptitude({
+              educationLevel: level,
+              domain: domain,
+              testResults: fmt,
+              scores: result.subjectWise || {},
+              percentage: result.percentage || 0  // pass actual test score as confidence
+            });
           });
       }
     }
