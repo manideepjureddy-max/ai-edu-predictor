@@ -7,7 +7,6 @@ var LEVEL_LABEL = { '10th': '10th Class', intermediate: 'Intermediate', btech: '
 
 var ACTIONS = [
   { icon: '🎯', title: 'Stream Prediction', desc: 'Interest or aptitude based', to: '/predict', color: 'var(--brand)' },
-  { icon: '📝', title: 'Aptitude Test', desc: 'Domain-specific assessment', to: '/test', color: 'var(--brand)' },
   { icon: '🗺️', title: 'Explore Roadmaps', desc: 'Detailed learning paths', to: '/roadmap', color: 'var(--brand)' }
 ];
 
