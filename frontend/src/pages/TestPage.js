@@ -256,7 +256,7 @@ export default function TestPage() {
           onClick: function() { setPhase('setup'); setResult(null); setAnswers({}); },
           className: 'btn btn-o', style: { padding: '0.9rem 1.5rem' }
         }, 'Try Another Domain'),
-        React.createElement('a', { href: '/predict', className: 'btn btn-p', style: { padding: '0.9rem 1.5rem' } }, 'See AI Career Path →')
+        React.createElement(Link, { to: '/predict', className: 'btn btn-p', style: { padding: '0.9rem 1.5rem' } }, 'See AI Career Path →')
       )
     )
   );

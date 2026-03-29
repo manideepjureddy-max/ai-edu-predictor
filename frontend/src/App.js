@@ -80,6 +80,15 @@ export default function App() {
     if (!id || id.includes('your_google_client_id')) {
       console.warn('⚠️ Google OAuth is NOT configured yet. Get your Client ID from Google Cloud Console and paste it into /frontend/.env');
     }
+
+    // Silence "play() request was interrupted" errors
+    var handler = function(event) {
+      if (event.reason && event.reason.name === 'AbortError' && event.reason.message.includes('play()')) {
+        event.preventDefault();
+      }
+    };
+    window.addEventListener('unhandledrejection', handler);
+    return function() { window.removeEventListener('unhandledrejection', handler); };
   }, []);
 
   return (
