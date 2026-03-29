@@ -89,7 +89,7 @@ export default function PredictionPage() {
       } else {
         var fmt = qList.map(function(q) {
           return {
-            id: q.id,
+            questionId: q.id,
             question: q.text,
             selectedOption: answers[q.id] !== undefined ? answers[q.id] : -1,
             answerText: answers[q.id] !== undefined ? q.options[answers[q.id]] : 'No answer'

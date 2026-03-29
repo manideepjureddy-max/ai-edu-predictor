@@ -42,7 +42,12 @@ exports.submitTest = async (req, res) => {
 
   // build lookup map
   const allQ = [];
-  const bank = questionsBank[educationLevel]?.[domain]?.aptitude || {};
+  let bank = {};
+  if (educationLevel === '10th') {
+    bank = questionsBank['10th']?.aptitude || {};
+  } else {
+    bank = questionsBank[educationLevel]?.[domain]?.aptitude || {};
+  }
   Object.values(bank).forEach(qs => allQ.push(...qs));
   const qMap = {};
   allQ.forEach(q => { qMap[q.id] = q; });
