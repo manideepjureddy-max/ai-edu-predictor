@@ -1,7 +1,7 @@
 # 🎓 EduPath AI — AI-Powered Education Stream Predictor
 
 > AI-powered academic guidance platform for Indian students, built with **React + Node.js + PostgreSQL + Google Gemini AI**.
-
+        URL - https://ai-edu-frontend-ze8s.onrender.com
 ---
 
 ## 🗄️ Database: PostgreSQL (zero MongoDB)
